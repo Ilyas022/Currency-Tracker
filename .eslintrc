@@ -2,13 +2,15 @@
   "extends": [
     "airbnb",
     "eslint:recommended",
+    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "prettier"
   ],
   "plugins": ["react"],
   "parser": "@typescript-eslint/parser",
