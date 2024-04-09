@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 export function App() {
-	return ( 
-		<main>app</main>
-	)
+  return (
+    <main>app</main>
+  );
 }
