@@ -18,7 +18,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	html {
 		font-size: 62.5%;
-		font-family: Roboto, sans-serif;
+		font-family: "Poppins", sans-serif;
 	}
 
 	html,body,#root{
@@ -28,13 +28,9 @@ export const GlobalStyles = createGlobalStyle`
 		-moz-text-size-adjust: 100%;
 		-webkit-text-size-adjust: 100%;
 	}
-	body {
-		background-color: ${(props) => props.theme.primary};
-	}
 	input,button,textarea{font-family:inherit;}
-
 	input::-ms-clear{display: none;}
-	button{cursor: pointer;}
+	button{cursor: pointer; background-color: transparent;}
 	button::-moz-focus-inner {padding:0;border:0;}
 	a, a:visited{text-decoration: none;}
 	a:hover{text-decoration: none;}
