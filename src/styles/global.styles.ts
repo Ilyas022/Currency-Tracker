@@ -48,7 +48,7 @@ export const GlobalStyles = createGlobalStyle`
 			color: #fff;
 	}
 
-	#root > div {
+	#root {
 
 		> main {
 			flex: 1 0 auto;

@@ -1,18 +1,5 @@
 interface IIcon {
-	name:
-		| 'littleLogoIcon'
-		| 'bigLogoIcon'
-		| 'dollarIcon'
-		| 'chartIcon'
-		| 'euroIcon'
-		| 'libraIcon'
-		| 'bitcoinIcon'
-		| 'canadianDollarIcon'
-		| 'argentinoPesoIcon'
-		| 'yenIcon'
-		| 'wonIcon'
-		| 'australianDollarIcon'
-		| 'ifixIcon'
+	name: string
 }
 export function Icon({ name }: IIcon) {
 	switch (name) {
@@ -182,7 +169,7 @@ export function Icon({ name }: IIcon) {
 					</defs>
 				</svg>
 			)
-		case 'euroIcon':
+		case 'EURIcon':
 			return (
 				<svg
 					width="50"
@@ -239,7 +226,7 @@ export function Icon({ name }: IIcon) {
 					</defs>
 				</svg>
 			)
-		case 'bitcoinIcon':
+		case 'BTCIcon':
 			return (
 				<svg
 					width="50"
@@ -306,7 +293,7 @@ export function Icon({ name }: IIcon) {
 					</defs>
 				</svg>
 			)
-		case 'canadianDollarIcon':
+		case 'CADIcon':
 			return (
 				<svg
 					width="50"
@@ -352,7 +339,7 @@ export function Icon({ name }: IIcon) {
 					</defs>
 				</svg>
 			)
-		case 'argentinoPesoIcon':
+		case 'ARSIcon':
 			return (
 				<svg
 					width="50"
@@ -391,7 +378,7 @@ export function Icon({ name }: IIcon) {
 					</defs>
 				</svg>
 			)
-		case 'yenIcon':
+		case 'JPYIcon':
 			return (
 				<svg
 					width="50"
@@ -476,7 +463,7 @@ export function Icon({ name }: IIcon) {
 					</defs>
 				</svg>
 			)
-		case 'australianDollarIcon':
+		case 'AUDIcon':
 			return (
 				<svg
 					width="50"
@@ -552,6 +539,37 @@ export function Icon({ name }: IIcon) {
 							<rect width="49" height="49" fill="white" />
 						</clipPath>
 					</defs>
+				</svg>
+			)
+		case 'GBPIcon':
+			return (
+				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
+					<path
+						fill="currentColor"
+						d="M375.942 160a88.042 88.042 0 0 0-176.033 3.024v76.588H136v32h63.909v120.3H136v32h240v-32H231.909v-120.3H344v-32H231.909v-76.588a56.046 56.046 0 0 1 112.091 0V168h32v-8Z"
+					/>
+				</svg>
+			)
+		case 'CNYIcon':
+			return (
+				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+					<path
+						fill="currentColor"
+						d="M11.5 20v-6.5h-5v-1h4.802L5.904 4h1.202L12 11.742L16.894 4h1.202l-5.398 8.5H17.5v1h-5V20z"
+					/>
+				</svg>
+			)
+		case 'GELIcon':
+			return (
+				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+					<path
+						fill="none"
+						stroke="currentColor"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeWidth="2"
+						d="M18 13a6 6 0 1 0-6 6m-6 0h12M10 5v7m4 0V5"
+					/>
 				</svg>
 			)
 		default:

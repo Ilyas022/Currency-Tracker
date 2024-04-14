@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 const maxWidth = '1306px'
 
+export const StyledHeader = styled.header`
+	margin-bottom: 60px;
+`
+
 export const StyledHeaderContainer = styled.div`
 	display: flex;
 	align-items: center;
