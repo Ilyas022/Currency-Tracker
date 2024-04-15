@@ -58,4 +58,8 @@ export const GlobalStyles = createGlobalStyle`
 			flex: 0 0 auto;
 		}
 	}
+
+	main {
+		margin-bottom: 94px;
+	}
 `

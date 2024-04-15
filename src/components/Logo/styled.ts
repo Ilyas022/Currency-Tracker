@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const StyledLogo = styled(Link)`
+	display: block;
 	width: 41px;
 	height: 42px;
 

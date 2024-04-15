@@ -1,8 +1,8 @@
 import Introduction from 'components/Header/Introduction'
-import Logo from 'components/Header/Logo'
 import Navbar from 'components/Header/Navbar'
 import { ThemeToggler } from 'components/Header/ThemeToggler'
 import UpdateTime from 'components/Header/UpdateTime'
+import Logo from 'components/Logo'
 
 import { StyledHeader, StyledHeaderContainer } from './styled'
 

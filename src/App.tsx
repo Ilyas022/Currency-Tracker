@@ -1,4 +1,5 @@
 import CurrencyCardsList from 'components/CurrencyCardsList'
+import Footer from 'components/Footer'
 import Header from 'components/Header'
 
 export function App() {
@@ -8,6 +9,7 @@ export function App() {
 			<main>
 				<CurrencyCardsList />
 			</main>
+			<Footer />
 		</>
 	)
 }
