@@ -35,9 +35,9 @@ export const curencyMockValues = [
 		name: 'British Pound',
 	},
 	{
-		code: 'GEL',
+		code: 'USD',
 		value: 2.6700202911,
-		name: 'Georgian Lari',
+		name: 'US Dollar',
 	},
 	{
 		code: 'JPY',

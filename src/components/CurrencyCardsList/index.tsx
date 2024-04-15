@@ -8,7 +8,7 @@ import { StyledCurrencyList, StyledListContainer, StyledListTitle } from './styl
 
 function CurrencyCardsList() {
 	const { fetchCurrencyList } = useActions()
-	const { currency } = useTypedSelector((stete) => stete.currency)
+	const { currencyList, baseCurrency } = useTypedSelector((stete) => stete.currency)
 
 	useEffect(() => {
 		fetchCurrencyList()
@@ -18,8 +18,8 @@ function CurrencyCardsList() {
 		<StyledCurrencyList>
 			<StyledListTitle>Quotes</StyledListTitle>
 			<StyledListContainer>
-				{currency.map(({ code, name, value }) => (
-					<CurrencyCard code={code} name={name} value={value} key={code} />
+				{currencyList.map(({ code, name, value }) => (
+					<CurrencyCard code={code} name={name} value={value} key={code} base={baseCurrency} />
 				))}
 			</StyledListContainer>
 		</StyledCurrencyList>

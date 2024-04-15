@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledCurrencyCard = styled.div`
+export const StyledCurrencyCard = styled.button`
 	display: flex;
 	gap: 29px;
 	border: 1px solid #474747;
@@ -35,8 +35,15 @@ export const StyledCurrencyTitle = styled.p`
 `
 
 export const StyledCurrencyValue = styled.p`
+	display: flex;
+	align-items: flex-end;
 	font-weight: 300;
 	font-size: 32px;
 	line-height: 129%;
 	color: #a7b2c3;
+
+	& > svg {
+		width: 25px;
+		height: 25px;
+	}
 `

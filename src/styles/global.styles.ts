@@ -21,7 +21,7 @@ export const GlobalStyles = createGlobalStyle`
 		font-family: "Poppins", sans-serif;
 	}
 
-	html,body,#root{
+	html,body{
 		height: 100%;
 		line-height: 1;
 		-ms-text-size-adjust: 100%;
@@ -30,7 +30,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 	input,button,textarea{font-family:inherit;}
 	input::-ms-clear{display: none;}
-	button{cursor: pointer; background-color: transparent;}
+	button{cursor: pointer; background-color: transparent; text-align: left}
 	button::-moz-focus-inner {padding:0;border:0;}
 	a, a:visited{text-decoration: none;}
 	a:hover{text-decoration: none;}
@@ -49,14 +49,14 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	#root {
+		min-height: 100%;
+		display: flex;
+		flex-direction: column;
 
 		> main {
-			flex: 1 0 auto;
+			flex: 1 1 auto;
 		}
 
-		> footer {
-			flex: 0 0 auto;
-		}
 	}
 
 	main {

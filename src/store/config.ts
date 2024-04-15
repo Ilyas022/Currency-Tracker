@@ -1,6 +1,6 @@
 export const currencyNames: { [key: string]: string } = {
 	BTC: 'Bitcoin',
-	GEL: 'Georgian Lari',
+	USD: 'US Dollar',
 	EUR: 'Euro',
 	ARS: 'Argentine Peso',
 	JPY: 'Japanese Yen',
