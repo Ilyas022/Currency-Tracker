@@ -1,8 +1,11 @@
 import { Icon } from 'components/Icon'
+import { useScreenDetector } from 'src/hooks/useScreenDetector'
 
 import { StyledIntroduction, StyledIntroductionContainer, StyledIntroductionInfo } from './styled'
 
 function Introduction() {
+	const { isDesktop } = useScreenDetector()
+
 	return (
 		<StyledIntroduction>
 			<StyledIntroductionContainer>
@@ -13,7 +16,7 @@ function Introduction() {
 					</h1>
 					<p>Quotes for the dollar and other international currencies.</p>
 				</StyledIntroductionInfo>
-				<Icon name="bigLogoIcon" />
+				{isDesktop && <Icon name="bigLogoIcon" />}
 			</StyledIntroductionContainer>
 		</StyledIntroduction>
 	)

@@ -1,11 +1,27 @@
 import styled from 'styled-components'
 
+import { device } from 'constants/breakpoints'
+
 export const StyledToggleLabel = styled.label`
 	position: relative;
 	display: inline-block;
 	width: 50px;
 	height: 25px;
 	margin-top: 5px;
+
+	@media ${device.lg} {
+		margin-top: 0px;
+	}
+
+	@media ${device.sm} {
+		width: 40px;
+		height: 20px;
+	}
+
+	@media ${device.xs} {
+		width: 30px;
+		height: 15px;
+	}
 `
 export const StyledToggleInput = styled.input`
 	display: none;
@@ -13,6 +29,14 @@ export const StyledToggleInput = styled.input`
 	&:checked + span::before {
 		transform: translateX(25px);
 		background-color: ${({ theme }) => theme.colors.white};
+
+		@media ${device.sm} {
+			transform: translateX(20px);
+		}
+
+		@media ${device.xs} {
+			transform: translateX(15px);
+		}
 	}
 `
 
@@ -38,5 +62,15 @@ export const StyledToggleSpan = styled.span`
 		border: 1px solid ${({ theme }) => theme.colors.white};
 		border-radius: 50%;
 		transition: transform 0.3s ease;
+
+		@media ${device.sm} {
+			width: 20px;
+			height: 20px;
+		}
+
+		@media ${device.xs} {
+			width: 15px;
+			height: 15px;
+		}
 	}
 `

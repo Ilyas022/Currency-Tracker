@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { device } from 'src/constants/breakpoints'
+
 const titleFontSize = '76px'
 const titleLineHeight = '114px'
 
@@ -14,6 +16,11 @@ export const StyledIntroduction = styled.div`
 	height: 417px;
 	margin: 0 auto 65px;
 	background: ${({ theme }) => theme.colors.bgGradient};
+
+	@media ${device.lg} {
+		height: auto;
+		margin-bottom: 36px;
+	}
 `
 
 export const StyledIntroductionContainer = styled.div`
@@ -23,10 +30,24 @@ export const StyledIntroductionContainer = styled.div`
 	margin: 0 auto;
 	padding-top: 34px;
 
+	@media ${device.lg} {
+		justify-content: center;
+		padding: 34px;
+	}
+
+	@media ${device.xs} {
+		padding: 20px 0 16px;
+	}
+
 	& > svg {
 		margin-top: 11px;
 		width: 301px;
 		height: 314px;
+
+		@media ${device.lg} {
+			width: 250px;
+			height: 230px;
+		}
 	}
 `
 export const StyledIntroductionInfo = styled.div`
@@ -34,6 +55,10 @@ export const StyledIntroductionInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+
+	@media ${device.lg} {
+		align-items: center;
+	}
 
 	& > h1 {
 		padding-left: 21px;
@@ -48,16 +73,43 @@ export const StyledIntroductionInfo = styled.div`
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 
+		@media ${device.lg} {
+			text-align: center;
+			padding-left: 0px;
+			line-height: 120%;
+		}
+
+		@media ${device.md} {
+			font-size: 55px;
+			line-height: 120%;
+		}
+
+		@media ${device.sm} {
+			font-size: 38px;
+			line-height: 115%;
+		}
+
 		& > span {
 			display: block;
 		}
 		& > span:first-child {
 			padding-right: 51px;
+
+			@media ${device.lg} {
+				padding-right: 0px;
+			}
 		}
+
 		& > span:last-child {
 			font-size: ${subTitleFontSize};
 			padding-right: 41px;
 			line-height: ${subTitleLineHeight};
+
+			@media ${device.lg} {
+				padding-right: 0px;
+				font-size: inherit;
+				line-height: inherit;
+			}
 		}
 	}
 
@@ -69,5 +121,14 @@ export const StyledIntroductionInfo = styled.div`
 		font-size: ${descriptionFontSize};
 		line-height: ${descriptionLineHeight};
 		color: #d9d9d9;
+
+		@media ${device.lg} {
+			align-self: auto;
+		}
+
+		@media ${device.sm} {
+			font-size: 12px;
+			max-width: 60%;
+		}
 	}
 `

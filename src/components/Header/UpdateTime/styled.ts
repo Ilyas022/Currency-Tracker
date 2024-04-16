@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { device } from 'constants/breakpoints'
+
 const fontSize = '33px'
 const lineHeight = '125%'
 const color = 'd9d9d9'
@@ -16,6 +18,15 @@ export const StyledUpdateTime = styled.div`
 	line-height: ${lineHeight};
 	color: #${color};
 
+	@media ${device.md} {
+		font-size: 20px;
+		line-height: 120%;
+	}
+
+	@media ${device.sm} {
+		font-size: 14px;
+	}
+
 	& > span {
 		position: relative;
 		display: inline-block;
@@ -23,8 +34,18 @@ export const StyledUpdateTime = styled.div`
 		height: 33px;
 		border-radius: 50%;
 		background-color: ${iconBgColor};
-
 		transform: translate(-16px, -3px);
+
+		@media ${device.md} {
+			transform: none;
+			width: 25px;
+			height: 25px;
+		}
+
+		@media ${device.xs} {
+			width: 16px;
+			height: 16px;
+		}
 
 		&:before {
 			content: '';
@@ -36,6 +57,16 @@ export const StyledUpdateTime = styled.div`
 			transform: translate(-50%, -50%);
 			border-radius: 50%;
 			background-color: ${iconColor};
+
+			@media ${device.md} {
+				width: 12px;
+				height: 12px;
+			}
+
+			@media ${device.xs} {
+				width: 8px;
+				height: 8px;
+			}
 		}
 	}
 `
