@@ -1,13 +1,26 @@
 import styled from 'styled-components'
 
+import { device } from 'constants/breakpoints'
+
+const smallScreenEnd = '1024px'
+
 export const StyledCurrencyList = styled.div`
-	max-width: 1285px;
+	max-width: 1405px;
 	width: 100%;
-	padding: 0 20px;
+	padding: 0 80px;
 	margin: 0 auto;
+
+	@media (max-width: ${smallScreenEnd}) {
+		padding: 0 30px;
+	}
+
+	@media ${device.sm} {
+		padding: 0 27px;
+	}
 `
+
 export const StyledListTitle = styled.p`
-	width: 42%;
+	width: 520px;
 	padding-bottom: 25px;
 	border-bottom: 2px solid #474747;
 	font-weight: 300;
@@ -15,6 +28,21 @@ export const StyledListTitle = styled.p`
 	line-height: 129%;
 	color: #fff;
 	margin-bottom: 50px;
+
+	@media ${device.lg} {
+		width: 48%;
+	}
+
+	@media ${device.md} {
+		width: 100%;
+	}
+
+	@media ${device.sm} {
+		font-size: 12px;
+		padding-bottom: 11px;
+		border-width: 1px;
+		margin-bottom: 20px;
+	}
 `
 export const StyledListContainer = styled.div`
 	display: flex;
@@ -22,7 +50,11 @@ export const StyledListContainer = styled.div`
 	flex-wrap: wrap;
 	row-gap: 56px;
 
-	& > div {
-		flex: 0 1 42%;
+	@media ${device.lg} {
+		row-gap: 35px;
+	}
+
+	@media ${device.sm} {
+		row-gap: 19px;
 	}
 `

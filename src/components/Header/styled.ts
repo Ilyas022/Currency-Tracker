@@ -6,6 +6,10 @@ const maxWidth = '1306px'
 
 export const StyledHeader = styled.header`
 	margin-bottom: 60px;
+
+	@media ${device.md} {
+		margin-bottom: 38px;
+	}
 `
 
 export const StyledHeaderContainer = styled.div`
