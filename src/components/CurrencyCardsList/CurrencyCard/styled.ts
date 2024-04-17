@@ -24,7 +24,7 @@ export const StyledCurrencyCard = styled.button`
 	}
 
 	@media ${device.sm} {
-		padding: 15px 12px;
+		padding: 9px 12px;
 		border-radius: 3px;
 		gap: 12px;
 	}

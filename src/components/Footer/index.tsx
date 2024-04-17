@@ -1,28 +1,21 @@
 import Logo from 'components/Logo'
+import { useScreenDetector } from 'src/hooks/useScreenDetector'
 
-import { mocks } from './config'
+import { footerLinks, mobileFooterLinks, mocks } from './config'
 import {
 	StyledFooter,
 	StyledFooterContainer,
 	StyledFooterInfo,
 	StyledFooterLinks,
 	StyledFooterLogo,
+	StyledFooterMobileLinks,
 	StyledFooterRights,
 } from './styled'
 
-const { footerInfo } = mocks
-const footerLinks = Object.entries(footerInfo).map(([category, items]) => (
-	<div key={category}>
-		<h3>{category}</h3>
-		<ul>
-			{items.map((item) => (
-				<li key={item}>{item}</li>
-			))}
-		</ul>
-	</div>
-))
-
 function Footer() {
+	const { isDesktop, isMobile } = useScreenDetector()
+	const { description, rights, title } = mocks
+
 	return (
 		<StyledFooter>
 			<StyledFooterContainer>
@@ -30,17 +23,17 @@ function Footer() {
 					<StyledFooterInfo>
 						<StyledFooterLogo>
 							<Logo />
-							<p>Modsen Currency Tracker</p>
+							<p>{title}</p>
 						</StyledFooterLogo>
-						<p>
-							Since then, the company has grown organically to. Starsup is the world&apos;s largest
-							trading platform, with $12 billion worth of currency trading and 500,000 tickets sold
-							daily to tens of thousands of traders worldwide.
-						</p>
+						{isDesktop && <p>{description}</p>}
 					</StyledFooterInfo>
-					<StyledFooterLinks>{footerLinks}</StyledFooterLinks>
+					{isMobile ? (
+						<StyledFooterMobileLinks>{mobileFooterLinks}</StyledFooterMobileLinks>
+					) : (
+						<StyledFooterLinks>{footerLinks}</StyledFooterLinks>
+					)}
 				</div>
-				<StyledFooterRights>Startsup © 2023-2024, All Rights Reserved</StyledFooterRights>
+				<StyledFooterRights>{rights}</StyledFooterRights>
 			</StyledFooterContainer>
 		</StyledFooter>
 	)
