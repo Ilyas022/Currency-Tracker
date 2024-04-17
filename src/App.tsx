@@ -1,15 +1,25 @@
+import { Route, Routes } from 'react-router-dom'
+
 import CurrencyCardsList from 'components/CurrencyCardsList'
-import Footer from 'components/Footer'
-import Header from 'components/Header'
+import { Layout } from 'components/Layout'
+
+import {
+	BANK_PAGE_ROUTE,
+	CONTACTS_PAGE_ROUTE,
+	HOME_PAGE_ROUTE,
+	TIMELINE_PAGE_ROUTE,
+} from './constants/routes'
 
 export function App() {
 	return (
-		<>
-			<Header />
-			<main>
-				<CurrencyCardsList />
-			</main>
-			<Footer />
-		</>
+		<Routes>
+			<Route path={HOME_PAGE_ROUTE} element={<Layout />}>
+				<Route index element={<CurrencyCardsList />} />
+				<Route path={TIMELINE_PAGE_ROUTE} element={<p>timeline page</p>} />
+				<Route path={BANK_PAGE_ROUTE} element={<p>bank page</p>} />
+				<Route path={CONTACTS_PAGE_ROUTE} element={<p>contacts page</p>} />
+				<Route path="*" element={<p>not found page</p>} />
+			</Route>
+		</Routes>
 	)
 }
