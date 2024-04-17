@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+import { device } from 'src/constants/breakpoints'
+
+const smallScreenEnd = '1024px'
+
 export const StyledPopUp = styled.div`
 	position: fixed;
 	z-index: 5;
@@ -19,6 +23,14 @@ export const StyledPopUpContainer = styled.div`
 	padding: 0 20px;
 	background-color: gray;
 	border-radius: 8px;
+
+	@media (max-width: ${smallScreenEnd}) {
+		width: 70%;
+	}
+
+	@media ${device.sm} {
+		width: 90%;
+	}
 `
 
 export const StyledPopUpHeader = styled.div`
@@ -29,6 +41,14 @@ export const StyledPopUpHeader = styled.div`
 		font-size: 28px;
 		line-height: 120%;
 		text-align: center;
+
+		@media ${device.md} {
+			font-size: 20px;
+		}
+
+		@media ${device.sm} {
+			font-size: 18px;
+		}
 	}
 `
 
@@ -39,6 +59,14 @@ export const StyledPopUpBody = styled.div`
 	font-size: 20px;
 	line-height: 120%;
 	padding: 20px 0;
+
+	@media ${device.md} {
+		font-size: 16px;
+	}
+
+	@media ${device.sm} {
+		font-size: 14px;
+	}
 `
 
 export const StyledExchangeItem = styled.div`
@@ -52,11 +80,15 @@ export const StyledExchangeItem = styled.div`
 export const StyledCloseBtn = styled.button`
 	position: absolute;
 	right: 20px;
-	top: 20px;
+	top: 22px;
 	width: 32px;
 	height: 32px;
 	opacity: 0.5;
 	transition: opacity 0.3s ease 0s;
+
+	@media ${device.md} {
+		top: 17px;
+	}
 
 	&:hover {
 		opacity: 1;
