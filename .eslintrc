@@ -39,7 +39,6 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-var-requires": "off",
     "react/react-in-jsx-scope": "off",
-    "import/no-named-as-default": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": "off",
     "import/order": [
@@ -53,10 +52,12 @@
     "import/newline-after-import": "error",
     "import/prefer-default-export": "off",
     "import/extensions": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "import/no-extraneous-dependencies": "off",
-    "no-param-reassign": "off",
     "import/no-dynamic-require": "off",
-    "global-require": "off"
+    "import/no-named-default": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "no-param-reassign": "off",
+    "global-require": "off",
+    "react/require-default-props": "off"
   }
 }
