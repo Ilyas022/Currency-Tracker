@@ -568,6 +568,35 @@ export function Icon({ name }: IIcon) {
 					/>
 				</svg>
 			)
+		case 'phoneIcon':
+			return (
+				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
+					<path
+						fill="currentColor"
+						d="M231.88 175.08A56.26 56.26 0 0 1 176 224C96.6 224 32 159.4 32 80a56.26 56.26 0 0 1 48.92-55.88a16 16 0 0 1 16.62 9.52l21.12 47.15v.12A16 16 0 0 1 117.39 96c-.18.27-.37.52-.57.77L96 121.45c7.49 15.22 23.41 31 38.83 38.51l24.34-20.71a8.12 8.12 0 0 1 .75-.56a16 16 0 0 1 15.17-1.4l.13.06l47.11 21.11a16 16 0 0 1 9.55 16.62"
+					/>
+				</svg>
+			)
+		case 'locationIcon':
+			return (
+				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32">
+					<path
+						fill="currentColor"
+						d="M16 2A11.013 11.013 0 0 0 5 13a10.889 10.889 0 0 0 2.216 6.6s.3.395.349.452L16 30l8.439-9.953c.044-.053.345-.447.345-.447l.001-.003A10.885 10.885 0 0 0 27 13A11.013 11.013 0 0 0 16 2m0 15a4 4 0 1 1 4-4a4.005 4.005 0 0 1-4 4"
+					/>
+					<circle cx="16" cy="13" r="4" fill="none" />
+				</svg>
+			)
+		case 'timeIcon':
+			return (
+				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32">
+					<path
+						fill="currentColor"
+						d="M16 2C8.4 2 2 8.4 2 16s6.4 14 14 14s14-6.4 14-14S23.6 2 16 2m4.587 20L15 16.41V7h2v8.582l5 5.004z"
+					/>
+					<path fill="none" d="M20.587 22L15 16.41V7h2v8.582l5 5.005z" />
+				</svg>
+			)
 		default:
 			break
 	}
