@@ -13,8 +13,9 @@ interface IDateSelect {
 
 const colourStyles: StylesConfig = {
 	control: (styles) => ({ ...styles, backgroundColor: 'transparent' }),
-	menu: (styles) => ({ ...styles, background: 'black' }),
+	menu: (styles) => ({ ...styles, background: 'black', zIndex: 5 }),
 	container: (styles) => ({ ...styles, fontSize: '14px' }),
+	input: (styles) => ({ ...styles, color: '#fff' }),
 	placeholder: (styles) => ({ ...styles, color: 'white' }),
 	singleValue: (styles) => ({ ...styles, color: 'white' }),
 	option: (styles, { isFocused }) => ({

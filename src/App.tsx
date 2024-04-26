@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import CurrencyCardsList from 'components/CurrencyCardsList'
 import { Layout } from 'components/Layout'
 import 'react-toastify/dist/ReactToastify.min.css'
+import Map from 'components/Map'
 
 import {
 	BANK_PAGE_ROUTE,
@@ -18,7 +19,7 @@ export function App() {
 			<Route path={HOME_PAGE_ROUTE} element={<Layout />}>
 				<Route index element={<CurrencyCardsList />} />
 				<Route path={TIMELINE_PAGE_ROUTE} element={<TimelinePage />} />
-				<Route path={BANK_PAGE_ROUTE} element={<p>bank page</p>} />
+				<Route path={BANK_PAGE_ROUTE} element={<Map />} />
 				<Route path={CONTACTS_PAGE_ROUTE} element={<p>contacts page</p>} />
 				<Route path="*" element={<p>not found page</p>} />
 			</Route>
