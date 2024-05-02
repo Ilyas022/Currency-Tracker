@@ -2,8 +2,8 @@ import React from 'react'
 import { toast } from 'react-toastify'
 
 import ChartItem from 'components/Chart'
+import observable from 'components/Observable'
 import Select from 'components/Select'
-import observable from 'src/components/observable'
 import { axiosInstanceHistory } from 'src/utils/axios'
 
 import { TimelinePageMocks } from './config'
