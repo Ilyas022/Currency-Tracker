@@ -80,7 +80,7 @@ class TimelinePage extends React.PureComponent<
 		const { currency, date } = this.state
 		try {
 			const res = await axiosInstanceHistory.get(
-				`https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_${currency}_USD/history?period_id=${date}`
+				`BITSTAMP_SPOT_${currency}_USD/history?period_id=${date}`
 			)
 			this.setState({ data: res.data })
 			observable.notify({ isLoaded: true })
