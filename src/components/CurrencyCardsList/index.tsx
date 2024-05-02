@@ -2,13 +2,14 @@ import { useEffect } from 'react'
 
 import { useActions } from 'hooks/useActions'
 import { useTypedSelector } from 'hooks/useTypedSelector'
+import { selectCurrency } from 'store/selectors'
 
 import CurrencyCard from './CurrencyCard'
 import { CurrencyList, ListContainer, ListTitle } from './styled'
 
 function CurrencyCardsList() {
 	const { fetchCurrencyList } = useActions()
-	const { currencyList, baseCurrency } = useTypedSelector((stete) => stete.currency)
+	const { currencyList, baseCurrency } = useTypedSelector(selectCurrency)
 
 	useEffect(() => {
 		fetchCurrencyList()
