@@ -1,5 +1,5 @@
-import { Icon } from 'components/Icon'
-import { useScreenDetector } from 'src/hooks/useScreenDetector'
+import BigLogoIcon from 'components/Icons/BigLogoIcon'
+import { useScreenDetector } from 'hooks/useScreenDetector'
 
 import { IntroComp, IntroContainer, IntroInfo } from './styled'
 
@@ -16,7 +16,7 @@ function Introduction() {
 					</h1>
 					<p>Quotes for the dollar and other international currencies.</p>
 				</IntroInfo>
-				{isDesktop && <Icon name="bigLogoIcon" />}
+				{isDesktop && <BigLogoIcon />}
 			</IntroContainer>
 		</IntroComp>
 	)

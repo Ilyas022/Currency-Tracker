@@ -1,11 +1,11 @@
-import { Icon } from 'components/Icon'
+import LittleLogoIcon from 'components/Icons/LittleLogoIcon'
 
 import { LogoComp } from './styled'
 
 function Logo() {
 	return (
 		<LogoComp to="/">
-			<Icon name="littleLogoIcon" />
+			<LittleLogoIcon />
 		</LogoComp>
 	)
 }

@@ -2,8 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { Icon } from 'components/Icon'
-
 import { config } from './config'
 import {
 	ContactsBtn,
@@ -48,7 +46,7 @@ function Contacts() {
 					{contactsInfo.map((item) => (
 						<ContactsInfoItem key={item.title}>
 							<div>
-								<Icon name={item.icon} />
+								{item.icon}
 								<p>{item.title}</p>
 							</div>
 							<p>{item.content}</p>

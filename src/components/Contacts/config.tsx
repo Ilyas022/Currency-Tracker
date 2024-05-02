@@ -1,5 +1,9 @@
 import * as yup from 'yup'
 
+import LocationIcon from 'components/Icons/LocationIcon'
+import PhoneIcon from 'components/Icons/PhoneIcon'
+import TimeIcon from 'components/Icons/TimeIcon'
+
 export const config = {
 	schema: yup.object({
 		name: yup
@@ -19,17 +23,17 @@ export const config = {
 		{
 			title: 'Call us',
 			content: '+375(29) 123-45-67 / +375(29) 123-45-67',
-			icon: 'phoneIcon',
+			icon: <PhoneIcon />,
 		},
 		{
 			title: 'Location',
 			content: '123 Main Street, Anytown, USA',
-			icon: 'locationIcon',
+			icon: <LocationIcon />,
 		},
 		{
 			title: 'Business hours',
 			content: 'Monday-Friday: 9:00 AM - 5:00 PM',
-			icon: 'timeIcon',
+			icon: <TimeIcon />,
 		},
 	],
 }

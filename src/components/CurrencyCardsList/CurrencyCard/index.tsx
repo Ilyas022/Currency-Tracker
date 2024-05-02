@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react'
 
-import { Icon } from 'components/Icon'
 import PopUp from 'components/PopUp'
 
+import { Icons } from './config'
 import { CurrencyComp, CurrencyTitle, CurrencyValue, CurrencyIcon } from './styled'
 import { CurrencyCardProps } from './types'
 
@@ -20,14 +20,11 @@ function CurrencyCard({ base, code, name, value }: CurrencyCardProps) {
 	return (
 		<>
 			<CurrencyComp onClick={handleClick}>
-				<CurrencyIcon>
-					<Icon name={`${code}Icon`} />
-				</CurrencyIcon>
+				<CurrencyIcon>{Icons[code]}</CurrencyIcon>
 				<div>
 					<CurrencyTitle>{name}</CurrencyTitle>
 					<CurrencyValue>
-						R
-						<Icon name={`${base}Icon`} /> = {value.toFixed(2)}
+						R{Icons[base]} = {value.toFixed(2)}
 					</CurrencyValue>
 				</div>
 			</CurrencyComp>
