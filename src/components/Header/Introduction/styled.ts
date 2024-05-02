@@ -11,7 +11,7 @@ const subTitleLineHeight = '110%'
 const descriptionFontSize = '25px'
 const descriptionLineHeight = '187%'
 
-export const StyledIntroduction = styled.div`
+export const IntroComp = styled.div`
 	width: 100%;
 	height: 417px;
 	margin: 0 auto 65px;
@@ -23,7 +23,7 @@ export const StyledIntroduction = styled.div`
 	}
 `
 
-export const StyledIntroductionContainer = styled.div`
+export const IntroContainer = styled.div`
 	display: flex;
 	gap: 7px;
 	max-width: 1351px;
@@ -50,7 +50,7 @@ export const StyledIntroductionContainer = styled.div`
 		}
 	}
 `
-export const StyledIntroductionInfo = styled.div`
+export const IntroInfo = styled.div`
 	flex-basis: 772px;
 	display: flex;
 	flex-direction: column;

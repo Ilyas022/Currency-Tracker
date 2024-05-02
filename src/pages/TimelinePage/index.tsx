@@ -7,12 +7,7 @@ import observable from 'src/components/observable'
 import { axiosInstanceHistory } from 'src/utils/axios'
 
 import { TimelinePageMocks } from './config'
-import {
-	StyledTimelinePage,
-	StyledTimelinePageContainer,
-	StyledTimelineSelects,
-	StyledTimelineTitle,
-} from './styled'
+import { TimelinePageComp, TimelineContainer, TimelineSelects, TimelineTitle } from './styled'
 
 class TimelinePage extends React.PureComponent<
 	{},
@@ -106,10 +101,10 @@ class TimelinePage extends React.PureComponent<
 		console.log('data', data)
 		console.log('isLoaded', isLoaded)
 		return (
-			<StyledTimelinePage>
+			<TimelinePageComp>
 				{isLoaded && (
-					<StyledTimelinePageContainer>
-						<StyledTimelineSelects>
+					<TimelineContainer>
+						<TimelineSelects>
 							<Select
 								placeholder="Select date"
 								options={dateFilteredOptions}
@@ -122,17 +117,13 @@ class TimelinePage extends React.PureComponent<
 								handleSelect={this.handleCurrencySelect}
 								defaultValue={currencyDefaultValue}
 							/>
-						</StyledTimelineSelects>
-						<StyledTimelineTitle $textalign="left">
-							{currencyDefaultValue?.label}
-						</StyledTimelineTitle>
+						</TimelineSelects>
+						<TimelineTitle $textalign="left">{currencyDefaultValue?.label}</TimelineTitle>
 						<ChartItem optionsData={data} unit={dateDefaultValue?.unit || 'month'} />
-					</StyledTimelinePageContainer>
+					</TimelineContainer>
 				)}
-				{isError && (
-					<StyledTimelineTitle>Smth went wrong, we&apos;re fixing this problem</StyledTimelineTitle>
-				)}
-			</StyledTimelinePage>
+				{isError && <TimelineTitle>Smth went wrong, we&apos;re fixing this problem</TimelineTitle>}
+			</TimelinePageComp>
 		)
 	}
 }

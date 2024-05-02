@@ -1,12 +1,12 @@
 import { Icon } from 'components/Icon'
 
-import { StyledLogo } from './styled'
+import { LogoComp } from './styled'
 
 function Logo() {
 	return (
-		<StyledLogo to="/">
+		<LogoComp to="/">
 			<Icon name="littleLogoIcon" />
-		</StyledLogo>
+		</LogoComp>
 	)
 }
 

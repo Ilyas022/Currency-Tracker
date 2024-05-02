@@ -3,13 +3,13 @@ import { useScreenDetector } from 'src/hooks/useScreenDetector'
 
 import { footerLinks, mobileFooterLinks, mocks } from './config'
 import {
-	StyledFooter,
-	StyledFooterContainer,
-	StyledFooterInfo,
-	StyledFooterLinks,
-	StyledFooterLogo,
-	StyledFooterMobileLinks,
-	StyledFooterRights,
+	FooterComp,
+	FooterContainer,
+	FooterInfo,
+	FooterLinks,
+	FooterLogo,
+	FooterMobileLinks,
+	FooterRights,
 } from './styled'
 
 function Footer() {
@@ -17,25 +17,25 @@ function Footer() {
 	const { description, rights, title } = mocks
 
 	return (
-		<StyledFooter>
-			<StyledFooterContainer>
+		<FooterComp>
+			<FooterContainer>
 				<div>
-					<StyledFooterInfo>
-						<StyledFooterLogo>
+					<FooterInfo>
+						<FooterLogo>
 							<Logo />
 							<p>{title}</p>
-						</StyledFooterLogo>
+						</FooterLogo>
 						{isDesktop && <p>{description}</p>}
-					</StyledFooterInfo>
+					</FooterInfo>
 					{isMobile ? (
-						<StyledFooterMobileLinks>{mobileFooterLinks}</StyledFooterMobileLinks>
+						<FooterMobileLinks>{mobileFooterLinks}</FooterMobileLinks>
 					) : (
-						<StyledFooterLinks>{footerLinks}</StyledFooterLinks>
+						<FooterLinks>{footerLinks}</FooterLinks>
 					)}
 				</div>
-				<StyledFooterRights>{rights}</StyledFooterRights>
-			</StyledFooterContainer>
-		</StyledFooter>
+				<FooterRights>{rights}</FooterRights>
+			</FooterContainer>
+		</FooterComp>
 	)
 }
 

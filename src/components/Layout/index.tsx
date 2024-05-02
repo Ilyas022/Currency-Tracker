@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router'
 
-import Footer from 'src/components/Footer'
-import Header from 'src/components/Header'
+import Footer from 'components/Footer'
+import Header from 'components/Header'
 import { StyledToastContainer } from 'src/styles/global.styles'
 
 export function Layout() {

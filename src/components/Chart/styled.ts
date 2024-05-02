@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledChartContainer = styled.div`
+export const ChartContainer = styled.div`
 	background-color: 'transparent';
 	width: 100%;
 `

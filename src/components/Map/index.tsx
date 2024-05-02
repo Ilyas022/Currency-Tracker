@@ -13,13 +13,7 @@ import { MarkerEvent } from 'react-map-gl/dist/esm/types/events'
 import Select from 'components/Select'
 
 import { config } from './config'
-import {
-	StyledMap,
-	StyledMapContainer,
-	StyledMapItem,
-	StyledMapMarker,
-	StyledMapPopUp,
-} from './styled'
+import { MapComponent, MapContainer, MapItem, MapMarker, MapPopUp } from './styled'
 
 class Map extends React.Component<
 	{},
@@ -95,8 +89,8 @@ class Map extends React.Component<
 		const data = banks.filter((bank) => bank.currencies.includes(currency))
 
 		return (
-			<StyledMap>
-				<StyledMapContainer>
+			<MapComponent>
+				<MapContainer>
 					<h2>Search currency in the bank</h2>
 					<Select
 						defaultValue={defultValue}
@@ -104,8 +98,8 @@ class Map extends React.Component<
 						options={optios}
 						placeholder="Choose currency"
 					/>
-				</StyledMapContainer>
-				<StyledMapItem>
+				</MapContainer>
+				<MapItem>
 					<ReactMap
 						mapboxAccessToken="pk.eyJ1IjoiaWx5YXMwMjIiLCJhIjoiY2x2ZGlucmt2MHZuODJrbWtxa250NW5odCJ9.5EcWcMYaq6LQoE98px6i-A"
 						initialViewState={initialViewState}
@@ -117,7 +111,7 @@ class Map extends React.Component<
 						<ScaleControl />
 						{data.map((bank) => (
 							<div key={bank.id}>
-								<StyledMapMarker
+								<MapMarker
 									latitude={bank.latitude}
 									longitude={bank.longitude}
 									onClick={(e) =>
@@ -132,7 +126,7 @@ class Map extends React.Component<
 							</div>
 						))}
 						{isOpen && (
-							<StyledMapPopUp
+							<MapPopUp
 								latitude={latitude}
 								longitude={longitude}
 								onClose={this.handleClosePopUp}
@@ -141,11 +135,11 @@ class Map extends React.Component<
 								offset={20}
 							>
 								{name}
-							</StyledMapPopUp>
+							</MapPopUp>
 						)}
 					</ReactMap>
-				</StyledMapItem>
-			</StyledMap>
+				</MapItem>
+			</MapComponent>
 		)
 	}
 }

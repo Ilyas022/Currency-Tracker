@@ -4,7 +4,7 @@ import { useActions } from 'hooks/useActions'
 import { useTypedSelector } from 'hooks/useTypedSelector'
 
 import CurrencyCard from './CurrencyCard'
-import { StyledCurrencyList, StyledListContainer, StyledListTitle } from './styled'
+import { CurrencyList, ListContainer, ListTitle } from './styled'
 
 function CurrencyCardsList() {
 	const { fetchCurrencyList } = useActions()
@@ -15,14 +15,14 @@ function CurrencyCardsList() {
 	}, [])
 
 	return (
-		<StyledCurrencyList>
-			<StyledListTitle>Quotes</StyledListTitle>
-			<StyledListContainer>
+		<CurrencyList>
+			<ListTitle>Quotes</ListTitle>
+			<ListContainer>
 				{currencyList.map(({ code, name, value }) => (
 					<CurrencyCard code={code} name={name} value={value} key={code} base={baseCurrency} />
 				))}
-			</StyledListContainer>
-		</StyledCurrencyList>
+			</ListContainer>
+		</CurrencyList>
 	)
 }
 

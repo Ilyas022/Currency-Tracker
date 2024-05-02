@@ -1,24 +1,24 @@
 import { Icon } from 'components/Icon'
 import { useScreenDetector } from 'src/hooks/useScreenDetector'
 
-import { StyledIntroduction, StyledIntroductionContainer, StyledIntroductionInfo } from './styled'
+import { IntroComp, IntroContainer, IntroInfo } from './styled'
 
 function Introduction() {
 	const { isDesktop } = useScreenDetector()
 
 	return (
-		<StyledIntroduction>
-			<StyledIntroductionContainer>
-				<StyledIntroductionInfo>
+		<IntroComp>
+			<IntroContainer>
+				<IntroInfo>
 					<h1>
 						<span>Modsen Currency</span>
 						<span>Tracker</span>
 					</h1>
 					<p>Quotes for the dollar and other international currencies.</p>
-				</StyledIntroductionInfo>
+				</IntroInfo>
 				{isDesktop && <Icon name="bigLogoIcon" />}
-			</StyledIntroductionContainer>
-		</StyledIntroduction>
+			</IntroContainer>
+		</IntroComp>
 	)
 }
 

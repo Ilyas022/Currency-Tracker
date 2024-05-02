@@ -4,7 +4,7 @@ import { device } from 'src/constants/breakpoints'
 
 const smallScreenEnd = '1024px'
 
-export const StyledPopUp = styled.div`
+export const PopUpComp = styled.div`
 	position: fixed;
 	z-index: 5;
 	top: 0;
@@ -17,7 +17,7 @@ export const StyledPopUp = styled.div`
 	background-color: #0000009e;
 `
 
-export const StyledPopUpContainer = styled.div`
+export const PopUpContainer = styled.div`
 	position: relative;
 	width: 50%;
 	padding: 0 20px;
@@ -33,7 +33,7 @@ export const StyledPopUpContainer = styled.div`
 	}
 `
 
-export const StyledPopUpHeader = styled.div`
+export const PopUpHeader = styled.div`
 	padding: 20px 0;
 	border-bottom: 1px solid black;
 
@@ -52,7 +52,7 @@ export const StyledPopUpHeader = styled.div`
 	}
 `
 
-export const StyledPopUpBody = styled.div`
+export const PopUpBody = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -69,7 +69,7 @@ export const StyledPopUpBody = styled.div`
 	}
 `
 
-export const StyledExchangeItem = styled.div`
+export const ExchangeItem = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -77,7 +77,7 @@ export const StyledExchangeItem = styled.div`
 	border-bottom: 1px dashed #000;
 `
 
-export const StyledCloseBtn = styled.button`
+export const CloseBtn = styled.button`
 	position: absolute;
 	right: 20px;
 	top: 22px;

@@ -5,16 +5,16 @@ import {
 	TIMELINE_PAGE_ROUTE,
 } from 'constants/routes'
 
-import { StyledNavbar, StyledNavlink } from './styled'
+import { NavbarComp, Navlink } from './styled'
 
 function Navbar() {
 	return (
-		<StyledNavbar>
-			<StyledNavlink to={HOME_PAGE_ROUTE}>Home</StyledNavlink>
-			<StyledNavlink to={TIMELINE_PAGE_ROUTE}>Timeline</StyledNavlink>
-			<StyledNavlink to={BANK_PAGE_ROUTE}>Bank card</StyledNavlink>
-			<StyledNavlink to={CONTACTS_PAGE_ROUTE}>Contats</StyledNavlink>
-		</StyledNavbar>
+		<NavbarComp>
+			<Navlink to={HOME_PAGE_ROUTE}>Home</Navlink>
+			<Navlink to={TIMELINE_PAGE_ROUTE}>Timeline</Navlink>
+			<Navlink to={BANK_PAGE_ROUTE}>Bank card</Navlink>
+			<Navlink to={CONTACTS_PAGE_ROUTE}>Contats</Navlink>
+		</NavbarComp>
 	)
 }
 
