@@ -11,26 +11,16 @@ import {
 } from 'chart.js'
 import zoomPlugin from 'chartjs-plugin-zoom'
 import React from 'react'
-import { Chart } from 'react-chartjs-2'
+import { Chart as ChartItem } from 'react-chartjs-2'
 
 import 'chartjs-adapter-date-fns'
 import { config } from './config'
-import { StyledChartContainer } from './styled'
+import { ChartContainer } from './styled'
+import { ChartItemProps } from './types'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, TimeScale, Tooltip, Legend, zoomPlugin)
 
-interface IChartItem {
-	optionsData: {
-		time_open: string
-		price_open: number
-		price_high: number
-		price_low: number
-		price_close: number
-	}[]
-	unit: 'month' | 'day' | 'year'
-}
-
-class ChartItem extends React.PureComponent<IChartItem> {
+class Chart extends React.PureComponent<ChartItemProps> {
 	render() {
 		const { optionsData, unit } = this.props
 
@@ -47,11 +37,16 @@ class ChartItem extends React.PureComponent<IChartItem> {
 		)
 
 		return (
-			<StyledChartContainer>
-				<Chart type="bar" plugins={plugins} data={chartData(chartItems)} options={options(unit)} />
-			</StyledChartContainer>
+			<ChartContainer>
+				<ChartItem
+					type="bar"
+					plugins={plugins}
+					data={chartData(chartItems)}
+					options={options(unit)}
+				/>
+			</ChartContainer>
 		)
 	}
 }
 
-export default ChartItem
+export default Chart

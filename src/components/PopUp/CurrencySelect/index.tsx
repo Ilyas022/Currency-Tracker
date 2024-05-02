@@ -1,13 +1,6 @@
 import Select, { StylesConfig } from 'react-select'
 
-interface ICurrencySelect {
-	options: {
-		code: string
-		value: number
-		name: string
-	}[]
-	handleSelect: (code: string) => void
-}
+import { CurrencySelectProps } from './types'
 
 const colourStyles: StylesConfig = {
 	control: (styles) => ({ ...styles, backgroundColor: '#a0a0a0' }),
@@ -21,7 +14,7 @@ const colourStyles: StylesConfig = {
 	}),
 }
 
-function CurrencySelect({ options, handleSelect }: ICurrencySelect) {
+function CurrencySelect({ options, handleSelect }: CurrencySelectProps) {
 	const selectOptions = options.map((option) => ({
 		label: `${option.name} (${option.code})`,
 		value: option.code,

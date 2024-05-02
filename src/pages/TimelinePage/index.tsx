@@ -2,17 +2,12 @@ import React from 'react'
 import { toast } from 'react-toastify'
 
 import ChartItem from 'components/Chart'
+import observable from 'components/Observable'
 import Select from 'components/Select'
-import observable from 'src/components/observable'
 import { axiosInstanceHistory } from 'src/utils/axios'
 
 import { TimelinePageMocks } from './config'
-import {
-	StyledTimelinePage,
-	StyledTimelinePageContainer,
-	StyledTimelineSelects,
-	StyledTimelineTitle,
-} from './styled'
+import { TimelinePageComp, TimelineContainer, TimelineSelects, TimelineTitle } from './styled'
 
 class TimelinePage extends React.PureComponent<
 	{},
@@ -85,7 +80,7 @@ class TimelinePage extends React.PureComponent<
 		const { currency, date } = this.state
 		try {
 			const res = await axiosInstanceHistory.get(
-				`https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_${currency}_USD/history?period_id=${date}`
+				`BITSTAMP_SPOT_${currency}_USD/history?period_id=${date}`
 			)
 			this.setState({ data: res.data })
 			observable.notify({ isLoaded: true })
@@ -103,13 +98,12 @@ class TimelinePage extends React.PureComponent<
 
 		const currencyDefaultValue = currencyMocks.find((item) => item.value === currency)
 		const currencyFilteredOptions = currencyMocks.filter((item) => item.value !== currency)
-		console.log('data', data)
-		console.log('isLoaded', isLoaded)
+
 		return (
-			<StyledTimelinePage>
+			<TimelinePageComp>
 				{isLoaded && (
-					<StyledTimelinePageContainer>
-						<StyledTimelineSelects>
+					<TimelineContainer>
+						<TimelineSelects>
 							<Select
 								placeholder="Select date"
 								options={dateFilteredOptions}
@@ -122,17 +116,13 @@ class TimelinePage extends React.PureComponent<
 								handleSelect={this.handleCurrencySelect}
 								defaultValue={currencyDefaultValue}
 							/>
-						</StyledTimelineSelects>
-						<StyledTimelineTitle $textalign="left">
-							{currencyDefaultValue?.label}
-						</StyledTimelineTitle>
+						</TimelineSelects>
+						<TimelineTitle $textalign="left">{currencyDefaultValue?.label}</TimelineTitle>
 						<ChartItem optionsData={data} unit={dateDefaultValue?.unit || 'month'} />
-					</StyledTimelinePageContainer>
+					</TimelineContainer>
 				)}
-				{isError && (
-					<StyledTimelineTitle>Smth went wrong, we&apos;re fixing this problem</StyledTimelineTitle>
-				)}
-			</StyledTimelinePage>
+				{isError && <TimelineTitle>Smth went wrong, we&apos;re fixing this problem</TimelineTitle>}
+			</TimelinePageComp>
 		)
 	}
 }

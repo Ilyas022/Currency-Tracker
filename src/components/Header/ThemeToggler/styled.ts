@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
 
-export const StyledToggleLabel = styled.label`
+export const ToggleLabel = styled.label`
 	position: relative;
 	display: inline-block;
 	width: 50px;
@@ -23,7 +23,7 @@ export const StyledToggleLabel = styled.label`
 		height: 15px;
 	}
 `
-export const StyledToggleInput = styled.input`
+export const ToggleInput = styled.input`
 	display: none;
 
 	&:checked + span::before {
@@ -40,7 +40,7 @@ export const StyledToggleInput = styled.input`
 	}
 `
 
-export const StyledToggleSpan = styled.span`
+export const ToggleSpan = styled.span`
 	position: absolute;
 	cursor: pointer;
 	background-color: transparent;

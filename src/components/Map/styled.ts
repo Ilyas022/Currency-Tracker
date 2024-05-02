@@ -3,14 +3,14 @@ import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
 
-export const StyledMap = styled.div`
+export const MapComponent = styled.div`
 	max-width: 1480px;
 	width: 100%;
 	padding: 0 20px;
 	margin: 0 auto;
 `
 
-export const StyledMapContainer = styled.div`
+export const MapContainer = styled.div`
 	margin: 0 auto 40px;
 	max-width: 600px;
 	width: 100%;
@@ -26,7 +26,7 @@ export const StyledMapContainer = styled.div`
 	}
 `
 
-export const StyledMapPopUp = styled(Popup)`
+export const MapPopUp = styled(Popup)`
 	color: black;
 	& > :last-child {
 		padding: 20px;
@@ -38,7 +38,7 @@ export const StyledMapPopUp = styled(Popup)`
 	}
 `
 
-export const StyledMapItem = styled.div`
+export const MapItem = styled.div`
 	width: 100%;
 	height: 800px;
 
@@ -53,6 +53,6 @@ export const StyledMapItem = styled.div`
 	}
 `
 
-export const StyledMapMarker = styled(Marker)`
+export const MapMarker = styled(Marker)`
 	cursor: pointer;
 `

@@ -4,7 +4,7 @@ import { device } from 'constants/breakpoints'
 
 const maxWidth = '1306px'
 
-export const StyledHeader = styled.header`
+export const HeaderComp = styled.header`
 	margin-bottom: 60px;
 
 	@media ${device.md} {
@@ -12,7 +12,7 @@ export const StyledHeader = styled.header`
 	}
 `
 
-export const StyledHeaderContainer = styled.div`
+export const HeaderContainer = styled.div`
 	display: flex;
 	align-items: center;
 	max-width: ${maxWidth};

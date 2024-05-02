@@ -2,17 +2,17 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { axiosInstanceCurrency } from 'src/utils/axios'
 import { currencyNames } from 'store/config'
-import { IResponse, IResponseDataItem } from 'types/interfaces'
+import { Response, ResponseDataItem } from 'types/interfaces'
 
-export interface ICurrencySlice {
-	currencyList: IResponseDataItem[]
-	currencyExchangeList: IResponseDataItem[]
+export interface CurrencySlice {
+	currencyList: ResponseDataItem[]
+	currencyExchangeList: ResponseDataItem[]
 	baseCurrency: string
 	status: string
 }
 
 export const fetchCurrencyList = createAsyncThunk<
-	{ data: IResponseDataItem[]; currency: string },
+	{ data: ResponseDataItem[]; currency: string },
 	string | undefined
 >('currency/getList', async (currency = 'USD') => {
 	const res = await axiosInstanceCurrency.get('/latest', {
@@ -21,7 +21,7 @@ export const fetchCurrencyList = createAsyncThunk<
 			base_currency: currency,
 		},
 		transformResponse: (response) => {
-			const data: IResponse = JSON.parse(response)
+			const data: Response = JSON.parse(response)
 			const result = {
 				data: Object.values(data.data).map((item) => ({
 					...item,
@@ -34,7 +34,7 @@ export const fetchCurrencyList = createAsyncThunk<
 	})
 	return res.data
 })
-export const fetchCurrencyExchange = createAsyncThunk<IResponseDataItem[], string>(
+export const fetchCurrencyExchange = createAsyncThunk<ResponseDataItem[], string>(
 	'currency/getExchangeList',
 	async (currency) => {
 		const res = await axiosInstanceCurrency.get('/latest', {
@@ -43,7 +43,7 @@ export const fetchCurrencyExchange = createAsyncThunk<IResponseDataItem[], strin
 				base_currency: currency,
 			},
 			transformResponse: (response) => {
-				const data: IResponse = JSON.parse(response)
+				const data: Response = JSON.parse(response)
 				const result = Object.values(data.data).map((item) => ({
 					...item,
 					name: currencyNames[item.code],
@@ -56,7 +56,7 @@ export const fetchCurrencyExchange = createAsyncThunk<IResponseDataItem[], strin
 	}
 )
 
-const initialState: ICurrencySlice = {
+const initialState: CurrencySlice = {
 	currencyList: [],
 	currencyExchangeList: [],
 	baseCurrency: 'USD',
@@ -70,25 +70,24 @@ export const currencySlice = createSlice({
 	extraReducers(builder) {
 		builder
 			.addCase(fetchCurrencyList.pending, (state) => {
-				state.status = 'loading'
+				return { ...state, status: 'loading' }
 			})
 			.addCase(fetchCurrencyList.fulfilled, (state, action) => {
-				state.status = 'fulfiled'
-				state.currencyList = action.payload.data
-				state.baseCurrency = action.payload.currency
+				const { currency, data } = action.payload
+				return { ...state, baseCurrency: currency, currencyList: data, status: 'fulfiled' }
 			})
 			.addCase(fetchCurrencyList.rejected, (state) => {
-				state.status = 'failed'
+				return { ...state, status: 'failed' }
 			})
 			.addCase(fetchCurrencyExchange.pending, (state) => {
-				state.status = 'loading'
+				return { ...state, status: 'loading' }
 			})
 			.addCase(fetchCurrencyExchange.fulfilled, (state, action) => {
-				state.status = 'fulfiled'
-				state.currencyExchangeList = action.payload
+				const currencyExchangeList = action.payload
+				return { ...state, currencyExchangeList, status: 'fulfiled' }
 			})
 			.addCase(fetchCurrencyExchange.rejected, (state) => {
-				state.status = 'failed'
+				return { ...state, status: 'failed' }
 			})
 	},
 })

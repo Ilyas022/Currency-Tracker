@@ -4,7 +4,7 @@ import { device } from 'constants/breakpoints'
 
 const smallScreenEnd = '1024px'
 
-export const StyledContactsContainer = styled.div`
+export const ContactsContainer = styled.div`
 	display: flex;
 	max-width: 1280px;
 	padding: 20px;
@@ -26,7 +26,7 @@ export const StyledContactsContainer = styled.div`
 	}
 `
 
-export const StyledContactsInfo = styled.div`
+export const ContactsInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
@@ -38,7 +38,7 @@ export const StyledContactsInfo = styled.div`
 	}
 `
 
-export const StyledContactsInfoItem = styled.div`
+export const ContactsInfoItem = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -68,7 +68,7 @@ export const StyledContactsInfoItem = styled.div`
 	}
 `
 
-export const StyledContactsForm = styled.form`
+export const ContactsForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -106,7 +106,7 @@ export const StyledContactsForm = styled.form`
 	}
 `
 
-export const StyledFormItem = styled.div`
+export const FormItem = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -120,7 +120,7 @@ export const StyledFormItem = styled.div`
 	}
 `
 
-export const StyledBtn = styled.button`
+export const ContactsBtn = styled.button`
 	background-color: #3c9e20;
 	padding: 15px;
 	text-align: center;

@@ -4,7 +4,7 @@ import { device } from 'constants/breakpoints'
 
 const smallScreenEnd = '1024px'
 
-export const StyledCurrencyList = styled.div`
+export const CurrencyList = styled.div`
 	max-width: 1405px;
 	width: 100%;
 	padding: 0 80px;
@@ -19,7 +19,7 @@ export const StyledCurrencyList = styled.div`
 	}
 `
 
-export const StyledListTitle = styled.p`
+export const ListTitle = styled.p`
 	width: 520px;
 	padding-bottom: 25px;
 	border-bottom: 2px solid #474747;
@@ -44,7 +44,7 @@ export const StyledListTitle = styled.p`
 		margin-bottom: 20px;
 	}
 `
-export const StyledListContainer = styled.div`
+export const ListContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;

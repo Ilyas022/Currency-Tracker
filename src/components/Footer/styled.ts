@@ -4,10 +4,10 @@ import { device } from 'constants/breakpoints'
 
 const smallScreenEnd = '1024px'
 
-export const StyledFooter = styled.footer`
+export const FooterComp = styled.footer`
 	padding-bottom: 20px;
 `
-export const StyledFooterContainer = styled.div`
+export const FooterContainer = styled.div`
 	width: 1270px;
 	padding: 0 20px;
 	max-width: 100%;
@@ -33,7 +33,7 @@ export const StyledFooterContainer = styled.div`
 	}
 `
 
-export const StyledFooterLogo = styled.div`
+export const FooterLogo = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 20px;
@@ -69,7 +69,7 @@ export const StyledFooterLogo = styled.div`
 	}
 `
 
-export const StyledFooterInfo = styled.div`
+export const FooterInfo = styled.div`
 	flex: 0 1 40%;
 	padding-top: 27px;
 
@@ -90,7 +90,7 @@ export const StyledFooterInfo = styled.div`
 	}
 `
 
-export const StyledFooterLinks = styled.div`
+export const FooterLinks = styled.div`
 	flex: 1 1 auto;
 	display: flex;
 	justify-content: space-between;
@@ -120,7 +120,7 @@ export const StyledFooterLinks = styled.div`
 	}
 `
 
-export const StyledFooterMobileLinks = styled.div`
+export const FooterMobileLinks = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -150,7 +150,7 @@ export const StyledFooterMobileLinks = styled.div`
 	}
 `
 
-export const StyledFooterRights = styled.p`
+export const FooterRights = styled.p`
 	font-size: 24px;
 	line-height: 150%;
 	color: #898989;

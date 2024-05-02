@@ -5,7 +5,7 @@ import { device } from 'constants/breakpoints'
 
 const lineHeight = '206%'
 
-export const StyledNavbar = styled.nav`
+export const NavbarComp = styled.nav`
 	display: flex;
 	gap: 113px;
 
@@ -22,7 +22,7 @@ export const StyledNavbar = styled.nav`
 	}
 `
 
-export const StyledNavlink = styled(NavLink)`
+export const Navlink = styled(NavLink)`
 	color: #fff;
 	font-weight: ${({ theme }) => theme.fontWeights[0]};
 	font-size: ${({ theme }) => `${theme.fonts[2]}px`};

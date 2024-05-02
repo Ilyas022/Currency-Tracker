@@ -1,18 +1,12 @@
 import { useCallback, useState } from 'react'
 
-import { Icon } from 'components/Icon'
 import PopUp from 'components/PopUp'
 
-import { StyledCurrencyCard, StyledCurrencyTitle, StyledCurrencyValue, StyledIcon } from './styled'
+import { Icons } from './config'
+import { CurrencyComp, CurrencyTitle, CurrencyValue, CurrencyIcon } from './styled'
+import { CurrencyCardProps } from './types'
 
-interface ICurrencyCard {
-	name: string
-	value: number
-	code: string
-	base: string
-}
-
-function CurrencyCard({ base, code, name, value }: ICurrencyCard) {
+function CurrencyCard({ base, code, name, value }: CurrencyCardProps) {
 	const [isPopUpOpened, setPopUpOpened] = useState(false)
 
 	const handleClick = () => {
@@ -25,18 +19,15 @@ function CurrencyCard({ base, code, name, value }: ICurrencyCard) {
 
 	return (
 		<>
-			<StyledCurrencyCard onClick={handleClick}>
-				<StyledIcon>
-					<Icon name={`${code}Icon`} />
-				</StyledIcon>
+			<CurrencyComp onClick={handleClick}>
+				<CurrencyIcon>{Icons[code]}</CurrencyIcon>
 				<div>
-					<StyledCurrencyTitle>{name}</StyledCurrencyTitle>
-					<StyledCurrencyValue>
-						R
-						<Icon name={`${base}Icon`} /> = {value.toFixed(2)}
-					</StyledCurrencyValue>
+					<CurrencyTitle>{name}</CurrencyTitle>
+					<CurrencyValue>
+						R{Icons[base]} = {value.toFixed(2)}
+					</CurrencyValue>
 				</div>
-			</StyledCurrencyCard>
+			</CurrencyComp>
 			{isPopUpOpened && <PopUp handleClose={handleClose} code={code} />}
 		</>
 	)

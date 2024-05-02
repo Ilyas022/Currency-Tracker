@@ -1,4 +1,4 @@
-import { ITheme } from 'src/types/interfaces'
+import { Theme } from 'src/types/interfaces'
 
 const fonts = [14, 16, 20, 22, 30, 38, 46, 56]
 const fontWeights = [300, 400, 500, 600]
@@ -11,7 +11,7 @@ const colors = {
 	white: '#fff',
 }
 
-export const light: ITheme = {
+export const light: Theme = {
 	name: 'light',
 	fonts,
 	fontWeights,
@@ -19,7 +19,7 @@ export const light: ITheme = {
 	lineHeights,
 }
 
-export const dark: ITheme = {
+export const dark: Theme = {
 	name: 'dark',
 	fonts,
 	fontWeights,

@@ -1,17 +1,17 @@
-interface IPeriodMocks {
+interface PeriodMocks {
 	value: string
 	label: string
 	unit: 'day' | 'month' | 'year'
 }
-interface ICurrencyMocks {
+interface CurrencyMocks {
 	value: string
 	label: string
 }
-interface ITimelinePageMocks {
-	periodMocks: IPeriodMocks[]
-	currencyMocks: ICurrencyMocks[]
+interface TimelinePageMocks {
+	periodMocks: PeriodMocks[]
+	currencyMocks: CurrencyMocks[]
 }
-export const TimelinePageMocks: ITimelinePageMocks = {
+export const TimelinePageMocks: TimelinePageMocks = {
 	periodMocks: [
 		{ value: '1DAY', label: '1 day', unit: 'day' },
 		{ value: '10DAY', label: '10 days', unit: 'month' },

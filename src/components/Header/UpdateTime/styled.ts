@@ -8,7 +8,7 @@ const color = 'd9d9d9'
 const iconBgColor = '#00bc4f4a'
 const iconColor = '#00bc4f'
 
-export const StyledUpdateTime = styled.div`
+export const UpdateTimeComp = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;

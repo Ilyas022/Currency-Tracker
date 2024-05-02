@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
 
-export const StyledCurrencyCard = styled.button`
+export const CurrencyComp = styled.button`
 	display: flex;
 	gap: 29px;
 	border: 1px solid #474747;
@@ -30,7 +30,7 @@ export const StyledCurrencyCard = styled.button`
 	}
 `
 
-export const StyledIcon = styled.div`
+export const CurrencyIcon = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -66,7 +66,7 @@ export const StyledIcon = styled.div`
 	}
 `
 
-export const StyledCurrencyTitle = styled.p`
+export const CurrencyTitle = styled.p`
 	font-weight: 400;
 	font-size: 35px;
 	line-height: 115%;
@@ -83,7 +83,7 @@ export const StyledCurrencyTitle = styled.p`
 	}
 `
 
-export const StyledCurrencyValue = styled.p`
+export const CurrencyValue = styled.p`
 	display: flex;
 	align-items: flex-end;
 	font-weight: 300;

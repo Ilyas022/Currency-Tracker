@@ -2,16 +2,14 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { Icon } from 'components/Icon'
-
 import { config } from './config'
 import {
-	StyledBtn,
-	StyledContactsContainer,
-	StyledContactsForm,
-	StyledContactsInfo,
-	StyledContactsInfoItem,
-	StyledFormItem,
+	ContactsBtn,
+	ContactsContainer,
+	ContactsForm,
+	ContactsInfo,
+	ContactsInfoItem,
+	FormItem,
 } from './styled'
 
 const { schema, contactsInfo } = config
@@ -43,47 +41,47 @@ function Contacts() {
 
 	return (
 		<div>
-			<StyledContactsContainer>
-				<StyledContactsInfo>
+			<ContactsContainer>
+				<ContactsInfo>
 					{contactsInfo.map((item) => (
-						<StyledContactsInfoItem key={item.title}>
+						<ContactsInfoItem key={item.title}>
 							<div>
-								<Icon name={item.icon} />
+								{item.icon}
 								<p>{item.title}</p>
 							</div>
 							<p>{item.content}</p>
-						</StyledContactsInfoItem>
+						</ContactsInfoItem>
 					))}
-				</StyledContactsInfo>
+				</ContactsInfo>
 
-				<StyledContactsForm onSubmit={onSubmit}>
+				<ContactsForm onSubmit={onSubmit}>
 					<h2>CONTACT US</h2>
 
-					<StyledFormItem>
+					<FormItem>
 						<input
 							{...register('name')}
 							onBlur={() => trigger('name')}
 							placeholder="Enter your name"
 						/>
 						<p>{errors.name?.message}</p>
-					</StyledFormItem>
+					</FormItem>
 
-					<StyledFormItem>
+					<FormItem>
 						<input
 							{...register('email')}
 							placeholder="Enter email"
 							onBlur={() => trigger('email')}
 						/>
 						<p>{errors.email?.message}</p>
-					</StyledFormItem>
+					</FormItem>
 
-					<StyledFormItem>
+					<FormItem>
 						<textarea {...register('message')} onBlur={() => trigger('message')} />
 						<p>{errors.message?.message}</p>
-					</StyledFormItem>
-					<StyledBtn type="submit">SUBMIT</StyledBtn>
-				</StyledContactsForm>
-			</StyledContactsContainer>
+					</FormItem>
+					<ContactsBtn type="submit">SUBMIT</ContactsBtn>
+				</ContactsForm>
+			</ContactsContainer>
 		</div>
 	)
 }

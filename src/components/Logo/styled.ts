@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
 
-export const StyledLogo = styled(Link)`
+export const LogoComp = styled(Link)`
 	display: block;
 	width: 41px;
 	height: 42px;

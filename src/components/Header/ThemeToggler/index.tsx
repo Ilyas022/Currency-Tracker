@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { StyledToggleInput, StyledToggleLabel, StyledToggleSpan } from './styled'
+import { ToggleInput, ToggleLabel, ToggleSpan } from './styled'
 
 export function ThemeToggler() {
 	const [isToggled, setIsToggled] = useState<boolean>(false)
@@ -9,14 +9,9 @@ export function ThemeToggler() {
 	}
 
 	return (
-		<StyledToggleLabel className="toggle-switch">
-			<StyledToggleInput
-				data-testid="toggler"
-				type="checkbox"
-				checked={isToggled}
-				onChange={onToggle}
-			/>
-			<StyledToggleSpan className="switch" />
-		</StyledToggleLabel>
+		<ToggleLabel className="toggle-switch">
+			<ToggleInput data-testid="toggler" type="checkbox" checked={isToggled} onChange={onToggle} />
+			<ToggleSpan className="switch" />
+		</ToggleLabel>
 	)
 }

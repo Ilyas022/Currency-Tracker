@@ -4,19 +4,19 @@ import { ThemeToggler } from 'components/Header/ThemeToggler'
 import UpdateTime from 'components/Header/UpdateTime'
 import Logo from 'components/Logo'
 
-import { StyledHeader, StyledHeaderContainer } from './styled'
+import { HeaderComp, HeaderContainer } from './styled'
 
 function Header() {
 	return (
-		<StyledHeader>
-			<StyledHeaderContainer>
+		<HeaderComp>
+			<HeaderContainer>
 				<Logo />
 				<Navbar />
 				<ThemeToggler />
-			</StyledHeaderContainer>
+			</HeaderContainer>
 			<Introduction />
 			<UpdateTime />
-		</StyledHeader>
+		</HeaderComp>
 	)
 }
 
