@@ -1,5 +1,5 @@
 // Theme
-interface IThemeColors {
+interface ThemeColors {
 	primary: string
 	secondary: string
 	bgGradient: string
@@ -7,25 +7,25 @@ interface IThemeColors {
 	white: string
 }
 
-export interface ITheme {
+export interface Theme {
 	name: 'light' | 'dark'
 	fonts: number[]
 	fontWeights: number[]
 	lineHeights: number[]
-	colors: IThemeColors
+	colors: ThemeColors
 }
 
 // Response
 
-export interface IResponseMeta {
+export interface ResponseMeta {
 	last_updated_at: string
 }
-export interface IResponseDataItem {
+export interface ResponseDataItem {
 	code: string
 	value: number
 	name: string
 }
-export interface IResponse {
-	meta: IResponseMeta
-	data: IResponseDataItem[]
+export interface Response {
+	meta: ResponseMeta
+	data: ResponseDataItem[]
 }

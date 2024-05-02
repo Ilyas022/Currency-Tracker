@@ -1,7 +1,6 @@
-interface IIcon {
-	name: string
-}
-export function Icon({ name }: IIcon) {
+import { IconProps } from './types'
+
+export function Icon({ name }: IconProps) {
 	switch (name) {
 		case 'littleLogoIcon':
 			return (

@@ -7,13 +7,9 @@ import { useTypedSelector } from 'hooks/useTypedSelector'
 
 import CurrencySelect from './CurrencySelect'
 import { CloseBtn, ExchangeItem, PopUpComp, PopUpBody, PopUpContainer, PopUpHeader } from './styled'
+import { PopUpProps } from './types'
 
-interface IPopUp {
-	handleClose: () => void
-	code: string
-}
-
-function PopUp({ code, handleClose }: IPopUp) {
+function PopUp({ code, handleClose }: PopUpProps) {
 	const { fetchCurrencyExchange } = useActions()
 	const [currency, setCurrency] = useState(code)
 	const { currencyExchangeList } = useTypedSelector((state) => state.currency)

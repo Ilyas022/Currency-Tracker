@@ -1,28 +1,21 @@
-interface IObserverData {
-	isLoaded: boolean
-	isError?: boolean
-}
-
-interface IObserver {
-	(data: IObserverData): void
-}
+import { Observer, ObserverData } from './types'
 
 class Observable {
-	private observers: IObserver[] = []
+	private observers: Observer[] = []
 
 	constructor() {
 		this.observers = []
 	}
 
-	subscribe(f: IObserver) {
+	subscribe(f: Observer) {
 		this.observers.push(f)
 	}
 
-	unsubscribe(f: IObserver) {
+	unsubscribe(f: Observer) {
 		this.observers = this.observers.filter((subscriber) => subscriber !== f)
 	}
 
-	notify(data: IObserverData) {
+	notify(data: ObserverData) {
 		this.observers.forEach((observer) => observer(data))
 	}
 }

@@ -4,15 +4,9 @@ import { Icon } from 'components/Icon'
 import PopUp from 'components/PopUp'
 
 import { CurrencyComp, CurrencyTitle, CurrencyValue, CurrencyIcon } from './styled'
+import { CurrencyCardProps } from './types'
 
-interface ICurrencyCard {
-	name: string
-	value: number
-	code: string
-	base: string
-}
-
-function CurrencyCard({ base, code, name, value }: ICurrencyCard) {
+function CurrencyCard({ base, code, name, value }: CurrencyCardProps) {
 	const [isPopUpOpened, setPopUpOpened] = useState(false)
 
 	const handleClick = () => {

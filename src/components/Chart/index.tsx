@@ -16,21 +16,11 @@ import { Chart as ChartItem } from 'react-chartjs-2'
 import 'chartjs-adapter-date-fns'
 import { config } from './config'
 import { ChartContainer } from './styled'
+import { ChartItemProps } from './types'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, TimeScale, Tooltip, Legend, zoomPlugin)
 
-interface IChartItem {
-	optionsData: {
-		time_open: string
-		price_open: number
-		price_high: number
-		price_low: number
-		price_close: number
-	}[]
-	unit: 'month' | 'day' | 'year'
-}
-
-class Chart extends React.PureComponent<IChartItem> {
+class Chart extends React.PureComponent<ChartItemProps> {
 	render() {
 		const { optionsData, unit } = this.props
 

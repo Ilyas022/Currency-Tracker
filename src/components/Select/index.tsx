@@ -1,15 +1,7 @@
 import React from 'react'
 import { StylesConfig, default as ReactSelect } from 'react-select'
 
-interface IDateSelect {
-	options: {
-		value: string
-		label: string
-	}[]
-	placeholder: string
-	handleSelect: (code: string) => void
-	defaultValue?: { value: string; label: string }
-}
+import { DateSelectProps } from './types'
 
 const colourStyles: StylesConfig = {
 	control: (styles) => ({ ...styles, backgroundColor: 'transparent' }),
@@ -27,7 +19,7 @@ const colourStyles: StylesConfig = {
 	}),
 }
 
-class Select extends React.PureComponent<IDateSelect> {
+class Select extends React.PureComponent<DateSelectProps> {
 	render() {
 		const { defaultValue, options, handleSelect, placeholder } = this.props
 		return (
