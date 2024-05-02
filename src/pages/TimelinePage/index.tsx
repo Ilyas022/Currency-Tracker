@@ -98,8 +98,7 @@ class TimelinePage extends React.PureComponent<
 
 		const currencyDefaultValue = currencyMocks.find((item) => item.value === currency)
 		const currencyFilteredOptions = currencyMocks.filter((item) => item.value !== currency)
-		console.log('data', data)
-		console.log('isLoaded', isLoaded)
+
 		return (
 			<TimelinePageComp>
 				{isLoaded && (
