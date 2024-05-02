@@ -70,25 +70,24 @@ export const currencySlice = createSlice({
 	extraReducers(builder) {
 		builder
 			.addCase(fetchCurrencyList.pending, (state) => {
-				state.status = 'loading'
+				return { ...state, status: 'loading' }
 			})
 			.addCase(fetchCurrencyList.fulfilled, (state, action) => {
-				state.status = 'fulfiled'
-				state.currencyList = action.payload.data
-				state.baseCurrency = action.payload.currency
+				const { currency, data } = action.payload
+				return { ...state, baseCurrency: currency, currencyList: data, status: 'fulfiled' }
 			})
 			.addCase(fetchCurrencyList.rejected, (state) => {
-				state.status = 'failed'
+				return { ...state, status: 'failed' }
 			})
 			.addCase(fetchCurrencyExchange.pending, (state) => {
-				state.status = 'loading'
+				return { ...state, status: 'loading' }
 			})
 			.addCase(fetchCurrencyExchange.fulfilled, (state, action) => {
-				state.status = 'fulfiled'
-				state.currencyExchangeList = action.payload
+				const currencyExchangeList = action.payload
+				return { ...state, currencyExchangeList, status: 'fulfiled' }
 			})
 			.addCase(fetchCurrencyExchange.rejected, (state) => {
-				state.status = 'failed'
+				return { ...state, status: 'failed' }
 			})
 	},
 })
