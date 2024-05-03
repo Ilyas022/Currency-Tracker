@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-import { device } from 'src/constants/breakpoints'
+import { device } from 'constants/breakpoints'
+import { getColors } from 'utils/themeGetters'
 
 const smallScreenEnd = '1024px'
 
@@ -14,7 +15,7 @@ export const PopUpComp = styled.div`
 	justify-content: center;
 	width: 100%;
 	height: 100%;
-	background-color: #0000009e;
+	background-color: ${(props) => getColors(props).popUpBg};
 `
 
 export const PopUpContainer = styled.div`
@@ -74,7 +75,7 @@ export const ExchangeItem = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	padding-bottom: 5px;
-	border-bottom: 1px dashed #000;
+	border-bottom: 1px dashed ${(props) => getColors(props).primary};
 `
 
 export const CloseBtn = styled.button`
@@ -102,7 +103,7 @@ export const CloseBtn = styled.button`
 		left: 50%;
 		height: 100%;
 		width: 2px;
-		background-color: #333;
+		background-color: ${(props) => getColors(props).primary};
 	}
 	&:before {
 		transform: rotate(45deg);

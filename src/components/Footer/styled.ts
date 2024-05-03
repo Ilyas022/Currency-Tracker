@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
+import { getColors } from 'src/utils/themeGetters'
 
 const smallScreenEnd = '1024px'
 
@@ -39,7 +40,7 @@ export const FooterLogo = styled.div`
 	gap: 20px;
 	font-weight: 600;
 	font-size: 26px;
-	background: linear-gradient(92deg, #00ce2c 0%, #aedf23 49.26%, #a3dc00 100%);
+	background: ${(props) => getColors(props).textGradient};
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -116,7 +117,7 @@ export const FooterLinks = styled.div`
 		flex-direction: column;
 		gap: 30px;
 		font-size: 24px;
-		color: #898989;
+		color: ${(props) => getColors(props).textDark};
 	}
 `
 
@@ -153,7 +154,7 @@ export const FooterMobileLinks = styled.div`
 export const FooterRights = styled.p`
 	font-size: 24px;
 	line-height: 150%;
-	color: #898989;
+	color: ${(props) => getColors(props).textDark};
 	text-align: center;
 
 	@media ${device.sm} {

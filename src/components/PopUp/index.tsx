@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom'
 import { useActions } from 'hooks/useActions'
 import { useScrollLock } from 'hooks/useScrollLock'
 import { useTypedSelector } from 'hooks/useTypedSelector'
+import { selectCurrency } from 'store/selectors'
 
 import CurrencySelect from './CurrencySelect'
 import { CloseBtn, ExchangeItem, PopUpComp, PopUpBody, PopUpContainer, PopUpHeader } from './styled'
@@ -12,7 +13,7 @@ import { PopUpProps } from './types'
 function PopUp({ code, handleClose }: PopUpProps) {
 	const { fetchCurrencyExchange } = useActions()
 	const [currency, setCurrency] = useState(code)
-	const { currencyExchangeList } = useTypedSelector((state) => state.currency)
+	const { currencyExchangeList } = useTypedSelector(selectCurrency)
 
 	const [lockScroll, unlockScroll] = useScrollLock()
 

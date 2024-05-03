@@ -1,15 +1,17 @@
 import Select, { StylesConfig } from 'react-select'
 
+import { colors } from 'src/constants/theme'
+
 import { CurrencySelectProps } from './types'
 
 const colourStyles: StylesConfig = {
-	control: (styles) => ({ ...styles, backgroundColor: '#a0a0a0' }),
-	menu: (styles) => ({ ...styles, background: '#a0a0a0' }),
+	control: (styles) => ({ ...styles, backgroundColor: colors.selectBg }),
+	menu: (styles) => ({ ...styles, background: colors.selectBg }),
 	placeholder: (styles) => ({ ...styles }),
 	option: (styles) => ({
 		...styles,
 		'&:hover': {
-			backgroundColor: '#626262',
+			backgroundColor: colors.selectHover,
 		},
 	}),
 }

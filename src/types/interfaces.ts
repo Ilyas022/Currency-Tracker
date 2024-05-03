@@ -2,9 +2,25 @@
 interface ThemeColors {
 	primary: string
 	secondary: string
-	bgGradient: string
+	primaryBgGradient: string
+	secondaryBgGradient: string
+	popUpBg: string
+	error: string
+	btn: string
 	textGradient: string
+	dark: string
 	white: string
+	textPrimary: string
+	textSecondary: string
+	textTertiary: string
+	textDark: string
+	icon: string
+	iconBg: string
+	cardBorder: string
+	cardBg: string
+	chartGrid: string
+	selectBg: string
+	selectHover: string
 }
 
 export interface Theme {

@@ -1,6 +1,8 @@
 import { ToastContainer } from 'react-toastify'
 import styled, { createGlobalStyle } from 'styled-components'
 
+import { getColors } from 'utils/themeGetters'
+
 export const GlobalStyles = createGlobalStyle`
 	*{
 		padding: 0;
@@ -46,7 +48,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	body {
 			background-color: ${({ theme }) => theme.colors.primary};
-			color: #fff;
+			color: ${(props) => getColors(props).textPrimary};
 	}
 
 	#root {

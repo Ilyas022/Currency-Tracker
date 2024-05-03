@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { device } from 'src/constants/breakpoints'
+import { getColors } from 'src/utils/themeGetters'
 
 const titleFontSize = '76px'
 const titleLineHeight = '114px'
@@ -15,7 +16,7 @@ export const IntroComp = styled.div`
 	width: 100%;
 	height: 417px;
 	margin: 0 auto 65px;
-	background: ${({ theme }) => theme.colors.bgGradient};
+	background: ${({ theme }) => theme.colors.primaryBgGradient};
 
 	@media ${device.lg} {
 		height: auto;
@@ -120,7 +121,7 @@ export const IntroInfo = styled.div`
 		font-weight: ${({ theme }) => theme.fontWeights[0]};
 		font-size: ${descriptionFontSize};
 		line-height: ${descriptionLineHeight};
-		color: #d9d9d9;
+		color: ${(props) => getColors(props).textSecondary};
 
 		@media ${device.lg} {
 			align-self: auto;

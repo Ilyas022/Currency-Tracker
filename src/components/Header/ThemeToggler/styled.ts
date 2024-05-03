@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
+import { getColors } from 'utils/themeGetters'
 
 export const ToggleLabel = styled.label`
 	position: relative;
@@ -28,7 +29,7 @@ export const ToggleInput = styled.input`
 
 	&:checked + span::before {
 		transform: translateX(25px);
-		background-color: ${({ theme }) => theme.colors.white};
+		background-color: ${(props) => getColors(props).dark};
 
 		@media ${device.sm} {
 			transform: translateX(20px);
@@ -44,7 +45,7 @@ export const ToggleSpan = styled.span`
 	position: absolute;
 	cursor: pointer;
 	background-color: transparent;
-	border: 1px solid ${({ theme }) => theme.colors.white};
+	border: 1px solid ${(props) => getColors(props).textPrimary};
 	border-radius: 25px;
 	top: 0;
 	right: 0;
@@ -58,8 +59,8 @@ export const ToggleSpan = styled.span`
 		left: -1px;
 		width: 25px;
 		height: 25px;
-		background-color: transparent;
-		border: 1px solid ${({ theme }) => theme.colors.white};
+		background-color: ${(props) => getColors(props).primary};
+		border: 1px solid ${(props) => getColors(props).textPrimary};
 		border-radius: 50%;
 		transition: transform 0.3s ease;
 

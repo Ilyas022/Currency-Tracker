@@ -1,5 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
+import { colors } from 'src/constants/theme'
+
 export const config = {
 	chartData(chartItems) {
 		return {
@@ -13,9 +15,9 @@ export const config = {
 						} = ctx
 						let color
 						if (c >= o) {
-							color = 'rgba(75, 192, 192, 1)'
+							color = colors.icon
 						} else {
-							color = 'rgba(255,26, 104, 1)'
+							color = colors.error
 						}
 						return color
 					},
@@ -182,14 +184,14 @@ export const config = {
 
 				// Draw line with arrow
 
-				ctx.fillStyle = 'white'
+				ctx.fillStyle = '#b8860b'
 				ctx.beginPath()
 				ctx.moveTo(xAxis.left, yAxis.bottom)
 				ctx.lineTo(xAxis.right, yAxis.bottom)
 				ctx.lineTo(xAxis.right - 5, yAxis.bottom - 2)
 				ctx.moveTo(xAxis.right, yAxis.bottom)
 				ctx.lineTo(xAxis.right - 5, yAxis.bottom + 2)
-				ctx.strokeStyle = 'white'
+				ctx.strokeStyle = '#b8860b'
 				ctx.lineWidth = 1
 				ctx.stroke()
 
@@ -199,7 +201,7 @@ export const config = {
 				ctx.lineTo(xAxis.left - 2, yAxis.top + 5)
 				ctx.moveTo(xAxis.left, yAxis.top)
 				ctx.lineTo(xAxis.left + 2, yAxis.top + 5)
-				ctx.strokeStyle = 'white'
+				ctx.strokeStyle = '#b8860b'
 				ctx.lineWidth = 1
 				ctx.stroke()
 			},
@@ -225,7 +227,7 @@ export const config = {
 						display: false,
 					},
 					grid: {
-						color: 'rgb(66, 66, 66)',
+						color: colors.chartGrid,
 					},
 				},
 				y: {
@@ -235,7 +237,7 @@ export const config = {
 						display: true,
 					},
 					grid: {
-						color: 'rgb(66, 66, 66)',
+						color: colors.chartGrid,
 					},
 				},
 			},

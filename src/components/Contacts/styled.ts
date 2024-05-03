@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
+import { getColors } from 'src/utils/themeGetters'
 
 const smallScreenEnd = '1024px'
 
@@ -30,7 +31,7 @@ export const ContactsInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
-	background-color: #2d2d2d;
+	background-color: ${(props) => getColors(props).dark};
 	font-size: 16px;
 
 	@media ${device.md} {
@@ -72,7 +73,7 @@ export const ContactsForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	background: linear-gradient(225deg, #2c5d2c 0%, #2c5d2c 50%, black 100%);
+	background: ${(props) => getColors(props).secondaryBgGradient};
 
 	@media ${device.md} {
 		gap: 10px;
@@ -113,7 +114,7 @@ export const FormItem = styled.div`
 	padding-bottom: 20px;
 	position: relative;
 	& > p {
-		color: red;
+		color: ${(props) => getColors(props).error};
 		font-size: 14px;
 		position: absolute;
 		bottom: 0px;
@@ -121,10 +122,10 @@ export const FormItem = styled.div`
 `
 
 export const ContactsBtn = styled.button`
-	background-color: #3c9e20;
+	background-color: ${(props) => getColors(props).btn};
 	padding: 15px;
 	text-align: center;
 	font-size: 16px;
-	color: white;
+	color: ${(props) => getColors(props).white};
 	border-radius: 8px;
 `

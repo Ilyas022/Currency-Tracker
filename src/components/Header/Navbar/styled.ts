@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
+import { getColors } from 'utils/themeGetters'
 
 const lineHeight = '206%'
 
@@ -23,7 +24,7 @@ export const NavbarComp = styled.nav`
 `
 
 export const Navlink = styled(NavLink)`
-	color: #fff;
+	color: ${(props) => getColors(props).textPrimary};
 	font-weight: ${({ theme }) => theme.fontWeights[0]};
 	font-size: ${({ theme }) => `${theme.fonts[2]}px`};
 	line-height: ${lineHeight};

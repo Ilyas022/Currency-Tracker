@@ -4,7 +4,7 @@ import { axiosInstanceCurrency } from 'src/utils/axios'
 import { currencyNames } from 'store/config'
 import { Response, ResponseDataItem } from 'types/interfaces'
 
-export interface CurrencySlice {
+interface CurrencySlice {
 	currencyList: ResponseDataItem[]
 	currencyExchangeList: ResponseDataItem[]
 	baseCurrency: string
@@ -63,7 +63,7 @@ const initialState: CurrencySlice = {
 	status: '',
 }
 
-export const currencySlice = createSlice({
+const currencySlice = createSlice({
 	name: 'currency',
 	initialState,
 	reducers: {},
@@ -92,4 +92,4 @@ export const currencySlice = createSlice({
 	},
 })
 
-export default currencySlice.reducer
+export default currencySlice
