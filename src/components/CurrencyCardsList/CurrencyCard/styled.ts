@@ -1,16 +1,18 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
+import { getColors } from 'src/utils/themeGetters'
 
 export const CurrencyComp = styled.button`
 	display: flex;
 	gap: 29px;
-	border: 1px solid #474747;
+	border: 1px solid ${(props) => getColors(props).cardBorder};
 	border-radius: 8px;
 	padding: 30px 32px;
 	width: 520px;
 	height: 153px;
-	background-color: #202025;
+	background-color: ${(props) => getColors(props).cardBg};
+	color: ${(props) => getColors(props).textPrimary};
 
 	@media ${device.lg} {
 		gap: 20px;
@@ -37,8 +39,7 @@ export const CurrencyIcon = styled.div`
 	width: 80px;
 	height: 80px;
 	border-radius: 8px;
-	background-color: green;
-
+	background-color: ${(props) => getColors(props).icon};
 	@media ${device.lg} {
 		width: 55px;
 		height: 55px;
@@ -70,7 +71,7 @@ export const CurrencyTitle = styled.p`
 	font-weight: 400;
 	font-size: 35px;
 	line-height: 115%;
-	color: #d9d9d9;
+	color: ${(props) => getColors(props).textSecondary};
 	margin-bottom: 9px;
 
 	@media ${device.lg} {
@@ -89,7 +90,7 @@ export const CurrencyValue = styled.p`
 	font-weight: 300;
 	font-size: 32px;
 	line-height: 129%;
-	color: #a7b2c3;
+	color: ${(props) => getColors(props).textTertiary};
 
 	@media ${device.lg} {
 		font-size: 22px;

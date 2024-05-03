@@ -1,12 +1,10 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
+import { getColors } from 'utils/themeGetters'
 
 const fontSize = '33px'
 const lineHeight = '125%'
-const color = 'd9d9d9'
-const iconBgColor = '#00bc4f4a'
-const iconColor = '#00bc4f'
 
 export const UpdateTimeComp = styled.div`
 	display: flex;
@@ -16,7 +14,7 @@ export const UpdateTimeComp = styled.div`
 	font-weight: ${({ theme }) => theme.fontWeights[0]};
 	font-size: ${fontSize};
 	line-height: ${lineHeight};
-	color: #${color};
+	color: ${(props) => getColors(props).textSecondary};
 
 	@media ${device.md} {
 		font-size: 20px;
@@ -33,7 +31,7 @@ export const UpdateTimeComp = styled.div`
 		width: 33px;
 		height: 33px;
 		border-radius: 50%;
-		background-color: ${iconBgColor};
+		background-color: ${(props) => getColors(props).iconBg};
 		transform: translate(-16px, -3px);
 
 		@media ${device.md} {
@@ -56,7 +54,7 @@ export const UpdateTimeComp = styled.div`
 			left: 50%;
 			transform: translate(-50%, -50%);
 			border-radius: 50%;
-			background-color: ${iconColor};
+			background-color: ${(props) => getColors(props).icon};
 
 			@media ${device.md} {
 				width: 12px;

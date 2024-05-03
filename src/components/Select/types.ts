@@ -1,4 +1,7 @@
+import { Theme } from 'types/interfaces'
+
 export interface DateSelectProps {
+	theme: Theme
 	options: {
 		value: string
 		label: string

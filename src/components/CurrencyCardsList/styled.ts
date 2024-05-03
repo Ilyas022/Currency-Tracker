@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
+import { getColors } from 'src/utils/themeGetters'
 
 const smallScreenEnd = '1024px'
 
@@ -22,11 +23,11 @@ export const CurrencyList = styled.div`
 export const ListTitle = styled.p`
 	width: 520px;
 	padding-bottom: 25px;
-	border-bottom: 2px solid #474747;
+	border-bottom: 2px solid ${(props) => getColors(props).cardBorder};
 	font-weight: 300;
 	font-size: 32px;
 	line-height: 129%;
-	color: #fff;
+	color: ${(props) => getColors(props).textPrimary};
 	margin-bottom: 50px;
 
 	@media ${device.lg} {
