@@ -1,35 +1,44 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
-import { getColors } from 'src/utils/themeGetters'
+import {
+	getBorders,
+	getColors,
+	getFontWeights,
+	getFonts,
+	getGaps,
+	getIndents,
+	getSizes,
+	getlineHeights,
+} from 'utils/themeGetters'
 
 const smallScreenEnd = '1024px'
 
 export const FooterComp = styled.footer`
-	padding-bottom: 20px;
+	padding-bottom: ${(props) => getIndents(props, 3)};
 `
 export const FooterContainer = styled.div`
-	width: 1270px;
-	padding: 0 20px;
+	width: ${(props) => getSizes(props, 15, -10)};
+	padding: 0 ${(props) => getIndents(props, 3)};
 	max-width: 100%;
 	margin: 0 auto;
 
 	& > div {
 		display: flex;
 		justify-content: space-between;
-		gap: 95px;
-		margin-bottom: 66px;
+		gap: ${(props) => getGaps(props, 6, -25)};
+		margin-bottom: ${(props) => getIndents(props, 6, 10)};
 
 		@media ${device.lg} {
 			flex-direction: column;
 		}
 
 		@media (max-width: ${smallScreenEnd}) {
-			gap: 34px;
+			gap: ${(props) => getGaps(props, 4, 4)};
 		}
 
 		@media ${device.sm} {
-			margin-bottom: 39px;
+			margin-bottom: ${(props) => getIndents(props, 5, -1)};
 		}
 	}
 `
@@ -37,51 +46,51 @@ export const FooterContainer = styled.div`
 export const FooterLogo = styled.div`
 	display: flex;
 	align-items: center;
-	gap: 20px;
-	font-weight: 600;
-	font-size: 26px;
+	gap: ${(props) => getGaps(props, 2)};
+	font-weight: ${(props) => getFontWeights(props, 3)};
+	font-size: ${(props) => getFonts(props, 4, 2)};
 	background: ${(props) => getColors(props).textGradient};
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	margin-bottom: 20px;
+	margin-bottom: ${(props) => getIndents(props, 3)};
 
 	@media ${device.lg} {
 		justify-content: center;
 	}
 
 	@media ${device.sm} {
-		font-size: 20px;
+		font-size: ${(props) => getFonts(props, 2)};
 		justify-content: flex-start;
-		margin-left: 20px;
-		gap: 14px;
+		margin-left: ${(props) => getIndents(props, 3)};
+		gap: ${(props) => getGaps(props, 1, -2)};
 
 		@media ${device.sm} {
-			gap: 17px;
-			margin-left: 24px;
+			gap: ${(props) => getGaps(props, 1, 1)};
+			margin-left: ${(props) => getIndents(props, 4)};
 		}
 	}
 
 	& > a {
 		@media ${device.sm} {
-			width: 34px;
-			height: 36px;
+			width: ${(props) => getSizes(props, 1, 2)};
+			height: ${(props) => getSizes(props, 1, 4)};
 		}
 	}
 `
 
 export const FooterInfo = styled.div`
 	flex: 0 1 40%;
-	padding-top: 27px;
+	padding-top: ${(props) => getIndents(props, 4, 3)};
 
 	@media ${device.sm} {
-		padding-top: 52px;
+		padding-top: ${(props) => getIndents(props, 6, -4)};
 	}
 
 	& > p {
-		font-weight: 300;
-		font-size: 24px;
-		line-height: 150%;
+		font-weight: ${(props) => getFontWeights(props, 0)};
+		font-size: ${(props) => getFonts(props, 4)};
+		line-height: ${(props) => getlineHeights(props, 6)};
 
 		@media ${device.lg} {
 			width: 70%;
@@ -106,17 +115,17 @@ export const FooterLinks = styled.div`
 	}
 
 	& h3 {
-		font-size: 28px;
-		line-height: 150%;
+		font-size: ${(props) => getFonts(props, 4, 4)};
+		line-height: ${(props) => getlineHeights(props, 6)};
 		letter-spacing: 1.3px;
-		margin-bottom: 45px;
+		margin-bottom: ${(props) => getIndents(props, 5, 5)};
 	}
 
 	& ul {
 		display: flex;
 		flex-direction: column;
-		gap: 30px;
-		font-size: 24px;
+		gap: ${(props) => getGaps(props, 4)};
+		font-size: ${(props) => getFonts(props, 4)};
 		color: ${(props) => getColors(props).textDark};
 	}
 `
@@ -124,40 +133,39 @@ export const FooterLinks = styled.div`
 export const FooterMobileLinks = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	padding: 0 40px;
+	gap: ${(props) => getGaps(props, 2)};
+	padding: 0 ${(props) => getIndents(props, 5)};
 
 	@media ${device.sm} {
-		padding: 0 24px;
+		padding: 0 ${(props) => getIndents(props, 4)};
 	}
 
 	& > div {
 		display: flex;
 		justify-content: space-between;
-		border-bottom: 1px solid white;
-		border-width: 1px;
-		padding-bottom: 10px;
-		font-size: 16px;
+		border-bottom: ${(props) => getBorders(props, 0)} solid white;
+		padding-bottom: ${(props) => getIndents(props, 1, 2)};
+		font-size: ${(props) => getFonts(props, 1)};
 
 		& > svg {
-			height: 30px;
-			width: 30px;
+			height: ${(props) => getSizes(props, 1, -2)};
+			width: ${(props) => getSizes(props, 1, -2)};
 
 			@media ${device.sm} {
-				width: 21px;
-				height: 22px;
+				width: ${(props) => getSizes(props, 0, -3)};
+				height: ${(props) => getSizes(props, 0, -2)};
 			}
 		}
 	}
 `
 
 export const FooterRights = styled.p`
-	font-size: 24px;
-	line-height: 150%;
+	font-size: ${(props) => getFonts(props, 4)};
+	line-height: ${(props) => getFontWeights(props, 6)};
 	color: ${(props) => getColors(props).textDark};
 	text-align: center;
 
 	@media ${device.sm} {
-		font-size: 16px;
+		font-size: ${(props) => getFonts(props, 1)};
 	}
 `

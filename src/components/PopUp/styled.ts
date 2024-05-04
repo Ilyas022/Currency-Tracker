@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
-import { getColors } from 'utils/themeGetters'
+import { getBorders, getColors, getFonts, getGaps, getIndents, getSizes } from 'utils/themeGetters'
 
 const smallScreenEnd = '1024px'
 
@@ -21,9 +21,9 @@ export const PopUpComp = styled.div`
 export const PopUpContainer = styled.div`
 	position: relative;
 	width: 50%;
-	padding: 0 20px;
+	padding: 0 ${(props) => getIndents(props, 3)};
 	background-color: gray;
-	border-radius: 8px;
+	border-radius: ${(props) => getBorders(props, 4)};
 
 	@media (max-width: ${smallScreenEnd}) {
 		width: 70%;
@@ -35,20 +35,20 @@ export const PopUpContainer = styled.div`
 `
 
 export const PopUpHeader = styled.div`
-	padding: 20px 0;
-	border-bottom: 1px solid black;
+	padding: ${(props) => getIndents(props, 3)} 0;
+	border-bottom: ${(props) => getBorders(props, 0)} solid black;
 
 	& > p {
-		font-size: 28px;
+		font-size: ${(props) => getFonts(props, 4, 4)};
 		line-height: 120%;
 		text-align: center;
 
 		@media ${device.md} {
-			font-size: 20px;
+			font-size: ${(props) => getFonts(props, 2)};
 		}
 
 		@media ${device.sm} {
-			font-size: 18px;
+			font-size: ${(props) => getFonts(props, 1, 2)};
 		}
 	}
 `
@@ -56,17 +56,17 @@ export const PopUpHeader = styled.div`
 export const PopUpBody = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	font-size: 20px;
+	gap: ${(props) => getGaps(props, 2)};
+	font-size: ${(props) => getFonts(props, 2)};
 	line-height: 120%;
-	padding: 20px 0;
+	padding: ${(props) => getIndents(props, 3)} 0;
 
 	@media ${device.md} {
-		font-size: 16px;
+		font-size: ${(props) => getFonts(props, 1)};
 	}
 
 	@media ${device.sm} {
-		font-size: 14px;
+		font-size: ${(props) => getFonts(props, 0)};
 	}
 `
 
@@ -74,21 +74,21 @@ export const ExchangeItem = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-bottom: 5px;
-	border-bottom: 1px dashed ${(props) => getColors(props).primary};
+	padding-bottom: ${(props) => getIndents(props, 0, 1)};
+	border-bottom: ${(props) => getBorders(props, 0)} dashed ${(props) => getColors(props).primary};
 `
 
 export const CloseBtn = styled.button`
 	position: absolute;
-	right: 20px;
-	top: 22px;
-	width: 32px;
-	height: 32px;
+	right: ${(props) => getIndents(props, 3)};
+	top: ${(props) => getIndents(props, 3, 2)};
+	width: ${(props) => getSizes(props, 1)};
+	height: ${(props) => getSizes(props, 1)};
 	opacity: 0.5;
 	transition: opacity 0.3s ease 0s;
 
 	@media ${device.md} {
-		top: 17px;
+		top: ${(props) => getIndents(props, 2, 1)};
 	}
 
 	&:hover {
@@ -102,7 +102,7 @@ export const CloseBtn = styled.button`
 		top: 0;
 		left: 50%;
 		height: 100%;
-		width: 2px;
+		width: ${(props) => getSizes(props, 0, -22)};
 		background-color: ${(props) => getColors(props).primary};
 	}
 	&:before {

@@ -1,7 +1,7 @@
 import { ToastContainer } from 'react-toastify'
 import styled, { createGlobalStyle } from 'styled-components'
 
-import { getColors } from 'utils/themeGetters'
+import { getColors, getFonts, getIndents } from 'utils/themeGetters'
 
 export const GlobalStyles = createGlobalStyle`
 	*{
@@ -63,9 +63,9 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	main {
-		margin-bottom: 94px;
+		margin-bottom: ${(props) => getIndents(props, 8, -6)};
 	}
 `
 export const StyledToastContainer = styled(ToastContainer)`
-	font-size: 16px;
+	font-size: ${(props) => getFonts(props, 1)};
 `

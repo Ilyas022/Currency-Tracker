@@ -2,20 +2,21 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
+import { getSizes } from 'utils/themeGetters'
 
 export const LogoComp = styled(Link)`
 	display: block;
-	width: 41px;
-	height: 42px;
+	width: ${(props) => getSizes(props, 2, -7)};
+	height: ${(props) => getSizes(props, 2, -6)};
 
 	@media ${device.sm} {
-		width: 30px;
-		height: 30px;
+		width: ${(props) => getSizes(props, 1, -2)};
+		height: ${(props) => getSizes(props, 1, -2)};
 	}
 
 	@media ${device.xs} {
-		width: 12px;
-		height: 12px;
+		width: ${(props) => getSizes(props, 0, -12)};
+		height: ${(props) => getSizes(props, 0, -12)};
 	}
 
 	& > svg {

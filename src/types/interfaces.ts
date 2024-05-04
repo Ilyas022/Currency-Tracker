@@ -29,6 +29,11 @@ export interface Theme {
 	fontWeights: number[]
 	lineHeights: number[]
 	colors: ThemeColors
+	sizes: number[]
+	gaps: number[]
+	indents: number[]
+	borders: number[]
+	bordersRadii: number[]
 }
 
 // Response

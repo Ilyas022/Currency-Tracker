@@ -1,28 +1,35 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
-import { getColors } from 'src/utils/themeGetters'
+import {
+	getColors,
+	getFonts,
+	getGaps,
+	getIndents,
+	getSizes,
+	getlineHeights,
+} from 'src/utils/themeGetters'
 
 const smallScreenEnd = '1024px'
 
 export const ContactsContainer = styled.div`
 	display: flex;
-	max-width: 1280px;
-	padding: 20px;
+	max-width: ${(props) => getSizes(props, 15)};
+	padding: ${(props) => getIndents(props, 3)};
 	margin: 0 auto;
 	width: 100%;
 
 	@media ${device.md} {
 		flex-direction: column-reverse;
-		gap: 40px;
+		gap: ${(props) => getGaps(props, 5)};
 	}
 
 	& > * {
 		flex-basis: 50%;
-		padding: 40px;
+		padding: ${(props) => getIndents(props, 5)};
 
 		@media ${device.md} {
-			padding: 20px;
+			padding: ${(props) => getIndents(props, 3)};
 		}
 	}
 `
@@ -30,92 +37,93 @@ export const ContactsContainer = styled.div`
 export const ContactsInfo = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 50px;
+	gap: ${(props) => getGaps(props, 5, 10)};
 	background-color: ${(props) => getColors(props).dark};
-	font-size: 16px;
+	font-size: ${(props) => getFonts(props, 1)};
 
 	@media ${device.md} {
-		gap: 20px;
+		gap: ${(props) => getGaps(props, 2)};
 	}
 `
 
 export const ContactsInfoItem = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	font-size: 24px;
+	gap: ${(props) => getGaps(props, 2)};
+	font-size: ${(props) => getFonts(props, 4)};
 
 	@media (max-width: ${smallScreenEnd}) {
-		font-size: 20px;
+		font-size: ${(props) => getFonts(props, 3)};
 	}
 	@media ${device.md} {
-		gap: 10px;
+		gap: ${(props) => getGaps(props, 0, 2)};
 	}
 
 	& > p {
-		padding-left: 34px;
-		font-size: 20px;
-		line-height: 150%;
+		padding-left: ${(props) => getIndents(props, 5, -6)};
+		font-size: ${(props) => getFonts(props, 2)};
+		line-height: ${(props) => getlineHeights(props, 6)};
 
 		@media (max-width: ${smallScreenEnd}) {
-			font-size: 16px;
-			padding-left: 30px;
+			font-size: ${(props) => getFonts(props, 1)};
+			padding-left: ${(props) => getIndents(props, 4, 6)};
 		}
 	}
 
 	& > div {
 		display: flex;
-		gap: 10px;
+		gap: ${(props) => getGaps(props, 0, 2)};
 	}
 `
 
 export const ContactsForm = styled.form`
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: ${(props) => getGaps(props, 2)};
 	background: ${(props) => getColors(props).secondaryBgGradient};
 
 	@media ${device.md} {
-		gap: 10px;
+		gap: ${(props) => getGaps(props, 0, 2)};
 	}
 
 	& > h2 {
-		font-size: 38px;
+		font-size: ${(props) => getFonts(props, 1, 6)};
 		text-transform: uppercase;
 		text-align: center;
 
 		@media (max-width: ${smallScreenEnd}) {
-			font-size: 30px;
+			font-size: ${(props) => getFonts(props, 1, -2)};
 		}
 
 		@media ${device.md} {
-			font-size: 24px;
-			margin-bottom: 20px;
+			font-size: ${(props) => getFonts(props, 1)};
+			margin-bottom: ${(props) => getIndents(props, 3)};
 		}
 	}
 
 	& input,
 	textarea {
 		width: 100%;
-		padding: 10px;
-		font-size: 14px;
+		padding: ${(props) => getIndents(props, 1, 2)};
+		font-size: ${(props) => getFonts(props, 1)};
 	}
 
 	& textarea {
 		resize: none;
-		height: 150px;
+		height: ${(props) => getSizes(props, 7, 10)};
 	}
 `
 
 export const FormItem = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
-	padding-bottom: 20px;
+	gap: ${(props) => getGaps(props, 0, 2)};
+	padding-bottom: ${(props) => getIndents(props, 3)};
 	position: relative;
+
 	& > p {
 		color: ${(props) => getColors(props).error};
-		font-size: 14px;
+		font-size: ${(props) => getFonts(props, 0)};
 		position: absolute;
 		bottom: 0px;
 	}
@@ -123,9 +131,9 @@ export const FormItem = styled.div`
 
 export const ContactsBtn = styled.button`
 	background-color: ${(props) => getColors(props).btn};
-	padding: 15px;
+	padding: ${(props) => getIndents(props, 2, -1)};
 	text-align: center;
-	font-size: 16px;
+	font-size: ${(props) => getFonts(props, 1)};
 	color: ${(props) => getColors(props).white};
 	border-radius: 8px;
 `
