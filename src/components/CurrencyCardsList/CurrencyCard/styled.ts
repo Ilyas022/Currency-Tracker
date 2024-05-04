@@ -1,22 +1,32 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
-import { getColors } from 'src/utils/themeGetters'
+import {
+	getBorders,
+	getBordersRadii,
+	getColors,
+	getFontWeights,
+	getFonts,
+	getGaps,
+	getIndents,
+	getSizes,
+	getlineHeights,
+} from 'utils/themeGetters'
 
 export const CurrencyComp = styled.button`
 	display: flex;
-	gap: 29px;
-	border: 1px solid ${(props) => getColors(props).cardBorder};
-	border-radius: 8px;
-	padding: 30px 32px;
-	width: 520px;
-	height: 153px;
+	gap: ${(props) => getGaps(props, 4, -1)};
+	border: ${(props) => getBorders(props, 0)} solid ${(props) => getColors(props).cardBorder};
+	border-radius: ${(props) => getBordersRadii(props, 4)};
+	padding: ${(props) => getIndents(props, 4, 6)} ${(props) => getIndents(props, 4, 8)};
+	width: ${(props) => getSizes(props, 11, -20)};
+	height: ${(props) => getSizes(props, 7, 13)};
 	background-color: ${(props) => getColors(props).cardBg};
 	color: ${(props) => getColors(props).textPrimary};
 
 	@media ${device.lg} {
-		gap: 20px;
-		padding: 20px;
+		gap: ${(props) => getGaps(props, 2)};
+		padding: ${(props) => getIndents(props, 3)};
 		height: auto;
 		width: 48%;
 	}
@@ -26,9 +36,10 @@ export const CurrencyComp = styled.button`
 	}
 
 	@media ${device.sm} {
-		padding: 9px 12px;
-		border-radius: 3px;
-		gap: 12px;
+		padding: ${(props) => getIndents(props, 1, 1)};
+		${(props) => getIndents(props, 1, 4)};
+		border-radius: ${(props) => getBordersRadii(props, 2)};
+		gap: ${(props) => getGaps(props, 0, 4)};
 	}
 `
 
@@ -36,77 +47,78 @@ export const CurrencyIcon = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 80px;
-	height: 80px;
-	border-radius: 8px;
+	width: ${(props) => getSizes(props, 3, 8)};
+	height: ${(props) => getSizes(props, 3, 8)};
+	border-radius: ${(props) => getBordersRadii(props, 4)};
 	background-color: ${(props) => getColors(props).icon};
+
 	@media ${device.lg} {
-		width: 55px;
-		height: 55px;
+		width: ${(props) => getSizes(props, 2, 7)};
+		height: ${(props) => getSizes(props, 2, 7)};
 	}
 
 	@media ${device.sm} {
-		width: 30px;
-		height: 30px;
-		border-radius: 3px;
+		width: ${(props) => getSizes(props, 1, -2)};
+		height: ${(props) => getSizes(props, 1, -2)};
+		border-radius: ${(props) => getBordersRadii(props, 2)};
 	}
 
 	& > svg {
-		width: 50px;
-		height: 50px;
+		width: ${(props) => getSizes(props, 2, 2)};
+		height: ${(props) => getSizes(props, 2, 2)};
 
 		@media ${device.lg} {
-			width: 35px;
-			height: 35px;
+			width: ${(props) => getSizes(props, 1, 3)};
+			height: ${(props) => getSizes(props, 1, 3)};
 		}
 
 		@media ${device.sm} {
-			width: 18px;
-			height: 18px;
+			width: ${(props) => getSizes(props, 0, -6)};
+			height: ${(props) => getSizes(props, 0, -6)};
 		}
 	}
 `
 
 export const CurrencyTitle = styled.p`
-	font-weight: 400;
-	font-size: 35px;
-	line-height: 115%;
+	font-weight: ${(props) => getFontWeights(props, 1)};
+	font-size: ${(props) => getFonts(props, 5, 5)};
+	line-height: ${(props) => getlineHeights(props, 5, 3)};
 	color: ${(props) => getColors(props).textSecondary};
-	margin-bottom: 9px;
+	margin-bottom: ${(props) => getIndents(props, 1, 1)};
 
 	@media ${device.lg} {
-		font-size: 22px;
+		font-size: ${(props) => getFonts(props, 3)};
 		margin-bottom: 0;
 	}
 
 	@media ${device.sm} {
-		font-size: 13px;
+		font-size: ${(props) => getFonts(props, 0, -1)};
 	}
 `
 
 export const CurrencyValue = styled.p`
 	display: flex;
 	align-items: flex-end;
-	font-weight: 300;
-	font-size: 32px;
-	line-height: 129%;
+	font-weight: ${(props) => getFontWeights(props, 0)};
+	font-size: ${(props) => getFonts(props, 5, 2)};
+	line-height: ${(props) => getlineHeights(props, 6, -21)};
 	color: ${(props) => getColors(props).textTertiary};
 
 	@media ${device.lg} {
-		font-size: 22px;
+		font-size: ${(props) => getFonts(props, 3)};
 	}
 
 	@media ${device.sm} {
-		font-size: 13px;
+		font-size: ${(props) => getFonts(props, 0, -1)};
 	}
 
 	& > svg {
-		width: 25px;
-		height: 25px;
+		width: ${(props) => getSizes(props, 0, 1)};
+		height: ${(props) => getSizes(props, 0, 1)};
 
 		@media ${device.sm} {
-			width: 12px;
-			height: 12px;
+			width: ${(props) => getSizes(props, 0, -12)};
+			height: ${(props) => getSizes(props, 0, -12)};
 		}
 	}
 `

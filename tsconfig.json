@@ -17,7 +17,6 @@
     "resolveJsonModule": true,
     "baseUrl": "./src",
         "paths": {
-          "src/*": ["*"],
           "components/*": ["components/*"],
           "constants/*": ["constants/*"],
           "hooks/*": ["hooks/*"],
@@ -25,6 +24,7 @@
           "assets/*": ["assets/*"],
           "store/*": ["store/*"],
           "types/*": ["types/*"],
+          "src/*": ["*"],
         },
     "types": ["node"],
   },

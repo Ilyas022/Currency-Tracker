@@ -19,7 +19,7 @@ export function Layout() {
 					pauseOnFocusLoss
 					draggable={false}
 					pauseOnHover
-					theme="light"
+					// theme="light"
 				/>
 				<Outlet />
 			</main>
