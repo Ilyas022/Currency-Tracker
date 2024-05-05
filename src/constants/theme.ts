@@ -16,7 +16,8 @@ const fontWeights = [300, 400, 500, 600]
 //                   0   1   2   3   4   5      6
 const lineHeights = [24, 28, 33, 40, 60, 112, 150]
 
-const borders = [1, 2]
+//               0  1  2  3  4
+const borders = [1, 2, 4, 8, 16]
 
 //                    0  1  2  3  4
 const bordersRadii = [1, 2, 3, 4, 8]

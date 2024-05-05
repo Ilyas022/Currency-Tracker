@@ -11,6 +11,7 @@ import ReactMap, {
 import { MarkerEvent } from 'react-map-gl/dist/esm/types/events'
 
 import { ErrorBoundary } from 'components/ErrorBoundary'
+import LoadingSpinner from 'components/LoadingSpinner'
 import Select from 'components/Select'
 
 import { config } from './config'
@@ -20,6 +21,7 @@ class Map extends React.Component<
 	{},
 	{
 		currency: string
+		isLoading: boolean
 		popup: {
 			isOpen: boolean
 			name: string
@@ -38,10 +40,12 @@ class Map extends React.Component<
 				longitude: 0,
 			},
 			currency: 'USD',
+			isLoading: true,
 		}
 		this.handleSelect = this.handleSelect.bind(this)
 		this.handleOpenPopUp = this.handleOpenPopUp.bind(this)
 		this.handleClosePopUp = this.handleClosePopUp.bind(this)
+		this.handleLoading = this.handleLoading.bind(this)
 	}
 
 	componentDidMount() {
@@ -78,11 +82,16 @@ class Map extends React.Component<
 		this.setState({ popup: { isOpen: false, name: '', longitude: 0, latitude: 0 } })
 	}
 
+	handleLoading() {
+		this.setState({ isLoading: false })
+	}
+
 	render() {
 		const { banks, currencies, initialViewState, mapStyle } = config
 		const {
 			currency,
 			popup: { isOpen, latitude, longitude, name },
+			isLoading,
 		} = this.state
 		const defultValue = currencies.find((curr) => curr.value === currency)
 		const optios = currencies.filter((currencyItem) => currencyItem.value !== currency)
@@ -100,11 +109,13 @@ class Map extends React.Component<
 							placeholder="Choose currency"
 						/>
 					</MapContainer>
+					{isLoading && <LoadingSpinner />}
 					<MapItem>
 						<ReactMap
 							mapboxAccessToken={process.env.MAPBOX_API_KEY}
 							initialViewState={initialViewState}
 							mapStyle={mapStyle}
+							onData={this.handleLoading}
 						>
 							<GeolocateControl position="top-left" />
 							<FullscreenControl position="top-left" />

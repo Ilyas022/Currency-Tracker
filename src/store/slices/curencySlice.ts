@@ -79,15 +79,9 @@ const currencySlice = createSlice({
 			.addCase(fetchCurrencyList.rejected, (state) => {
 				return { ...state, status: 'failed' }
 			})
-			.addCase(fetchCurrencyExchange.pending, (state) => {
-				return { ...state, status: 'loading' }
-			})
 			.addCase(fetchCurrencyExchange.fulfilled, (state, action) => {
 				const currencyExchangeList = action.payload
-				return { ...state, currencyExchangeList, status: 'fulfiled' }
-			})
-			.addCase(fetchCurrencyExchange.rejected, (state) => {
-				return { ...state, status: 'failed' }
+				return { ...state, currencyExchangeList }
 			})
 	},
 })

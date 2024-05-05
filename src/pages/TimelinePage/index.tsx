@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 
 import ChartItem from 'components/Chart'
 import { ErrorBoundary } from 'components/ErrorBoundary'
+import LoadingSpinner from 'components/LoadingSpinner'
 import observable from 'components/Observable'
 import Select from 'components/Select'
 import { axiosInstanceHistory } from 'src/utils/axios'
@@ -86,33 +87,34 @@ class TimelinePage extends React.PureComponent<
 
 		return (
 			<TimelinePageComp>
-				{isLoaded && (
+				<ErrorBoundary
+					fallback={<TimelineTitle>Smth went wrong, we&apos;re fixing this problem</TimelineTitle>}
+				>
 					<TimelineContainer>
-						<ErrorBoundary
-							fallback={
-								<TimelineTitle>Smth went wrong, we&apos;re fixing this problem</TimelineTitle>
-							}
-						>
-							<TimelineSelects>
-								<Select
-									placeholder="Select date"
-									options={dateFilteredOptions}
-									handleSelect={this.handleDateSelect}
-									defaultValue={dateDefaultValue}
-								/>
-								<Select
-									placeholder="Select currency"
-									options={currencyFilteredOptions}
-									handleSelect={this.handleCurrencySelect}
-									defaultValue={currencyDefaultValue}
-								/>
-							</TimelineSelects>
+						<TimelineSelects>
+							<Select
+								placeholder="Select date"
+								options={dateFilteredOptions}
+								handleSelect={this.handleDateSelect}
+								defaultValue={dateDefaultValue}
+							/>
+							<Select
+								placeholder="Select currency"
+								options={currencyFilteredOptions}
+								handleSelect={this.handleCurrencySelect}
+								defaultValue={currencyDefaultValue}
+							/>
+						</TimelineSelects>
 
-							<TimelineTitle $textalign="left">{currencyDefaultValue?.label}</TimelineTitle>
-							<ChartItem optionsData={data} unit={dateDefaultValue?.unit || 'month'} />
-						</ErrorBoundary>
+						{isLoaded && (
+							<>
+								<TimelineTitle $textalign="left">{currencyDefaultValue?.label}</TimelineTitle>
+								<ChartItem optionsData={data} unit={dateDefaultValue?.unit || 'month'} />
+							</>
+						)}
+						{!isLoaded && !isError && <LoadingSpinner />}
 					</TimelineContainer>
-				)}
+				</ErrorBoundary>
 				{isError && <TimelineTitle>Smth went wrong, we&apos;re fixing this problem</TimelineTitle>}
 			</TimelinePageComp>
 		)
