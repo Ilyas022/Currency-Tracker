@@ -10,6 +10,7 @@ import ReactMap, {
 } from 'react-map-gl'
 import { MarkerEvent } from 'react-map-gl/dist/esm/types/events'
 
+import { ErrorBoundary } from 'components/ErrorBoundary'
 import Select from 'components/Select'
 
 import { config } from './config'
@@ -44,8 +45,7 @@ class Map extends React.Component<
 	}
 
 	componentDidMount() {
-		mapboxgl.accessToken =
-			'pk.eyJ1IjoiaWx5YXMwMjIiLCJhIjoiY2x2ZGlucmt2MHZuODJrbWtxa250NW5odCJ9.5EcWcMYaq6LQoE98px6i-A'
+		mapboxgl.accessToken = process.env.MAPBOX_API_KEY
 	}
 
 	handleSelect(currency: string) {
@@ -90,55 +90,57 @@ class Map extends React.Component<
 
 		return (
 			<MapComponent>
-				<MapContainer>
-					<h2>Search currency in the bank</h2>
-					<Select
-						defaultValue={defultValue}
-						handleSelect={this.handleSelect}
-						options={optios}
-						placeholder="Choose currency"
-					/>
-				</MapContainer>
-				<MapItem>
-					<ReactMap
-						mapboxAccessToken="pk.eyJ1IjoiaWx5YXMwMjIiLCJhIjoiY2x2ZGlucmt2MHZuODJrbWtxa250NW5odCJ9.5EcWcMYaq6LQoE98px6i-A"
-						initialViewState={initialViewState}
-						mapStyle={mapStyle}
-					>
-						<GeolocateControl position="top-left" />
-						<FullscreenControl position="top-left" />
-						<NavigationControl position="top-left" />
-						<ScaleControl />
-						{data.map((bank) => (
-							<div key={bank.id}>
-								<MapMarker
-									latitude={bank.latitude}
-									longitude={bank.longitude}
-									onClick={(e) =>
-										this.handleOpenPopUp({
-											e,
-											latitude: bank.latitude,
-											longitude: bank.longitude,
-											name: bank.name,
-										})
-									}
-								/>
-							</div>
-						))}
-						{isOpen && (
-							<MapPopUp
-								latitude={latitude}
-								longitude={longitude}
-								onClose={this.handleClosePopUp}
-								closeButton
-								anchor="bottom-left"
-								offset={20}
-							>
-								{name}
-							</MapPopUp>
-						)}
-					</ReactMap>
-				</MapItem>
+				<ErrorBoundary fallback={<p>Something went wrong</p>}>
+					<MapContainer>
+						<h2>Search currency in the bank</h2>
+						<Select
+							defaultValue={defultValue}
+							handleSelect={this.handleSelect}
+							options={optios}
+							placeholder="Choose currency"
+						/>
+					</MapContainer>
+					<MapItem>
+						<ReactMap
+							mapboxAccessToken={process.env.MAPBOX_API_KEY}
+							initialViewState={initialViewState}
+							mapStyle={mapStyle}
+						>
+							<GeolocateControl position="top-left" />
+							<FullscreenControl position="top-left" />
+							<NavigationControl position="top-left" />
+							<ScaleControl />
+							{data.map((bank) => (
+								<div key={bank.id}>
+									<MapMarker
+										latitude={bank.latitude}
+										longitude={bank.longitude}
+										onClick={(e) =>
+											this.handleOpenPopUp({
+												e,
+												latitude: bank.latitude,
+												longitude: bank.longitude,
+												name: bank.name,
+											})
+										}
+									/>
+								</div>
+							))}
+							{isOpen && (
+								<MapPopUp
+									latitude={latitude}
+									longitude={longitude}
+									onClose={this.handleClosePopUp}
+									closeButton
+									anchor="bottom-left"
+									offset={20}
+								>
+									{name}
+								</MapPopUp>
+							)}
+						</ReactMap>
+					</MapItem>
+				</ErrorBoundary>
 			</MapComponent>
 		)
 	}

@@ -2,11 +2,12 @@ import React from 'react'
 import { toast } from 'react-toastify'
 
 import ChartItem from 'components/Chart'
+import { ErrorBoundary } from 'components/ErrorBoundary'
 import observable from 'components/Observable'
 import Select from 'components/Select'
 import { axiosInstanceHistory } from 'src/utils/axios'
 
-import { TimelinePageMocks } from './config'
+import { TimelinePageMocks, config } from './config'
 import { TimelinePageComp, TimelineContainer, TimelineSelects, TimelineTitle } from './styled'
 
 class TimelinePage extends React.PureComponent<
@@ -42,30 +43,14 @@ class TimelinePage extends React.PureComponent<
 	}
 
 	handleLoadedData({ isLoaded, isError }: { isLoaded: boolean; isError?: boolean }) {
+		const { toastConfig } = config
 		this.setState({ isLoaded })
+
 		if (isError) {
 			this.setState({ isError })
-			return toast.error('🦄 Something went wrong!', {
-				position: 'bottom-right',
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: false,
-				progress: undefined,
-				theme: 'light',
-			})
+			return toast.error('🦄 Something went wrong!', toastConfig)
 		}
-		return toast.success('🦄 Data is loaded!', {
-			position: 'bottom-right',
-			autoClose: 5000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: true,
-			draggable: false,
-			progress: undefined,
-			theme: 'light',
-		})
+		return toast.success('🦄 Data is loaded!', toastConfig)
 	}
 
 	handleDateSelect(date: string) {
@@ -103,22 +88,29 @@ class TimelinePage extends React.PureComponent<
 			<TimelinePageComp>
 				{isLoaded && (
 					<TimelineContainer>
-						<TimelineSelects>
-							<Select
-								placeholder="Select date"
-								options={dateFilteredOptions}
-								handleSelect={this.handleDateSelect}
-								defaultValue={dateDefaultValue}
-							/>
-							<Select
-								placeholder="Select currency"
-								options={currencyFilteredOptions}
-								handleSelect={this.handleCurrencySelect}
-								defaultValue={currencyDefaultValue}
-							/>
-						</TimelineSelects>
-						<TimelineTitle $textalign="left">{currencyDefaultValue?.label}</TimelineTitle>
-						<ChartItem optionsData={data} unit={dateDefaultValue?.unit || 'month'} />
+						<ErrorBoundary
+							fallback={
+								<TimelineTitle>Smth went wrong, we&apos;re fixing this problem</TimelineTitle>
+							}
+						>
+							<TimelineSelects>
+								<Select
+									placeholder="Select date"
+									options={dateFilteredOptions}
+									handleSelect={this.handleDateSelect}
+									defaultValue={dateDefaultValue}
+								/>
+								<Select
+									placeholder="Select currency"
+									options={currencyFilteredOptions}
+									handleSelect={this.handleCurrencySelect}
+									defaultValue={currencyDefaultValue}
+								/>
+							</TimelineSelects>
+
+							<TimelineTitle $textalign="left">{currencyDefaultValue?.label}</TimelineTitle>
+							<ChartItem optionsData={data} unit={dateDefaultValue?.unit || 'month'} />
+						</ErrorBoundary>
 					</TimelineContainer>
 				)}
 				{isError && <TimelineTitle>Smth went wrong, we&apos;re fixing this problem</TimelineTitle>}

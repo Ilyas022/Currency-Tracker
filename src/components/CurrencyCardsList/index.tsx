@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 
+import { ErrorBoundary } from 'components/ErrorBoundary'
 import { useActions } from 'hooks/useActions'
 import { useTypedSelector } from 'hooks/useTypedSelector'
 import { selectCurrency } from 'store/selectors'
@@ -18,11 +19,13 @@ function CurrencyCardsList() {
 	return (
 		<CurrencyList>
 			<ListTitle>Quotes</ListTitle>
-			<ListContainer>
-				{currencyList.map(({ code, name, value }) => (
-					<CurrencyCard code={code} name={name} value={value} key={code} base={baseCurrency} />
-				))}
-			</ListContainer>
+			<ErrorBoundary fallback={<p>Something went wrong!</p>}>
+				<ListContainer>
+					{currencyList.map(({ code, name, value }) => (
+						<CurrencyCard code={code} name={name} value={value} key={code} base={baseCurrency} />
+					))}
+				</ListContainer>
+			</ErrorBoundary>
 		</CurrencyList>
 	)
 }

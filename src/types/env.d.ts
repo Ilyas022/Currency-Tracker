@@ -4,5 +4,6 @@ declare namespace NodeJS {
 		CURRENCY_API_KEY: string
 		COINAPI_URL: string
 		COINAPI_KEY: string
+		MAPBOX_API_KEY: string
 	}
 }

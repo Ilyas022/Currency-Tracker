@@ -36,6 +36,7 @@ export const TimelineSelects = styled.div`
 `
 
 export const TimelineTitle = styled.h2<{ $textalign?: string }>`
+	font-size: 20px;
 	padding-left: 5px;
 	text-align: ${(props) => props.$textalign || 'center'};
 `
