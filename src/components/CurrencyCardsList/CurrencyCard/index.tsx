@@ -6,8 +6,9 @@ import { Icons } from './config'
 import { CurrencyComp, CurrencyTitle, CurrencyValue, CurrencyIcon } from './styled'
 import { CurrencyCardProps } from './types'
 
-function CurrencyCard({ base, code, name, value }: CurrencyCardProps) {
+function CurrencyCard({ base, code, label, value }: CurrencyCardProps) {
 	const [isPopUpOpened, setPopUpOpened] = useState(false)
+	const currency = { code, label, value }
 
 	const handleClick = () => {
 		setPopUpOpened(true)
@@ -22,13 +23,13 @@ function CurrencyCard({ base, code, name, value }: CurrencyCardProps) {
 			<CurrencyComp onClick={handleClick}>
 				<CurrencyIcon>{Icons[code]}</CurrencyIcon>
 				<div>
-					<CurrencyTitle>{name}</CurrencyTitle>
+					<CurrencyTitle>{label}</CurrencyTitle>
 					<CurrencyValue>
 						R{Icons[base]} = {value.toFixed(2)}
 					</CurrencyValue>
 				</div>
 			</CurrencyComp>
-			{isPopUpOpened && <PopUp handleClose={handleClose} code={code} />}
+			{isPopUpOpened && <PopUp handleClose={handleClose} currency={currency} />}
 		</>
 	)
 }

@@ -12,21 +12,24 @@ import {
 import storage from 'redux-persist/es/storage'
 
 import currencySlice from './slices/curencySlice'
+import historySlice from './slices/historySlice'
 import themeSlice from './slices/themeSlice'
 
 const persistConfig = {
-	key: 'theme',
+	key: 'store',
 	storage,
 }
 
-const persistedThemeReducer = persistReducer(persistConfig, themeSlice.reducer)
-
 const rootReducer = combineReducers({
+	theme: themeSlice.reducer,
 	currency: currencySlice.reducer,
-	theme: persistedThemeReducer,
+	history: historySlice.reducer,
 })
+
+const persistedReducers = persistReducer(persistConfig, rootReducer)
+
 export const store = configureStore({
-	reducer: rootReducer,
+	reducer: persistedReducers,
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
 			serializableCheck: false,

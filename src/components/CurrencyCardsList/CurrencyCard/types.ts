@@ -1,5 +1,5 @@
 export interface CurrencyCardProps {
-	name: string
+	label: string
 	value: number
 	code: string
 	base: string

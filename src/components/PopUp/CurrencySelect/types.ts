@@ -1,8 +1,9 @@
 export interface CurrencySelectProps {
+	value: { code: string; value: number; label: string }
 	options: {
 		code: string
 		value: number
-		name: string
+		label: string
 	}[]
-	handleSelect: (code: string) => void
+	handleSelect: (currency: { code: string; value: number; label: string }) => void
 }

@@ -16,20 +16,23 @@ const colourStyles: StylesConfig = {
 	}),
 }
 
-function CurrencySelect({ options, handleSelect }: CurrencySelectProps) {
+function CurrencySelect({ options, handleSelect, value }: CurrencySelectProps) {
 	const selectOptions = options.map((option) => ({
-		label: `${option.name} (${option.code})`,
-		value: option.code,
+		label: `${option.label} (${option.code})`,
+		value: option.value,
+		code: option.code,
 	}))
 
+	console.log(value)
 	return (
 		<Select
 			options={selectOptions}
 			styles={colourStyles}
 			menuPlacement="top"
+			value={value}
 			onChange={(e) => {
 				// @ts-ignore
-				handleSelect(e.value)
+				handleSelect(e)
 			}}
 		/>
 	)

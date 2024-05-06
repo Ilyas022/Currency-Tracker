@@ -44,9 +44,13 @@ export interface ResponseMeta {
 export interface ResponseDataItem {
 	code: string
 	value: number
-	name: string
+	label: string
 }
 export interface Response {
 	meta: ResponseMeta
 	data: ResponseDataItem[]
+}
+
+export interface CurrencyExchangeList {
+	[key: string]: ResponseDataItem[]
 }

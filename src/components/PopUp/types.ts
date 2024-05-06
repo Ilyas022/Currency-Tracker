@@ -1,4 +1,4 @@
 export interface PopUpProps {
 	handleClose: () => void
-	code: string
+	currency: { code: string; label: string; value: number }
 }

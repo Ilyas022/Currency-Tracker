@@ -1,4 +1,6 @@
+import { Dispatch, bindActionCreators } from '@reduxjs/toolkit'
 import React from 'react'
+import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 
 import ChartItem from 'components/Chart'
@@ -6,36 +8,37 @@ import { ErrorBoundary } from 'components/ErrorBoundary'
 import LoadingSpinner from 'components/LoadingSpinner'
 import observable from 'components/Observable'
 import Select from 'components/Select'
-import { axiosInstanceHistory } from 'src/utils/axios'
+import { RootState } from 'store/index'
+import { fetchHistory as fetchHistoryData } from 'store/slices/historySlice'
 
 import { TimelinePageMocks, config } from './config'
 import { TimelinePageComp, TimelineContainer, TimelineSelects, TimelineTitle } from './styled'
+import { TimelinePageProps, TimelinePageState } from './types'
 
-class TimelinePage extends React.PureComponent<
-	{},
-	{ date: string; currency: string; data: []; isLoaded: boolean; isError: boolean }
-> {
-	constructor(props: {}) {
+class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageState> {
+	constructor(props: TimelinePageProps) {
 		super(props)
-		this.state = { date: '1DAY', currency: 'BTC', data: [], isLoaded: false, isError: false }
+		this.state = { date: '1DAY', currency: 'BTC', isLoaded: false, isError: false }
 		this.handleDateSelect = this.handleDateSelect.bind(this)
 		this.handleCurrencySelect = this.handleCurrencySelect.bind(this)
 		this.handleLoadedData = this.handleLoadedData.bind(this)
-		this.getData = this.getData.bind(this)
 	}
 
 	componentDidMount(): void {
+		const { data, fetchHistory } = this.props
+		const { currency, date } = this.state
 		observable.subscribe(this.handleLoadedData)
-		this.getData()
+		if (!data[`${currency}-${date}`]) {
+			fetchHistory({ currency, date })
+		}
 	}
 
-	componentDidUpdate(
-		prevProps,
-		prevState: { date: string; currency: string; data: []; isLoaded: boolean }
-	) {
+	componentDidUpdate() {
+		const { data, fetchHistory } = this.props
 		const { currency, date } = this.state
-		if (prevState.date !== date || prevState.currency !== currency) {
-			this.getData()
+
+		if (!data[`${currency}-${date}`]) {
+			fetchHistory({ currency, date })
 		}
 	}
 
@@ -62,22 +65,11 @@ class TimelinePage extends React.PureComponent<
 		this.setState({ currency })
 	}
 
-	getData = async () => {
-		const { currency, date } = this.state
-		try {
-			const res = await axiosInstanceHistory.get(
-				`BITSTAMP_SPOT_${currency}_USD/history?period_id=${date}`
-			)
-			this.setState({ data: res.data })
-			observable.notify({ isLoaded: true })
-		} catch (error) {
-			observable.notify({ isLoaded: false, isError: true })
-		}
-	}
-
 	render() {
-		const { date, currency, data, isLoaded, isError } = this.state
+		const { data } = this.props
+		const { date, currency, isLoaded, isError } = this.state
 		const { currencyMocks, periodMocks } = TimelinePageMocks
+		const historyData = data[`${currency}-${date}`]
 
 		const dateDefaultValue = periodMocks.find((item) => item.value === date)
 		const dateFilteredOptions = periodMocks.filter((item) => item.value !== date)
@@ -106,10 +98,10 @@ class TimelinePage extends React.PureComponent<
 							/>
 						</TimelineSelects>
 
-						{isLoaded && (
+						{historyData && (
 							<>
 								<TimelineTitle $textalign="left">{currencyDefaultValue?.label}</TimelineTitle>
-								<ChartItem optionsData={data} unit={dateDefaultValue?.unit || 'month'} />
+								<ChartItem optionsData={historyData} unit={dateDefaultValue?.unit || 'month'} />
 							</>
 						)}
 						{!isLoaded && !isError && <LoadingSpinner />}
@@ -121,4 +113,16 @@ class TimelinePage extends React.PureComponent<
 	}
 }
 
-export default TimelinePage
+const mapStateToProps = (state: RootState) => ({
+	data: state.history.data,
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+	bindActionCreators(
+		{
+			fetchHistory: fetchHistoryData,
+		},
+		dispatch
+	)
+
+export default connect(mapStateToProps, mapDispatchToProps)(TimelinePage)

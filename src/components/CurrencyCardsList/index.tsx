@@ -15,7 +15,7 @@ function CurrencyCardsList() {
 	const isLoading = status === 'loading'
 
 	useEffect(() => {
-		fetchCurrencyList()
+		if (!currencyList.length) fetchCurrencyList()
 	}, [])
 
 	return (
@@ -24,8 +24,8 @@ function CurrencyCardsList() {
 			<ErrorBoundary fallback={<p>Something went wrong!</p>}>
 				{isLoading && <LoadingSpinner />}
 				<ListContainer>
-					{currencyList.map(({ code, name, value }) => (
-						<CurrencyCard code={code} name={name} value={value} key={code} base={baseCurrency} />
+					{currencyList.map(({ code, label, value }) => (
+						<CurrencyCard code={code} label={label} value={value} key={code} base={baseCurrency} />
 					))}
 				</ListContainer>
 			</ErrorBoundary>

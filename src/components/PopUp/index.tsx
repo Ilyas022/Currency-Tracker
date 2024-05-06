@@ -10,12 +10,13 @@ import CurrencySelect from './CurrencySelect'
 import { CloseBtn, ExchangeItem, PopUpComp, PopUpBody, PopUpContainer, PopUpHeader } from './styled'
 import { PopUpProps } from './types'
 
-function PopUp({ code, handleClose }: PopUpProps) {
+function PopUp({ currency, handleClose }: PopUpProps) {
 	const { fetchCurrencyExchange } = useActions()
-	const [currency, setCurrency] = useState(code)
+	const [selectedCurrency, setSelectedCurrency] = useState(currency)
 	const { currencyExchangeList } = useTypedSelector(selectCurrency)
-
 	const [lockScroll, unlockScroll] = useScrollLock()
+
+	const data = currencyExchangeList[selectedCurrency.code]
 
 	useEffect(() => {
 		lockScroll()
@@ -23,11 +24,13 @@ function PopUp({ code, handleClose }: PopUpProps) {
 	}, [])
 
 	useEffect(() => {
-		fetchCurrencyExchange(currency)
-	}, [currency])
+		if (!data) {
+			fetchCurrencyExchange(selectedCurrency.code)
+		}
+	}, [selectedCurrency])
 
-	const handleSelect = (currencyCode: string) => {
-		setCurrency(currencyCode)
+	const handleSelect = (curr: typeof selectedCurrency) => {
+		setSelectedCurrency(curr)
 	}
 
 	return createPortal(
@@ -38,15 +41,19 @@ function PopUp({ code, handleClose }: PopUpProps) {
 					<CloseBtn onClick={handleClose} />
 				</PopUpHeader>
 				<PopUpBody>
-					{currencyExchangeList.map((item) => (
-						<ExchangeItem key={item.code}>
-							<p>
-								{item.code} <span>to</span> {currency}
-							</p>
-							<p>{item.value % 1 === 0 ? item.value : item.value.toFixed(4)}</p>
-						</ExchangeItem>
-					))}
-					<CurrencySelect options={currencyExchangeList} handleSelect={handleSelect} />
+					{data && (
+						<>
+							{data.map((item) => (
+								<ExchangeItem key={item.code}>
+									<p>
+										{item.code} <span>to</span> {selectedCurrency.code}
+									</p>
+									<p>{item.value % 1 === 0 ? item.value : item.value.toFixed(4)}</p>
+								</ExchangeItem>
+							))}
+							<CurrencySelect options={data} value={selectedCurrency} handleSelect={handleSelect} />
+						</>
+					)}
 				</PopUpBody>
 			</PopUpContainer>
 		</PopUpComp>,
