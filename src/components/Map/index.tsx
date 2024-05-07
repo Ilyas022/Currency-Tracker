@@ -103,8 +103,8 @@ class Map extends React.Component<
 					<MapContainer>
 						<h2>Search currency in the bank</h2>
 						<Select
-							isActive
 							defaultValue={defultValue}
+							isActive
 							handleSelect={this.handleSelect}
 							options={optios}
 							placeholder="Choose currency"
