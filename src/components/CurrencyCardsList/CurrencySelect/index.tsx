@@ -23,7 +23,6 @@ function CurrencySelect({ options, handleSelect, value }: CurrencySelectProps) {
 		code: option.code,
 	}))
 
-	console.log(value)
 	return (
 		<Select
 			options={selectOptions}

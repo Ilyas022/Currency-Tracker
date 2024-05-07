@@ -57,6 +57,7 @@
     "import/no-named-default": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "no-param-reassign": "off",
     "global-require": "off",
     "react/require-default-props": "off"

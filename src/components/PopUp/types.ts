@@ -1,4 +1,5 @@
 export interface PopUpProps {
+	children: JSX.Element
 	handleClose: () => void
-	currency: { code: string; label: string; value: number }
+	title: string
 }

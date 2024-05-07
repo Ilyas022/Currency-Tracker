@@ -6,7 +6,7 @@ import { DateSelectProps } from './types'
 
 class Select extends React.PureComponent<DateSelectProps> {
 	render() {
-		const { defaultValue, options, handleSelect, placeholder, theme } = this.props
+		const { defaultValue, options, handleSelect, placeholder, theme, isActive } = this.props
 
 		const colourStyles: StylesConfig = {
 			control: (styles) => ({ ...styles, backgroundColor: 'transparent' }),
@@ -26,8 +26,9 @@ class Select extends React.PureComponent<DateSelectProps> {
 
 		return (
 			<ReactSelect
-				placeholder={placeholder}
-				options={options}
+				isDisabled={!isActive}
+				placeholder={isActive ? placeholder : ''}
+				options={isActive ? options : []}
 				styles={colourStyles}
 				onChange={(e) => {
 					// @ts-ignore

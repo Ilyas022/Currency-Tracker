@@ -12,16 +12,44 @@ import { RootState } from 'store/index'
 import { fetchHistory as fetchHistoryData } from 'store/slices/historySlice'
 
 import { TimelinePageMocks, config } from './config'
-import { TimelinePageComp, TimelineContainer, TimelineSelects, TimelineTitle } from './styled'
+import HistoryDataPopUp from './HistoryDataPopUp'
+import {
+	TimelinePageComp,
+	TimelineContainer,
+	TimelineSelects,
+	TimelineTitle,
+	CustomChartBtn,
+	AddDataBtn,
+} from './styled'
 import { TimelinePageProps, TimelinePageState } from './types'
 
 class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageState> {
 	constructor(props: TimelinePageProps) {
 		super(props)
-		this.state = { date: '1DAY', currency: 'BTC', isLoaded: false, isError: false }
+		this.state = {
+			isPopUpOpened: false,
+			date: '1DAY',
+			currency: 'BTC',
+			isLoaded: false,
+			isError: false,
+			isChartCustom: false,
+			customData: [
+				{
+					time_open: '2024-12-20T21:00:00.000Z',
+					price_open: 300,
+					price_high: 400,
+					price_low: 200,
+					price_close: 350,
+				},
+			],
+		}
+
 		this.handleDateSelect = this.handleDateSelect.bind(this)
 		this.handleCurrencySelect = this.handleCurrencySelect.bind(this)
 		this.handleLoadedData = this.handleLoadedData.bind(this)
+		this.setCustomChart = this.setCustomChart.bind(this)
+		this.addHistoryData = this.addHistoryData.bind(this)
+		this.handleClosePopUp = this.handleClosePopUp.bind(this)
 	}
 
 	componentDidMount(): void {
@@ -30,6 +58,8 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		observable.subscribe(this.handleLoadedData)
 		if (!data[`${currency}-${date}`]) {
 			fetchHistory({ currency, date })
+		} else {
+			this.setState({ isLoaded: true })
 		}
 	}
 
@@ -39,6 +69,8 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 
 		if (!data[`${currency}-${date}`]) {
 			fetchHistory({ currency, date })
+		} else {
+			this.setState({ isLoaded: true })
 		}
 	}
 
@@ -65,11 +97,34 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		this.setState({ currency })
 	}
 
+	handleClosePopUp() {
+		const { isPopUpOpened } = this.state
+		this.setState({ isPopUpOpened: !isPopUpOpened })
+	}
+
+	setCustomChart() {
+		const { isChartCustom } = this.state
+		this.setState({ isChartCustom: !isChartCustom })
+	}
+
+	addHistoryData(data: {
+		time_open: string
+		price_open: number
+		price_high: number
+		price_low: number
+		price_close: number
+	}) {
+		const { customData } = this.state
+		this.setState({ customData: [...customData, data] })
+	}
+
 	render() {
 		const { data } = this.props
-		const { date, currency, isLoaded, isError } = this.state
+		const { date, currency, isLoaded, isError, isChartCustom, customData, isPopUpOpened } =
+			this.state
 		const { currencyMocks, periodMocks } = TimelinePageMocks
-		const historyData = data[`${currency}-${date}`]
+
+		const historyData = isChartCustom ? customData : data[`${currency}-${date}`]
 
 		const dateDefaultValue = periodMocks.find((item) => item.value === date)
 		const dateFilteredOptions = periodMocks.filter((item) => item.value !== date)
@@ -85,29 +140,48 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 					<TimelineContainer>
 						<TimelineSelects>
 							<Select
+								isActive={!isChartCustom}
 								placeholder="Select date"
 								options={dateFilteredOptions}
 								handleSelect={this.handleDateSelect}
 								defaultValue={dateDefaultValue}
 							/>
 							<Select
+								isActive={!isChartCustom}
 								placeholder="Select currency"
 								options={currencyFilteredOptions}
 								handleSelect={this.handleCurrencySelect}
 								defaultValue={currencyDefaultValue}
 							/>
+							<CustomChartBtn>
+								<input onClick={this.setCustomChart} type="checkbox" />
+								<span>Custom chart</span>
+							</CustomChartBtn>
+							{isChartCustom && (
+								<AddDataBtn type="button" onClick={this.handleClosePopUp}>
+									Add data
+								</AddDataBtn>
+							)}
 						</TimelineSelects>
 
 						{historyData && (
 							<>
-								<TimelineTitle $textalign="left">{currencyDefaultValue?.label}</TimelineTitle>
-								<ChartItem optionsData={historyData} unit={dateDefaultValue?.unit || 'month'} />
+								<TimelineTitle $textalign="left">
+									{isChartCustom ? 'Custom data' : currencyDefaultValue?.label}
+								</TimelineTitle>
+								<ChartItem
+									optionsData={historyData}
+									unit={isChartCustom ? 'year' : dateDefaultValue?.unit || 'month'}
+								/>
 							</>
 						)}
 						{!isLoaded && !isError && <LoadingSpinner />}
 					</TimelineContainer>
 				</ErrorBoundary>
 				{isError && <TimelineTitle>Smth went wrong, we&apos;re fixing this problem</TimelineTitle>}
+				{isPopUpOpened && (
+					<HistoryDataPopUp handleClose={this.handleClosePopUp} handleAdd={this.addHistoryData} />
+				)}
 			</TimelinePageComp>
 		)
 	}

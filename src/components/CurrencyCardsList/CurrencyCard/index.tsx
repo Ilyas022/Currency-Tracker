@@ -1,10 +1,9 @@
 import { useCallback, useState } from 'react'
 
-import PopUp from 'components/PopUp'
-
 import { Icons } from './config'
 import { CurrencyComp, CurrencyTitle, CurrencyValue, CurrencyIcon } from './styled'
 import { CurrencyCardProps } from './types'
+import CurrencyPopUp from '../CurrencyPopUp'
 
 function CurrencyCard({ base, code, label, value }: CurrencyCardProps) {
 	const [isPopUpOpened, setPopUpOpened] = useState(false)
@@ -29,7 +28,7 @@ function CurrencyCard({ base, code, label, value }: CurrencyCardProps) {
 					</CurrencyValue>
 				</div>
 			</CurrencyComp>
-			{isPopUpOpened && <PopUp handleClose={handleClose} currency={currency} />}
+			{isPopUpOpened && <CurrencyPopUp handleClose={handleClose} currency={currency} />}
 		</>
 	)
 }

@@ -207,7 +207,7 @@ export const config = {
 			},
 		},
 	],
-	options(unit) {
+	options(unit, min, max) {
 		return {
 			parsing: {
 				xAxisKey: 'x',
@@ -244,6 +244,24 @@ export const config = {
 			plugins: {
 				legend: {
 					display: false,
+				},
+				zoom: {
+					pan: {
+						enabled: true,
+						mode: 'x',
+					},
+					zoom: {
+						wheel: {
+							enabled: true,
+						},
+						pinch: {
+							enabled: true,
+						},
+						mode: 'x',
+					},
+					limits: {
+						x: { min, max },
+					},
 				},
 				tooltip: {
 					callbacks: {

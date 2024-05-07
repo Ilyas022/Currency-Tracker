@@ -8,7 +8,7 @@ import {
 	Tooltip,
 	Legend,
 	TimeScale,
-} from 'chart.js'
+} from 'chart.js/auto'
 import zoomPlugin from 'chartjs-plugin-zoom'
 import React from 'react'
 import { Chart as ChartItem } from 'react-chartjs-2'
@@ -42,7 +42,7 @@ class Chart extends React.PureComponent<ChartItemProps> {
 					type="bar"
 					plugins={plugins}
 					data={chartData(chartItems)}
-					options={options(unit)}
+					options={options(unit, chartItems[chartItems.length - 1].x, chartItems[0].x)}
 				/>
 			</ChartContainer>
 		)

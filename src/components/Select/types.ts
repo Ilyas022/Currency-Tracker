@@ -1,6 +1,7 @@
 import { Theme } from 'types/interfaces'
 
 export interface DateSelectProps {
+	isActive: boolean
 	theme: Theme
 	options: {
 		value: string

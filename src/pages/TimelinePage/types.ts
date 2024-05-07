@@ -14,8 +14,17 @@ export interface TimelinePageProps {
 }
 
 export interface TimelinePageState {
+	isPopUpOpened: boolean
 	date: string
 	currency: string
 	isLoaded: boolean
 	isError: boolean
+	isChartCustom: boolean
+	customData: {
+		time_open: string
+		price_open: number
+		price_high: number
+		price_low: number
+		price_close: number
+	}[]
 }
