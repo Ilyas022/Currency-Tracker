@@ -104,6 +104,8 @@ module.exports = ({ env }) => ({
 		new MiniCssExtractPlugin({
 			filename: env === 'dev' ? '[name].css' : '[name].[contenthash].css',
 		}),
-		new Dotenv()
+		new Dotenv({
+			systemvars: true,
+		}),
 	],
 })
