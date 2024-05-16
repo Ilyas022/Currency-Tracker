@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
 import {
-	getBorders,
 	getColors,
 	getFontWeights,
 	getFonts,
@@ -119,41 +118,22 @@ export const FooterLinks = styled.div`
 		line-height: ${(props) => getlineHeights(props, 6)};
 		letter-spacing: 1.3px;
 		margin-bottom: ${(props) => getIndents(props, 5, 5)};
+		color: ${(props) => getColors(props).textPrimary};
 	}
 
-	& ul {
+	& div {
 		display: flex;
 		flex-direction: column;
 		gap: ${(props) => getGaps(props, 4)};
 		font-size: ${(props) => getFonts(props, 4)};
 		color: ${(props) => getColors(props).textDark};
-	}
-`
 
-export const FooterMobileLinks = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: ${(props) => getGaps(props, 2)};
-	padding: 0 ${(props) => getIndents(props, 5)};
+		& > a {
+			color: inherit;
+			transition: color 0.3s ease;
 
-	@media ${device.sm} {
-		padding: 0 ${(props) => getIndents(props, 4)};
-	}
-
-	& > div {
-		display: flex;
-		justify-content: space-between;
-		border-bottom: ${(props) => getBorders(props, 0)} solid white;
-		padding-bottom: ${(props) => getIndents(props, 1, 2)};
-		font-size: ${(props) => getFonts(props, 1)};
-
-		& > svg {
-			height: ${(props) => getSizes(props, 1, -2)};
-			width: ${(props) => getSizes(props, 1, -2)};
-
-			@media ${device.sm} {
-				width: ${(props) => getSizes(props, 0, -3)};
-				height: ${(props) => getSizes(props, 0, -2)};
+			&:hover {
+				color: ${(props) => getColors(props).textSecondary};
 			}
 		}
 	}
