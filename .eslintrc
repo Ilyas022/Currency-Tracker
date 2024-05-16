@@ -60,6 +60,7 @@
     "jsx-a11y/label-has-associated-control": "off",
     "no-param-reassign": "off",
     "global-require": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react/no-array-index-key": "off"
   }
 }
