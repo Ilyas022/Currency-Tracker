@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react'
 
 import PopUp from 'components/PopUp'
+import Select from 'components/Select'
 import { useActions } from 'hooks/useActions'
 import { useTypedSelector } from 'hooks/useTypedSelector'
 import { selectCurrency } from 'store/selectors'
+import { ResponseDataItem } from 'types/interfaces'
 
 import { ExchangeItem } from './styled'
-import { CurrencyPopUpProps } from './types'
-import CurrencySelect from '../CurrencySelect'
+import { CurrencyOption, CurrencyPopUpProps } from './types'
 
 function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
+	const { currencyExchangeList } = useTypedSelector(selectCurrency)
 	const { fetchCurrencyExchange } = useActions()
 	const [selectedCurrency, setSelectedCurrency] = useState(currency)
-	const { currencyExchangeList } = useTypedSelector(selectCurrency)
 
 	const data = currencyExchangeList[selectedCurrency.code]
 
@@ -20,9 +21,10 @@ function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
 		if (!data) {
 			fetchCurrencyExchange(selectedCurrency.code)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedCurrency])
 
-	const handleSelect = (curr: typeof selectedCurrency) => {
+	const handleSelect = (curr: CurrencyOption) => {
 		setSelectedCurrency(curr)
 	}
 
@@ -38,7 +40,12 @@ function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
 							<p>{item.value % 1 === 0 ? item.value : item.value.toFixed(4)}</p>
 						</ExchangeItem>
 					))}
-					<CurrencySelect options={data} value={selectedCurrency} handleSelect={handleSelect} />
+					<Select<ResponseDataItem>
+						position="top"
+						value={selectedCurrency}
+						options={data}
+						onSelect={handleSelect}
+					/>
 				</>
 			)}
 		</PopUp>

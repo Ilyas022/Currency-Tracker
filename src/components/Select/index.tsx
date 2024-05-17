@@ -1,43 +1,105 @@
 import React from 'react'
-import { StylesConfig, default as ReactSelect } from 'react-select'
-import { withTheme } from 'styled-components'
 
-import { DateSelectProps } from './types'
+import Dropdown from './DropDown'
+import { DropDown, DropDownSelect, SelectItem } from './styled'
+import { Option, SelectProps, SelectState } from './types'
 
-class Select extends React.PureComponent<DateSelectProps> {
-	render() {
-		const { defaultValue, options, handleSelect, placeholder, theme, isActive } = this.props
+class Select<T extends Option> extends React.Component<SelectProps<T>, SelectState<T>> {
+	selectRef: React.RefObject<HTMLDivElement>
 
-		const colourStyles: StylesConfig = {
-			control: (styles) => ({ ...styles, backgroundColor: 'transparent' }),
-			menu: (styles) => ({ ...styles, background: theme.colors.primary, zIndex: 5 }),
-			container: (styles) => ({ ...styles, fontSize: '14px' }),
-			input: (styles) => ({ ...styles, color: theme.colors.textPrimary }),
-			placeholder: (styles) => ({ ...styles, color: theme.colors.textPrimary }),
-			singleValue: (styles) => ({ ...styles, color: theme.colors.textPrimary }),
-			option: (styles, { isFocused }) => ({
-				...styles,
-				backgroundColor: isFocused ? '#00bc4f' : 'transparent',
-				'&:hover': {
-					backgroundColor: '#5bd28d',
-				},
-			}),
+	constructor(props: SelectProps<T>) {
+		super(props)
+		const { options, value } = this.props
+
+		this.state = {
+			active: value,
+			options,
+			isDropDownOpen: false,
 		}
 
+		this.selectRef = React.createRef<HTMLDivElement>()
+	}
+
+	componentDidMount() {
+		document.addEventListener('mousedown', this.handleClickOutside)
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener('mousedown', this.handleClickOutside)
+	}
+
+	handleDropDownToggle = () => {
+		const { isDropDownOpen } = this.state
+		const { isDisabled = false } = this.props
+		if (!isDisabled) {
+			this.setState({ isDropDownOpen: !isDropDownOpen })
+		}
+	}
+
+	handleClickOutside = (e: MouseEvent | TouchEvent) => {
+		const { isDropDownOpen } = this.state
+		const { options } = this.props
+
+		if (isDropDownOpen && !this.selectRef.current?.contains(e.target as Node)) {
+			this.setState({ options, isDropDownOpen: false })
+		}
+	}
+
+	handleSearch = (value: string) => {
+		const { options: propsOptions, onInput } = this.props
+
+		if (value) {
+			const lowerCaseValue = value.toLowerCase()
+			const filteredOptions = propsOptions.filter((opt) => {
+				return (
+					(typeof opt.value === 'string' && opt.value.toLowerCase().includes(lowerCaseValue)) ||
+					opt.label.toLowerCase().includes(lowerCaseValue)
+				)
+			})
+			this.setState({ options: filteredOptions })
+		} else {
+			this.setState({ options: propsOptions })
+		}
+		if (onInput) {
+			onInput(value)
+		}
+	}
+
+	handleSelect = (option: T) => {
+		const { options, onSelect } = this.props
+		const active = options.find((item) => item.value === option.value)
+
+		if (active) {
+			this.setState({ active })
+		}
+		this.setState({ isDropDownOpen: false })
+		onSelect(option)
+	}
+
+	render() {
+		const { active, options, isDropDownOpen } = this.state
+		const { value, position = 'bottom', placeHolder } = this.props
 		return (
-			<ReactSelect
-				isDisabled={!isActive}
-				placeholder={isActive ? placeholder : ''}
-				options={isActive ? options : []}
-				styles={colourStyles}
-				onChange={(e) => {
-					// @ts-ignore
-					handleSelect(e.value)
-				}}
-				defaultValue={defaultValue || ''}
-			/>
+			<SelectItem ref={this.selectRef}>
+				<DropDown>
+					<DropDownSelect onClick={this.handleDropDownToggle}>
+						{value?.label || placeHolder || 'Please select one option'}
+					</DropDownSelect>
+
+					{isDropDownOpen && (
+						<Dropdown<T>
+							position={position}
+							active={active}
+							onSelect={this.handleSelect}
+							placeHolder={placeHolder || 'Enter'}
+							options={options}
+							onInput={this.handleSearch}
+						/>
+					)}
+				</DropDown>
+			</SelectItem>
 		)
 	}
 }
 
-export default withTheme(Select)
+export default Select
