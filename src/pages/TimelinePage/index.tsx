@@ -28,8 +28,8 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		super(props)
 		this.state = {
 			isPopUpOpened: false,
-			date: '1DAY',
-			currency: 'BTC',
+			date: { label: '1 day', value: '1DAY' },
+			currency: { label: 'Bitcoin', value: 'BTC' },
 			isLoaded: false,
 			isError: false,
 			isChartCustom: false,
@@ -56,8 +56,8 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		const { data, fetchHistory } = this.props
 		const { currency, date } = this.state
 		observable.subscribe(this.handleLoadedData)
-		if (!data[`${currency}-${date}`]) {
-			fetchHistory({ currency, date })
+		if (!data[`${currency.value}-${date.value}`]) {
+			fetchHistory({ currency: currency.value, date: date.value })
 		} else {
 			this.setState({ isLoaded: true })
 		}
@@ -67,8 +67,8 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		const { data, fetchHistory } = this.props
 		const { currency, date } = this.state
 
-		if (!data[`${currency}-${date}`]) {
-			fetchHistory({ currency, date })
+		if (!data[`${currency.value}-${date.value}`]) {
+			fetchHistory({ currency: currency.value, date: date.value })
 		} else {
 			this.setState({ isLoaded: true })
 		}
@@ -89,11 +89,11 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		return toast.success('🦄 Data is loaded!', toastConfig)
 	}
 
-	handleDateSelect(date: string) {
+	handleDateSelect(date: { label: string; value: string }) {
 		this.setState({ date })
 	}
 
-	handleCurrencySelect(currency: string) {
+	handleCurrencySelect(currency: { label: string; value: string }) {
 		this.setState({ currency })
 	}
 
@@ -122,15 +122,14 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		const { data } = this.props
 		const { date, currency, isLoaded, isError, isChartCustom, customData, isPopUpOpened } =
 			this.state
+
 		const { currencyMocks, periodMocks } = TimelinePageMocks
 
-		const historyData = isChartCustom ? customData : data[`${currency}-${date}`]
+		const historyData = isChartCustom ? customData : data[`${currency.value}-${date.value}`]
 
-		const dateDefaultValue = periodMocks.find((item) => item.value === date)
-		const dateFilteredOptions = periodMocks.filter((item) => item.value !== date)
+		const dateDefaultValue = periodMocks.find((item) => item.value === date.value)
 
-		const currencyDefaultValue = currencyMocks.find((item) => item.value === currency)
-		const currencyFilteredOptions = currencyMocks.filter((item) => item.value !== currency)
+		const currencyDefaultValue = currencyMocks.find((item) => item.value === currency.value)
 
 		return (
 			<TimelinePageComp>
@@ -140,18 +139,16 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 					<TimelineContainer>
 						<TimelineSelects>
 							<Select
-								isActive={!isChartCustom}
-								placeholder="Select date"
-								options={dateFilteredOptions}
-								handleSelect={this.handleDateSelect}
-								defaultValue={dateDefaultValue}
+								options={currencyMocks}
+								value={currency}
+								onSelect={this.handleCurrencySelect}
+								isDisabled={isChartCustom}
 							/>
 							<Select
-								isActive={!isChartCustom}
-								placeholder="Select currency"
-								options={currencyFilteredOptions}
-								handleSelect={this.handleCurrencySelect}
-								defaultValue={currencyDefaultValue}
+								options={periodMocks}
+								value={date}
+								onSelect={this.handleDateSelect}
+								isDisabled={isChartCustom}
 							/>
 							<CustomChartBtn>
 								<input onClick={this.setCustomChart} type="checkbox" />

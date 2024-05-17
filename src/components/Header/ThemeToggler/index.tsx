@@ -16,9 +16,9 @@ export function ThemeToggler() {
 	}
 
 	return (
-		<ToggleLabel className="toggle-switch">
-			<ToggleInput data-testid="toggler" type="checkbox" checked={isToggled} onChange={onToggle} />
-			<ToggleSpan className="switch" />
+		<ToggleLabel>
+			<ToggleInput type="checkbox" checked={isToggled} onChange={onToggle} />
+			<ToggleSpan />
 		</ToggleLabel>
 	)
 }

@@ -16,20 +16,9 @@ import Select from 'components/Select'
 
 import { config } from './config'
 import { MapComponent, MapContainer, MapItem, MapMarker, MapPopUp } from './styled'
+import { Currency, MapState } from './types'
 
-class Map extends React.Component<
-	{},
-	{
-		currency: string
-		isLoading: boolean
-		popup: {
-			isOpen: boolean
-			name: string
-			latitude: number
-			longitude: number
-		}
-	}
-> {
+class Map extends React.Component<{}, MapState> {
 	constructor(props: {}) {
 		super(props)
 		this.state = {
@@ -39,7 +28,7 @@ class Map extends React.Component<
 				latitude: 0,
 				longitude: 0,
 			},
-			currency: 'USD',
+			currency: { label: 'US Dollar', value: 'USD' },
 			isLoading: true,
 		}
 		this.handleSelect = this.handleSelect.bind(this)
@@ -52,7 +41,7 @@ class Map extends React.Component<
 		mapboxgl.accessToken = process.env.MAPBOX_API_KEY
 	}
 
-	handleSelect(currency: string) {
+	handleSelect(currency: Currency) {
 		this.setState({ currency })
 	}
 
@@ -93,22 +82,15 @@ class Map extends React.Component<
 			popup: { isOpen, latitude, longitude, name },
 			isLoading,
 		} = this.state
-		const defultValue = currencies.find((curr) => curr.value === currency)
-		const optios = currencies.filter((currencyItem) => currencyItem.value !== currency)
-		const data = banks.filter((bank) => bank.currencies.includes(currency))
+
+		const data = banks.filter((bank) => bank.currencies.includes(currency.value))
 
 		return (
 			<MapComponent>
 				<ErrorBoundary fallback={<p>Something went wrong</p>}>
 					<MapContainer>
 						<h2>Search currency in the bank</h2>
-						<Select
-							defaultValue={defultValue}
-							isActive
-							handleSelect={this.handleSelect}
-							options={optios}
-							placeholder="Choose currency"
-						/>
+						<Select options={currencies} value={currency} onSelect={this.handleSelect} />
 					</MapContainer>
 					{isLoading && <LoadingSpinner />}
 					<MapItem>

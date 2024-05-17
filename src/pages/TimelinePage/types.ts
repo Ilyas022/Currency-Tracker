@@ -15,8 +15,8 @@ export interface TimelinePageProps {
 
 export interface TimelinePageState {
 	isPopUpOpened: boolean
-	date: string
-	currency: string
+	date: { label: string; value: string }
+	currency: { label: string; value: string }
 	isLoaded: boolean
 	isError: boolean
 	isChartCustom: boolean
