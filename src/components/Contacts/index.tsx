@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { config } from './config'
+import { contactsInfo, schema } from './config'
 import {
 	ContactsBtn,
 	ContactsContainer,
@@ -11,8 +11,6 @@ import {
 	ContactsInfoItem,
 	FormItem,
 } from './styled'
-
-const { schema, contactsInfo } = config
 
 function Contacts() {
 	const {

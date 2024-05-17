@@ -14,7 +14,7 @@ import { ErrorBoundary } from 'components/ErrorBoundary'
 import LoadingSpinner from 'components/LoadingSpinner'
 import Select from 'components/Select'
 
-import { config } from './config'
+import { banks, currencies, initialViewState, mapStyle } from './config'
 import { MapComponent, MapContainer, MapItem, MapMarker, MapPopUp } from './styled'
 import { Currency, MapState } from './types'
 
@@ -76,7 +76,6 @@ class Map extends React.Component<{}, MapState> {
 	}
 
 	render() {
-		const { banks, currencies, initialViewState, mapStyle } = config
 		const {
 			currency,
 			popup: { isOpen, latitude, longitude, name },

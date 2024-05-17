@@ -14,7 +14,7 @@ import React from 'react'
 import { Chart as ChartItem } from 'react-chartjs-2'
 
 import 'chartjs-adapter-date-fns'
-import { config } from './config'
+import { chartData, options, plugins } from './config'
 import { ChartContainer } from './styled'
 import { ChartItemProps } from './types'
 
@@ -24,7 +24,6 @@ class Chart extends React.PureComponent<ChartItemProps> {
 	render() {
 		const { optionsData, unit } = this.props
 
-		const { chartData, options, plugins } = config
 		const chartItems = optionsData.map(
 			({ price_close, price_open, price_low, price_high, time_open }) => ({
 				x: Date.parse(time_open),
