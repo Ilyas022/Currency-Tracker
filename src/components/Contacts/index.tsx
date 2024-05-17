@@ -76,7 +76,11 @@ function Contacts() {
 					</FormItem>
 
 					<FormItem>
-						<textarea {...register('message')} onBlur={() => trigger('message')} />
+						<textarea
+							{...register('message')}
+							onBlur={() => trigger('message')}
+							placeholder="Add your message"
+						/>
 						<p>{errors.message?.message}</p>
 					</FormItem>
 					<ContactsBtn type="submit">SUBMIT</ContactsBtn>
