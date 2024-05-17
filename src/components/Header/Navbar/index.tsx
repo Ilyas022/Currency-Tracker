@@ -13,7 +13,7 @@ function Navbar() {
 			<Navlink to={HOME_PAGE_ROUTE}>Home</Navlink>
 			<Navlink to={TIMELINE_PAGE_ROUTE}>Timeline</Navlink>
 			<Navlink to={BANK_PAGE_ROUTE}>Bank card</Navlink>
-			<Navlink to={CONTACTS_PAGE_ROUTE}>Contats</Navlink>
+			<Navlink to={CONTACTS_PAGE_ROUTE}>Contaсts</Navlink>
 		</NavbarComp>
 	)
 }
