@@ -8,7 +8,7 @@ import LoadingSpinner from 'components/LoadingSpinner'
 import observable from 'components/Observable'
 import Select from 'components/Select'
 import { RootState } from 'store/index'
-import { fetchHistory as fetchHistoryData } from 'store/slices/historySlice'
+import { fetchHistory as fetchHistoryData } from 'store/thunks/historyThunks'
 import { createErrorToast, createSuccessToast } from 'utils/createToast'
 
 import { TimelinePageMocks } from './config'

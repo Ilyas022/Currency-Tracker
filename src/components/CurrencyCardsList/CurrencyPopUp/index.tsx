@@ -4,7 +4,7 @@ import PopUp from 'components/PopUp'
 import Select from 'components/Select'
 import { useActions } from 'hooks/useActions'
 import { useTypedSelector } from 'hooks/useTypedSelector'
-import { selectCurrency } from 'store/selectors'
+import { selectCurrency } from 'store/selectors/currencySelectors'
 import { ResponseDataItem } from 'types/interfaces'
 
 import { Amount, Currencies, ExchangeItem } from './styled'
@@ -21,7 +21,6 @@ function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
 		if (!data) {
 			fetchCurrencyExchange(selectedCurrency.code)
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedCurrency])
 
 	const handleSelect = (curr: CurrencyOption) => {

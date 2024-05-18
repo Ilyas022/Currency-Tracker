@@ -1,6 +1,6 @@
-import { fetchCurrencyList, fetchCurrencyExchange } from './slices/curencySlice'
-import { fetchHistory } from './slices/historySlice'
 import themeSlice from './slices/themeSlice'
+import { fetchCurrencyExchange, fetchCurrencyList } from './thunks/currencyThunks'
+import { fetchHistory } from './thunks/historyThunks'
 
 const rootActions = {
 	fetchCurrencyList,

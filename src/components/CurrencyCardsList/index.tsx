@@ -4,7 +4,7 @@ import { ErrorBoundary } from 'components/ErrorBoundary'
 import LoadingSpinner from 'components/LoadingSpinner'
 import { useActions } from 'hooks/useActions'
 import { useTypedSelector } from 'hooks/useTypedSelector'
-import { selectCurrency } from 'store/selectors'
+import { selectCurrency } from 'store/selectors/currencySelectors'
 
 import CurrencyCard from './CurrencyCard'
 import { CurrencyList, ListContainer, ListTitle } from './styled'
