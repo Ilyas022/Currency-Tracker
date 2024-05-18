@@ -12,11 +12,9 @@ class HistoryDataPopUp extends React.PureComponent<HistoryDataPopUpProps, {}> {
 	constructor(props: HistoryDataPopUpProps) {
 		super(props)
 		this.state = {}
-
-		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
-	handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+	handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		const { handleAdd } = this.props
 		e.preventDefault()
 		const formData = new FormData(e.target as HTMLFormElement)

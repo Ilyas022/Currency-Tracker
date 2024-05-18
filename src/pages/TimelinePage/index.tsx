@@ -43,13 +43,6 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 				},
 			],
 		}
-
-		this.handleDateSelect = this.handleDateSelect.bind(this)
-		this.handleCurrencySelect = this.handleCurrencySelect.bind(this)
-		this.handleLoadedData = this.handleLoadedData.bind(this)
-		this.setCustomChart = this.setCustomChart.bind(this)
-		this.addHistoryData = this.addHistoryData.bind(this)
-		this.handleClosePopUp = this.handleClosePopUp.bind(this)
 	}
 
 	componentDidMount(): void {
@@ -78,7 +71,7 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		observable.unsubscribe(this.handleLoadedData)
 	}
 
-	handleLoadedData({ isLoaded, isError }: { isLoaded: boolean; isError?: boolean }) {
+	handleLoadedData = ({ isLoaded, isError }: { isLoaded: boolean; isError?: boolean }) => {
 		this.setState({ isLoaded })
 
 		if (isError) {
@@ -88,31 +81,31 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		return createSuccessToast('Data is loaded!')
 	}
 
-	handleDateSelect(date: { label: string; value: string }) {
+	handleDateSelect = (date: { label: string; value: string }) => {
 		this.setState({ date })
 	}
 
-	handleCurrencySelect(currency: { label: string; value: string }) {
+	handleCurrencySelect = (currency: { label: string; value: string }) => {
 		this.setState({ currency })
 	}
 
-	handleClosePopUp() {
+	handleClosePopUp = () => {
 		const { isPopUpOpened } = this.state
 		this.setState({ isPopUpOpened: !isPopUpOpened })
 	}
 
-	setCustomChart() {
+	setCustomChart = () => {
 		const { isChartCustom } = this.state
 		this.setState({ isChartCustom: !isChartCustom })
 	}
 
-	addHistoryData(data: {
+	addHistoryData = (data: {
 		time_open: string
 		price_open: number
 		price_high: number
 		price_low: number
 		price_close: number
-	}) {
+	}) => {
 		const { customData } = this.state
 		this.setState({ customData: [...customData, data] })
 	}

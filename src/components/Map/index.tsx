@@ -39,21 +39,17 @@ class Map extends React.Component<{}, MapState> {
 			currency: { label: 'US Dollar', value: 'USD' },
 			isLoading: true,
 		}
-		this.handleSelect = this.handleSelect.bind(this)
-		this.handleOpenPopUp = this.handleOpenPopUp.bind(this)
-		this.handleClosePopUp = this.handleClosePopUp.bind(this)
-		this.handleLoading = this.handleLoading.bind(this)
 	}
 
 	componentDidMount() {
 		mapboxgl.accessToken = process.env.MAPBOX_API_KEY
 	}
 
-	handleSelect(currency: Currency) {
+	handleSelect = (currency: Currency) => {
 		this.setState({ currency })
 	}
 
-	handleOpenPopUp({
+	handleOpenPopUp = ({
 		e,
 		longitude,
 		latitude,
@@ -63,7 +59,7 @@ class Map extends React.Component<{}, MapState> {
 		longitude: number
 		latitude: number
 		name: string
-	}) {
+	}) => {
 		e.originalEvent.stopPropagation()
 		this.setState({
 			popup: {
@@ -75,11 +71,11 @@ class Map extends React.Component<{}, MapState> {
 		})
 	}
 
-	handleClosePopUp() {
+	handleClosePopUp = () => {
 		this.setState({ popup: { isOpen: false, name: '', longitude: 0, latitude: 0 } })
 	}
 
-	handleLoading() {
+	handleLoading = () => {
 		this.setState({ isLoading: false })
 	}
 
