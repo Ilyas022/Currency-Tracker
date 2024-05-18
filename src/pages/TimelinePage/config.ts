@@ -1,5 +1,3 @@
-import { ToastPosition } from 'react-toastify'
-
 interface PeriodMocks {
 	value: string
 	label: string
@@ -36,17 +34,4 @@ export const TimelinePageMocks: TimelinePageMocks = {
 			value: 'GBP',
 		},
 	],
-}
-
-export const config = {
-	toastConfig: {
-		position: 'bottom-right' as ToastPosition,
-		autoClose: 5000,
-		hideProgressBar: false,
-		closeOnClick: true,
-		pauseOnHover: true,
-		draggable: false,
-		progress: undefined,
-		theme: 'light',
-	},
 }

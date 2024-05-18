@@ -1,7 +1,6 @@
 import { Dispatch, bindActionCreators } from '@reduxjs/toolkit'
 import React from 'react'
 import { connect } from 'react-redux'
-import { toast } from 'react-toastify'
 
 import ChartItem from 'components/Chart'
 import { ErrorBoundary } from 'components/ErrorBoundary'
@@ -10,8 +9,9 @@ import observable from 'components/Observable'
 import Select from 'components/Select'
 import { RootState } from 'store/index'
 import { fetchHistory as fetchHistoryData } from 'store/slices/historySlice'
+import { createErrorToast, createSuccessToast } from 'utils/createToast'
 
-import { TimelinePageMocks, config } from './config'
+import { TimelinePageMocks } from './config'
 import HistoryDataPopUp from './HistoryDataPopUp'
 import {
 	TimelinePageComp,
@@ -79,14 +79,13 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 	}
 
 	handleLoadedData({ isLoaded, isError }: { isLoaded: boolean; isError?: boolean }) {
-		const { toastConfig } = config
 		this.setState({ isLoaded })
 
 		if (isError) {
 			this.setState({ isError })
-			return toast.error('🦄 Something went wrong!', toastConfig)
+			return createErrorToast('Something went wrong!')
 		}
-		return toast.success('🦄 Data is loaded!', toastConfig)
+		return createSuccessToast('Data is loaded!')
 	}
 
 	handleDateSelect(date: { label: string; value: string }) {

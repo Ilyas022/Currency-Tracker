@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+
+import { createSuccessToast } from 'utils/createToast'
 
 import { contactsInfo, schema } from './config'
 import {
@@ -24,16 +25,7 @@ function Contacts() {
 	})
 
 	const onSubmit = handleSubmit(() => {
-		toast.success('🦄 We get your message', {
-			position: 'bottom-right',
-			autoClose: 5000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: true,
-			draggable: false,
-			progress: undefined,
-			theme: 'light',
-		})
+		createSuccessToast('We get your message!')
 		reset()
 	})
 
