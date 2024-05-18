@@ -32,14 +32,18 @@ function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
 		<PopUp title="Сurrency exchange" handleClose={handleClose}>
 			{data && (
 				<>
-					{data.map((item) => (
-						<ExchangeItem key={item.code}>
-							<Currencies>
-								{item.code} <span>to</span> {selectedCurrency.code}
-							</Currencies>
-							<Amount>{item.value % 1 === 0 ? item.value : item.value.toFixed(4)}</Amount>
-						</ExchangeItem>
-					))}
+					{data.map((item) => {
+						const isInt = item.value % 1 === 0
+
+						return (
+							<ExchangeItem key={item.code}>
+								<Currencies>
+									{item.code} <span>to</span> {selectedCurrency.code}
+								</Currencies>
+								<Amount>{isInt ? item.value : item.value.toFixed(4)}</Amount>
+							</ExchangeItem>
+						)
+					})}
 					<Select<ResponseDataItem>
 						position="top"
 						value={selectedCurrency}
