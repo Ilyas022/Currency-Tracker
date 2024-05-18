@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 import {
 	IDEAS_PAGE_ROUTE,
 	MARKET_PAGE_ROUTE,
@@ -8,6 +6,8 @@ import {
 	SPARKS_PAGE_ROUTE,
 	STREAMS_PAGE_ROUTE,
 } from 'constants/routes'
+
+import { FooterLink, FooterLinkContainer, FooterLinkItem, FooterLinkTitle } from './styled'
 
 export const mocks = {
 	footerInfo: {
@@ -31,14 +31,14 @@ export const mocks = {
 }
 
 export const footerLinks = Object.entries(mocks.footerInfo).map(([category, items]) => (
-	<div key={category}>
-		<h3>{category}</h3>
-		<div>
+	<FooterLinkItem key={category}>
+		<FooterLinkTitle>{category}</FooterLinkTitle>
+		<FooterLinkContainer>
 			{items.map(({ link, name }) => (
-				<Link to={link} key={name}>
+				<FooterLink to={link} key={name}>
 					{name}
-				</Link>
+				</FooterLink>
 			))}
-		</div>
-	</div>
+		</FooterLinkContainer>
+	</FooterLinkItem>
 ))

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { DropDownItem, DropDownMenu, SearchBar } from './styled'
+import { Container, DropDownItem, DropDownMenu, SearchBar } from './styled'
 import { DivRefProp, DropDownProps } from './types'
 
 class DropDown<T extends { label: string; value: string | number }> extends React.Component<
@@ -41,7 +41,7 @@ class DropDown<T extends { label: string; value: string | number }> extends Reac
 
 		return (
 			<DropDownMenu $position={position}>
-				<div ref={this.itemsEl}>
+				<Container ref={this.itemsEl}>
 					{options.map((option) => {
 						const isActive = option.value === active?.value
 						const props: DivRefProp = {}
@@ -60,7 +60,7 @@ class DropDown<T extends { label: string; value: string | number }> extends Reac
 							</DropDownItem>
 						)
 					})}
-				</div>
+				</Container>
 				<SearchBar
 					ref={this.inputRef}
 					type="text"

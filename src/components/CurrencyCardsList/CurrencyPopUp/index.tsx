@@ -7,7 +7,7 @@ import { useTypedSelector } from 'hooks/useTypedSelector'
 import { selectCurrency } from 'store/selectors'
 import { ResponseDataItem } from 'types/interfaces'
 
-import { ExchangeItem } from './styled'
+import { Amount, Currencies, ExchangeItem } from './styled'
 import { CurrencyOption, CurrencyPopUpProps } from './types'
 
 function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
@@ -34,10 +34,10 @@ function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
 				<>
 					{data.map((item) => (
 						<ExchangeItem key={item.code}>
-							<p>
+							<Currencies>
 								{item.code} <span>to</span> {selectedCurrency.code}
-							</p>
-							<p>{item.value % 1 === 0 ? item.value : item.value.toFixed(4)}</p>
+							</Currencies>
+							<Amount>{item.value % 1 === 0 ? item.value : item.value.toFixed(4)}</Amount>
 						</ExchangeItem>
 					))}
 					<Select<ResponseDataItem>

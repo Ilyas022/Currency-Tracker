@@ -1,7 +1,15 @@
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
-import { getBorders, getColors, getFonts, getGaps, getIndents, getSizes } from 'utils/themeGetters'
+import {
+	getBorders,
+	getColors,
+	getFonts,
+	getGaps,
+	getIndents,
+	getSizes,
+	getlineHeights,
+} from 'utils/themeGetters'
 
 const smallScreenEnd = '1024px'
 
@@ -36,20 +44,20 @@ export const PopUpContainer = styled.div`
 
 export const PopUpHeader = styled.div`
 	padding: ${(props) => getIndents(props, 3)} 0;
-	border-bottom: ${(props) => getBorders(props, 0)} solid black;
+	border-bottom: ${(props) => getBorders(props, 0)} solid ${(props) => getColors(props).popUpBg};
+`
 
-	& > p {
-		font-size: ${(props) => getFonts(props, 4, 4)};
-		line-height: 120%;
-		text-align: center;
+export const Title = styled.p`
+	font-size: ${(props) => getFonts(props, 4, 4)};
+	line-height: ${(props) => getlineHeights(props, 5, 8)};
+	text-align: center;
 
-		@media ${device.md} {
-			font-size: ${(props) => getFonts(props, 2)};
-		}
+	@media ${device.md} {
+		font-size: ${(props) => getFonts(props, 2)};
+	}
 
-		@media ${device.sm} {
-			font-size: ${(props) => getFonts(props, 1, 2)};
-		}
+	@media ${device.sm} {
+		font-size: ${(props) => getFonts(props, 1, 2)};
 	}
 `
 
@@ -58,7 +66,7 @@ export const PopUpBody = styled.div`
 	flex-direction: column;
 	gap: ${(props) => getGaps(props, 2)};
 	font-size: ${(props) => getFonts(props, 2)};
-	line-height: 120%;
+	line-height: ${(props) => getlineHeights(props, 5, 8)};
 	padding: ${(props) => getIndents(props, 3)} 0;
 
 	@media ${device.md} {

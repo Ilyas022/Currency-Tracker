@@ -1,10 +1,10 @@
-import { UpdateTimeComp } from './styled'
+import { Icon, Text, UpdateTimeComp } from './styled'
 
 function UpdateTime() {
 	return (
 		<UpdateTimeComp>
-			<span />
-			<p>Last updated at 11:59pm</p>
+			<Icon />
+			<Text>Last updated at 11:59pm</Text>
 		</UpdateTimeComp>
 	)
 }

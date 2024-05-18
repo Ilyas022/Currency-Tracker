@@ -15,7 +15,15 @@ import LoadingSpinner from 'components/LoadingSpinner'
 import Select from 'components/Select'
 
 import { banks, currencies, initialViewState, mapStyle } from './config'
-import { MapComponent, MapContainer, MapItem, MapMarker, MapPopUp } from './styled'
+import {
+	MapComponent,
+	MapContainer,
+	MapItem,
+	MapMarker,
+	MapPopUp,
+	MarkerContainer,
+	Title,
+} from './styled'
 import { Currency, MapState } from './types'
 
 class Map extends React.Component<{}, MapState> {
@@ -88,7 +96,7 @@ class Map extends React.Component<{}, MapState> {
 			<MapComponent>
 				<ErrorBoundary fallback={<p>Something went wrong</p>}>
 					<MapContainer>
-						<h2>Search currency in the bank</h2>
+						<Title>Search currency in the bank</Title>
 						<Select options={currencies} value={currency} onSelect={this.handleSelect} />
 					</MapContainer>
 					{isLoading && <LoadingSpinner />}
@@ -104,7 +112,7 @@ class Map extends React.Component<{}, MapState> {
 							<NavigationControl position="top-left" />
 							<ScaleControl />
 							{data.map((bank) => (
-								<div key={bank.id}>
+								<MarkerContainer key={bank.id}>
 									<MapMarker
 										latitude={bank.latitude}
 										longitude={bank.longitude}
@@ -117,7 +125,7 @@ class Map extends React.Component<{}, MapState> {
 											})
 										}
 									/>
-								</div>
+								</MarkerContainer>
 							))}
 							{isOpen && (
 								<MapPopUp

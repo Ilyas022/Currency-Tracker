@@ -10,7 +10,15 @@ import {
 	ContactsForm,
 	ContactsInfo,
 	ContactsInfoItem,
+	ContactsItemContainer,
+	ContactsItemText,
+	ContactsItemTitle,
+	ContactsWrapper,
+	ErrorMessage,
 	FormItem,
+	FormTitle,
+	Input,
+	TextArea,
 } from './styled'
 
 function Contacts() {
@@ -30,53 +38,53 @@ function Contacts() {
 	})
 
 	return (
-		<div>
+		<ContactsWrapper>
 			<ContactsContainer>
 				<ContactsInfo>
 					{contactsInfo.map((item) => (
 						<ContactsInfoItem key={item.title}>
-							<div>
+							<ContactsItemContainer>
 								{item.icon}
-								<p>{item.title}</p>
-							</div>
-							<p>{item.content}</p>
+								<ContactsItemTitle>{item.title}</ContactsItemTitle>
+							</ContactsItemContainer>
+							<ContactsItemText>{item.content}</ContactsItemText>
 						</ContactsInfoItem>
 					))}
 				</ContactsInfo>
 
 				<ContactsForm onSubmit={onSubmit}>
-					<h2>CONTACT US</h2>
+					<FormTitle>CONTACT US</FormTitle>
 
 					<FormItem>
-						<input
+						<Input
 							{...register('name')}
 							onBlur={() => trigger('name')}
 							placeholder="Enter your name"
 						/>
-						<p>{errors.name?.message}</p>
+						<ErrorMessage>{errors.name?.message}</ErrorMessage>
 					</FormItem>
 
 					<FormItem>
-						<input
+						<Input
 							{...register('email')}
 							placeholder="Enter email"
 							onBlur={() => trigger('email')}
 						/>
-						<p>{errors.email?.message}</p>
+						<ErrorMessage>{errors.email?.message}</ErrorMessage>
 					</FormItem>
 
 					<FormItem>
-						<textarea
+						<TextArea
 							{...register('message')}
 							onBlur={() => trigger('message')}
 							placeholder="Add your message"
 						/>
-						<p>{errors.message?.message}</p>
+						<ErrorMessage>{errors.message?.message}</ErrorMessage>
 					</FormItem>
 					<ContactsBtn type="submit">SUBMIT</ContactsBtn>
 				</ContactsForm>
 			</ContactsContainer>
-		</div>
+		</ContactsWrapper>
 	)
 }
 

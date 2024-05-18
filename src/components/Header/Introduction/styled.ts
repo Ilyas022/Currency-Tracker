@@ -1,58 +1,60 @@
 import styled from 'styled-components'
 
-import { device } from 'src/constants/breakpoints'
-import { getColors } from 'src/utils/themeGetters'
-
-const titleFontSize = '76px'
-const titleLineHeight = '114px'
-
-const subTitleFontSize = '90px'
-const subTitleLineHeight = '110%'
+import { device } from 'constants/breakpoints'
+import {
+	getColors,
+	getFonts,
+	getGaps,
+	getIndents,
+	getSizes,
+	getlineHeights,
+} from 'utils/themeGetters'
 
 const descriptionFontSize = '25px'
 const descriptionLineHeight = '187%'
 
 export const IntroComp = styled.div`
 	width: 100%;
-	height: 417px;
-	margin: 0 auto 65px;
+	height: ${(props) => getSizes(props, 10, -28)};
+	margin: 0 auto ${(props) => getIndents(props, 6, 9)};
 	background: ${({ theme }) => theme.colors.primaryBgGradient};
 
 	@media ${device.lg} {
 		height: auto;
-		margin-bottom: 36px;
+		margin-bottom: ${(props) => getIndents(props, 5, -4)};
 	}
 `
 
 export const IntroContainer = styled.div`
 	display: flex;
-	gap: 7px;
-	max-width: 1351px;
+	gap: ${(props) => getGaps(props, 0, -1)};
+	max-width: ${(props) => getSizes(props, 16, -49)};
 	margin: 0 auto;
-	padding-top: 34px;
+	padding-top: ${(props) => getIndents(props, 5, -6)};
 
 	@media ${device.lg} {
 		justify-content: center;
-		padding: 34px;
+		padding: ${(props) => getIndents(props, 5, -6)};
 	}
 
 	@media ${device.xs} {
-		padding: 20px 0 16px;
+		padding: ${(props) => getIndents(props, 3)} 0 ${(props) => getIndents(props, 2)};
 	}
 
 	& > svg {
 		margin-top: 11px;
-		width: 301px;
-		height: 314px;
+		width: ${(props) => getSizes(props, 9, -49)};
+		height: ${(props) => getSizes(props, 9, -36)};
 
 		@media ${device.lg} {
-			width: 250px;
-			height: 230px;
+			width: ${(props) => getSizes(props, 8, -5)};
+			height: ${(props) => getSizes(props, 8, -25)};
 		}
 	}
 `
+
 export const IntroInfo = styled.div`
-	flex-basis: 772px;
+	flex-basis: ${(props) => getSizes(props, 13, -18)};
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -60,76 +62,77 @@ export const IntroInfo = styled.div`
 	@media ${device.lg} {
 		align-items: center;
 	}
+`
 
-	& > h1 {
-		padding-left: 21px;
-		margin-bottom: 16px;
+export const Text = styled.p`
+	text-align: center;
+	align-self: flex-end;
+	max-width: ${(props) => getSizes(props, 9, 39)};
+	font-weight: ${({ theme }) => theme.fontWeights[0]};
+	font-size: ${descriptionFontSize};
+	line-height: ${descriptionLineHeight};
+	color: ${(props) => getColors(props).textSecondary};
 
-		font-weight: ${({ theme }) => theme.fontWeights[3]};
-		font-size: ${titleFontSize};
-		line-height: ${titleLineHeight};
-		text-align: right;
-		background: ${({ theme }) => theme.colors.textGradient};
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
+	@media ${device.lg} {
+		align-self: auto;
+	}
+
+	@media ${device.sm} {
+		font-size: ${(props) => getFonts(props, 0, -2)};
+		max-width: 60%;
+	}
+`
+
+export const Title = styled.h1`
+	padding-left: ${(props) => getIndents(props, 3, 1)};
+	margin-bottom: ${(props) => getIndents(props, 2)};
+
+	font-weight: ${({ theme }) => theme.fontWeights[3]};
+	font-size: ${(props) => getFonts(props, 8, 20)};
+	line-height: ${(props) => getlineHeights(props, 5, 2)};
+	text-align: right;
+	background: ${({ theme }) => theme.colors.textGradient};
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	@media ${device.lg} {
+		text-align: center;
+		padding-left: 0px;
+		line-height: ${(props) => getlineHeights(props, 5, 8)};
+	}
+
+	@media ${device.md} {
+		font-size: ${(props) => getFonts(props, 8, -1)};
+		line-height: ${(props) => getlineHeights(props, 5, 8)};
+	}
+
+	@media ${device.sm} {
+		font-size: ${(props) => getFonts(props, 6)};
+		line-height: ${(props) => getlineHeights(props, 5, 3)};
+	}
+`
+
+export const TitleItem = styled.span`
+	display: block;
+
+	&:first-child {
+		padding-right: ${(props) => getIndents(props, 6, -5)};
 
 		@media ${device.lg} {
-			text-align: center;
-			padding-left: 0px;
-			line-height: 120%;
-		}
-
-		@media ${device.md} {
-			font-size: 55px;
-			line-height: 120%;
-		}
-
-		@media ${device.sm} {
-			font-size: 38px;
-			line-height: 115%;
-		}
-
-		& > span {
-			display: block;
-		}
-		& > span:first-child {
-			padding-right: 51px;
-
-			@media ${device.lg} {
-				padding-right: 0px;
-			}
-		}
-
-		& > span:last-child {
-			font-size: ${subTitleFontSize};
-			padding-right: 41px;
-			line-height: ${subTitleLineHeight};
-
-			@media ${device.lg} {
-				padding-right: 0px;
-				font-size: inherit;
-				line-height: inherit;
-			}
+			padding-right: 0px;
 		}
 	}
 
-	& > p {
-		text-align: center;
-		align-self: flex-end;
-		max-width: 389px;
-		font-weight: ${({ theme }) => theme.fontWeights[0]};
-		font-size: ${descriptionFontSize};
-		line-height: ${descriptionLineHeight};
-		color: ${(props) => getColors(props).textSecondary};
+	&:last-child {
+		font-size: ${(props) => getFonts(props, 8, 34)};
+		padding-right: ${(props) => getIndents(props, 5, 1)};
+		line-height: ${(props) => getlineHeights(props, 5, -2)};
 
 		@media ${device.lg} {
-			align-self: auto;
-		}
-
-		@media ${device.sm} {
-			font-size: 12px;
-			max-width: 60%;
+			padding-right: 0px;
+			font-size: inherit;
+			line-height: inherit;
 		}
 	}
 `

@@ -7,8 +7,11 @@ import {
 	FooterComp,
 	FooterContainer,
 	FooterInfo,
+	FooterInfoText,
+	FooterInner,
 	FooterLinks,
 	FooterLogo,
+	FooterLogoText,
 	FooterRights,
 } from './styled'
 
@@ -19,16 +22,16 @@ function Footer() {
 	return (
 		<FooterComp>
 			<FooterContainer>
-				<div>
+				<FooterInner>
 					<FooterInfo>
 						<FooterLogo>
 							<Logo />
-							<p>{title}</p>
+							<FooterLogoText>{title}</FooterLogoText>
 						</FooterLogo>
-						{isDesktop && <p>{description}</p>}
+						{isDesktop && <FooterInfoText>{description}</FooterInfoText>}
 					</FooterInfo>
 					{isMobile ? <Accordion /> : <FooterLinks>{footerLinks}</FooterLinks>}
-				</div>
+				</FooterInner>
 				<FooterRights>{rights}</FooterRights>
 			</FooterContainer>
 		</FooterComp>
