@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 
 import { useScrollLock } from 'hooks/useScrollLock'
 
-import { CloseBtn, PopUpComp, PopUpBody, PopUpContainer, PopUpHeader } from './styled'
+import { CloseBtn, PopUpComp, PopUpBody, PopUpContainer, PopUpHeader, Title } from './styled'
 import { PopUpProps } from './types'
 
 function PopUp({ children, title, handleClose }: PopUpProps) {
@@ -23,7 +23,7 @@ function PopUp({ children, title, handleClose }: PopUpProps) {
 		<PopUpComp onClick={handleClickOutside} ref={ref}>
 			<PopUpContainer>
 				<PopUpHeader>
-					<p>{title}</p>
+					<Title>{title}</Title>
 					<CloseBtn onClick={handleClose} />
 				</PopUpHeader>
 				<PopUpBody>{children}</PopUpBody>

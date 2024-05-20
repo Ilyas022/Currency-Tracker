@@ -14,8 +14,16 @@ import { ErrorBoundary } from 'components/ErrorBoundary'
 import LoadingSpinner from 'components/LoadingSpinner'
 import Select from 'components/Select'
 
-import { config } from './config'
-import { MapComponent, MapContainer, MapItem, MapMarker, MapPopUp } from './styled'
+import { banks, currencies, initialViewState, mapStyle } from './config'
+import {
+	MapComponent,
+	MapContainer,
+	MapItem,
+	MapMarker,
+	MapPopUp,
+	MarkerContainer,
+	Title,
+} from './styled'
 import { Currency, MapState } from './types'
 
 class Map extends React.Component<{}, MapState> {
@@ -31,21 +39,17 @@ class Map extends React.Component<{}, MapState> {
 			currency: { label: 'US Dollar', value: 'USD' },
 			isLoading: true,
 		}
-		this.handleSelect = this.handleSelect.bind(this)
-		this.handleOpenPopUp = this.handleOpenPopUp.bind(this)
-		this.handleClosePopUp = this.handleClosePopUp.bind(this)
-		this.handleLoading = this.handleLoading.bind(this)
 	}
 
 	componentDidMount() {
 		mapboxgl.accessToken = process.env.MAPBOX_API_KEY
 	}
 
-	handleSelect(currency: Currency) {
+	handleSelect = (currency: Currency) => {
 		this.setState({ currency })
 	}
 
-	handleOpenPopUp({
+	handleOpenPopUp = ({
 		e,
 		longitude,
 		latitude,
@@ -55,7 +59,7 @@ class Map extends React.Component<{}, MapState> {
 		longitude: number
 		latitude: number
 		name: string
-	}) {
+	}) => {
 		e.originalEvent.stopPropagation()
 		this.setState({
 			popup: {
@@ -67,16 +71,15 @@ class Map extends React.Component<{}, MapState> {
 		})
 	}
 
-	handleClosePopUp() {
+	handleClosePopUp = () => {
 		this.setState({ popup: { isOpen: false, name: '', longitude: 0, latitude: 0 } })
 	}
 
-	handleLoading() {
+	handleLoading = () => {
 		this.setState({ isLoading: false })
 	}
 
 	render() {
-		const { banks, currencies, initialViewState, mapStyle } = config
 		const {
 			currency,
 			popup: { isOpen, latitude, longitude, name },
@@ -89,7 +92,7 @@ class Map extends React.Component<{}, MapState> {
 			<MapComponent>
 				<ErrorBoundary fallback={<p>Something went wrong</p>}>
 					<MapContainer>
-						<h2>Search currency in the bank</h2>
+						<Title>Search currency in the bank</Title>
 						<Select options={currencies} value={currency} onSelect={this.handleSelect} />
 					</MapContainer>
 					{isLoading && <LoadingSpinner />}
@@ -105,7 +108,7 @@ class Map extends React.Component<{}, MapState> {
 							<NavigationControl position="top-left" />
 							<ScaleControl />
 							{data.map((bank) => (
-								<div key={bank.id}>
+								<MarkerContainer key={bank.id}>
 									<MapMarker
 										latitude={bank.latitude}
 										longitude={bank.longitude}
@@ -118,7 +121,7 @@ class Map extends React.Component<{}, MapState> {
 											})
 										}
 									/>
-								</div>
+								</MarkerContainer>
 							))}
 							{isOpen && (
 								<MapPopUp

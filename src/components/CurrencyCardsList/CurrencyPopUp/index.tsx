@@ -4,10 +4,10 @@ import PopUp from 'components/PopUp'
 import Select from 'components/Select'
 import { useActions } from 'hooks/useActions'
 import { useTypedSelector } from 'hooks/useTypedSelector'
-import { selectCurrency } from 'store/selectors'
+import { selectCurrency } from 'store/selectors/currencySelectors'
 import { ResponseDataItem } from 'types/interfaces'
 
-import { ExchangeItem } from './styled'
+import { Amount, Currencies, ExchangeItem } from './styled'
 import { CurrencyOption, CurrencyPopUpProps } from './types'
 
 function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
@@ -21,7 +21,6 @@ function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
 		if (!data) {
 			fetchCurrencyExchange(selectedCurrency.code)
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedCurrency])
 
 	const handleSelect = (curr: CurrencyOption) => {
@@ -32,14 +31,18 @@ function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
 		<PopUp title="Сurrency exchange" handleClose={handleClose}>
 			{data && (
 				<>
-					{data.map((item) => (
-						<ExchangeItem key={item.code}>
-							<p>
-								{item.code} <span>to</span> {selectedCurrency.code}
-							</p>
-							<p>{item.value % 1 === 0 ? item.value : item.value.toFixed(4)}</p>
-						</ExchangeItem>
-					))}
+					{data.map((item) => {
+						const isInt = item.value % 1 === 0
+
+						return (
+							<ExchangeItem key={item.code}>
+								<Currencies>
+									{item.code} <span>to</span> {selectedCurrency.code}
+								</Currencies>
+								<Amount>{isInt ? item.value : item.value.toFixed(4)}</Amount>
+							</ExchangeItem>
+						)
+					})}
 					<Select<ResponseDataItem>
 						position="top"
 						value={selectedCurrency}

@@ -2,7 +2,7 @@ import { Marker, Popup } from 'react-map-gl'
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
-import { getFonts, getIndents, getSizes } from 'utils/themeGetters'
+import { getColors, getFonts, getIndents, getSizes } from 'utils/themeGetters'
 
 export const MapComponent = styled.div`
 	max-width: ${(props) => getSizes(props, 16, 80)};
@@ -15,20 +15,21 @@ export const MapContainer = styled.div`
 	margin: 0 auto ${(props) => getIndents(props, 5)};
 	max-width: ${(props) => getSizes(props, 12)};
 	width: 100%;
+`
 
-	& > h2 {
-		font-size: ${(props) => getFonts(props, 6)};
-		margin-bottom: ${(props) => getIndents(props, 5)};
-		text-align: center;
+export const Title = styled.h2`
+	font-size: ${(props) => getFonts(props, 6)};
+	margin-bottom: ${(props) => getIndents(props, 5)};
+	text-align: center;
 
-		@media ${device.md} {
-			font-size: ${(props) => getFonts(props, 2)};
-		}
+	@media ${device.md} {
+		font-size: ${(props) => getFonts(props, 2)};
 	}
 `
 
 export const MapPopUp = styled(Popup)`
-	color: black;
+	color: ${(props) => getColors(props).popUpBg};
+
 	& > :last-child {
 		padding: ${(props) => getIndents(props, 3)};
 		font-size: ${(props) => getFonts(props, 1)};
@@ -57,3 +58,5 @@ export const MapItem = styled.div`
 export const MapMarker = styled(Marker)`
 	cursor: pointer;
 `
+
+export const MarkerContainer = styled.div``

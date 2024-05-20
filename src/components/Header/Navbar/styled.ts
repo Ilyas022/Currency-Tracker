@@ -2,43 +2,42 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { device } from 'constants/breakpoints'
-import { getColors } from 'utils/themeGetters'
-
-const lineHeight = '206%'
+import { getColors, getFontWeights, getFonts, getGaps, getlineHeights } from 'utils/themeGetters'
 
 export const NavbarComp = styled.nav`
 	display: flex;
-	gap: 113px;
+	gap: ${(props) => getGaps(props, 6, -7)};
 
 	@media ${device.lg} {
-		gap: 70px;
+		gap: ${(props) => getGaps(props, 5, 30)};
 	}
 
 	@media ${device.md} {
-		gap: 40px;
+		gap: ${(props) => getGaps(props, 5)};
 	}
 
 	@media ${device.sm} {
-		gap: 16px;
+		gap: ${(props) => getGaps(props, 1)};
+		display: none;
 	}
 `
 
 export const Navlink = styled(NavLink)`
 	color: ${(props) => getColors(props).textPrimary};
-	font-weight: ${({ theme }) => theme.fontWeights[0]};
-	font-size: ${({ theme }) => `${theme.fonts[2]}px`};
-	line-height: ${lineHeight};
+	font-weight: ${(props) => getFontWeights(props, 0)};
+	font-size: ${(props) => getFonts(props, 2)};
+	line-height: ${(props) => getlineHeights(props, 6, 56)};
 
 	@media ${device.md} {
-		font-size: 18px;
-		line-height: 120%;
+		font-size: ${(props) => getFonts(props, 1, 2)};
+		line-height: ${(props) => getlineHeights(props, 5, 8)};
 	}
 
 	@media ${device.sm} {
-		font-size: 14px;
+		font-size: ${(props) => getFonts(props, 0)};
 	}
 
 	@media ${device.xs} {
-		font-size: 10px;
+		font-size: ${(props) => getFonts(props, 0, -4)};
 	}
 `

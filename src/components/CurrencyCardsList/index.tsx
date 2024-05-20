@@ -4,7 +4,7 @@ import { ErrorBoundary } from 'components/ErrorBoundary'
 import LoadingSpinner from 'components/LoadingSpinner'
 import { useActions } from 'hooks/useActions'
 import { useTypedSelector } from 'hooks/useTypedSelector'
-import { selectCurrency } from 'store/selectors'
+import { selectCurrency } from 'store/selectors/currencySelectors'
 
 import CurrencyCard from './CurrencyCard'
 import { CurrencyList, ListContainer, ListTitle } from './styled'
@@ -24,9 +24,17 @@ function CurrencyCardsList() {
 			<ErrorBoundary fallback={<p>Something went wrong!</p>}>
 				{isLoading && <LoadingSpinner />}
 				<ListContainer>
-					{currencyList.map(({ code, label, value }) => (
-						<CurrencyCard code={code} label={label} value={value} key={code} base={baseCurrency} />
-					))}
+					{currencyList &&
+						currencyList.map(({ code, label, value }) => (
+							<CurrencyCard
+								code={code}
+								label={label}
+								value={value}
+								key={code}
+								base={baseCurrency}
+							/>
+						))}
+					{!currencyList && <p>Something went wrong!</p>}
 				</ListContainer>
 			</ErrorBoundary>
 		</CurrencyList>

@@ -12,11 +12,11 @@ export const DropDownMenu = styled.div<{ $position: 'top' | 'bottom' }>`
 	border-top: 0;
 	background-color: ${(props) => getColors(props).selectBg};
 	z-index: 5;
+`
 
-	& > div {
-		max-height: ${(props) => getSizes(props, 8, -45)};
-		overflow-y: auto;
-	}
+export const Container = styled.div`
+	max-height: ${(props) => getSizes(props, 8, -45)};
+	overflow-y: auto;
 `
 
 export const SearchBar = styled.input`

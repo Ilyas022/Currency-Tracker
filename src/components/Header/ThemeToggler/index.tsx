@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { useActions } from 'src/hooks/useActions'
 import { useTypedSelector } from 'src/hooks/useTypedSelector'
-import { selectTheme } from 'src/store/selectors'
+import { selectTheme } from 'store/selectors/themeSelectors'
 
 import { ToggleInput, ToggleLabel, ToggleSpan } from './styled'
 

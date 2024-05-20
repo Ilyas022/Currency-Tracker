@@ -1,4 +1,4 @@
-import { fetchHistory } from 'store/slices/historySlice'
+import { fetchHistory } from 'store/thunks/historyThunks'
 
 export interface TimelinePageProps {
 	data: {
@@ -10,6 +10,7 @@ export interface TimelinePageProps {
 			price_close: number
 		}[]
 	}
+	status: string
 	fetchHistory: typeof fetchHistory
 }
 
