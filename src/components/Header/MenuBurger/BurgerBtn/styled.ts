@@ -6,6 +6,7 @@ import { getBordersRadii, getIndents, getSizes } from 'utils/themeGetters'
 export const BurgerBtn = styled.div`
 	display: none;
 	position: relative;
+	z-index: 10;
 
 	@media ${device.sm} {
 		display: block;
