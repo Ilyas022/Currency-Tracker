@@ -24,9 +24,17 @@ function CurrencyCardsList() {
 			<ErrorBoundary fallback={<p>Something went wrong!</p>}>
 				{isLoading && <LoadingSpinner />}
 				<ListContainer>
-					{currencyList.map(({ code, label, value }) => (
-						<CurrencyCard code={code} label={label} value={value} key={code} base={baseCurrency} />
-					))}
+					{currencyList &&
+						currencyList.map(({ code, label, value }) => (
+							<CurrencyCard
+								code={code}
+								label={label}
+								value={value}
+								key={code}
+								base={baseCurrency}
+							/>
+						))}
+					{!currencyList && <p>Something went wrong!</p>}
 				</ListContainer>
 			</ErrorBoundary>
 		</CurrencyList>

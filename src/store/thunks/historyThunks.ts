@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import observable from 'components/Observable'
-import { axiosInstanceHistory } from 'utils/axios'
+import { getHistory } from 'src/api/requests/history'
 
 export const fetchHistory = createAsyncThunk<
 	{
@@ -17,32 +17,13 @@ export const fetchHistory = createAsyncThunk<
 		date: string
 		currency: string
 	}
->('history/fetchHistory', async ({ currency, date }) => {
+>('history/fetchHistory', async ({ currency, date }, { rejectWithValue }) => {
 	try {
-		const res = await axiosInstanceHistory.get(
-			`BITSTAMP_SPOT_${currency}_USD/history?period_id=${date}`,
-			{
-				transformResponse: (response) => {
-					const data = JSON.parse(response)
-
-					const result: {
-						[key: string]: {
-							time_open: string
-							price_open: number
-							price_high: number
-							price_low: number
-							price_close: number
-						}[]
-					} = {}
-					result[`${currency}-${date}`] = data
-					return result
-				},
-			}
-		)
+		const res = await getHistory(currency, date)
 		observable.notify({ isLoaded: true })
 		return res.data
 	} catch (error) {
 		observable.notify({ isLoaded: false, isError: true })
-		return error
+		return rejectWithValue(error)
 	}
 })

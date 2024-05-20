@@ -56,11 +56,12 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		}
 	}
 
-	componentDidUpdate() {
-		const { data, fetchHistory } = this.props
+	componentDidUpdate(prevProps: TimelinePageProps, prevState: TimelinePageState) {
+		const { data, fetchHistory, status } = this.props
 		const { currency, date } = this.state
+		const isupdated = prevState.date !== date || prevState.currency !== currency
 
-		if (!data[`${currency.value}-${date.value}`]) {
+		if (status !== 'failed' && isupdated && !data[`${currency.value}-${date.value}`]) {
 			fetchHistory({ currency: currency.value, date: date.value })
 		} else {
 			this.setState({ isLoaded: true })
@@ -178,6 +179,7 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 
 const mapStateToProps = (state: RootState) => ({
 	data: state.history.data,
+	status: state.history.status,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

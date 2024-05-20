@@ -31,13 +31,23 @@ const currencySlice = createSlice({
 				return { ...state, baseCurrency: currency, currencyList: data, status: 'fulfiled' }
 			})
 			.addCase(fetchCurrencyList.rejected, (state) => {
-				return { ...state, status: 'failed' }
+				return {
+					...state,
+					baseCurrency: state.baseCurrency,
+					currencyList: state.currencyList,
+					status: 'failed',
+				}
 			})
 			.addCase(fetchCurrencyExchange.fulfilled, (state, action) => {
 				const data = action.payload
 				return {
 					...state,
 					currencyExchangeList: { ...state.currencyExchangeList, ...data },
+				}
+			})
+			.addCase(fetchCurrencyExchange.rejected, (state) => {
+				return {
+					...state,
 				}
 			})
 	},
