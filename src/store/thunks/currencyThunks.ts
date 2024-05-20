@@ -16,7 +16,7 @@ export const fetchCurrencyExchange = createAsyncThunk<
 })
 
 export const fetchCurrencyList = createAsyncThunk<
-	{ data: ResponseDataItem[]; currency: string },
+	{ data: ResponseDataItem[]; currency: string; updatedAt: string },
 	string | undefined
 	// eslint-disable-next-line default-param-last
 >('currency/getList', async (currency = 'USD', { rejectWithValue }) => {

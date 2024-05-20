@@ -37,6 +37,7 @@ export const getCurrencyList = (currency: string) => {
 					label: currencyNames[item.code],
 				})),
 				currency,
+				updatedAt: data.meta.last_updated_at,
 			}
 			return result
 		},

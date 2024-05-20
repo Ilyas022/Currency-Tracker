@@ -8,6 +8,7 @@ interface CurrencySlice {
 	currencyExchangeList: CurrencyExchangeList
 	baseCurrency: string
 	status: string
+	updatedAt: string
 }
 
 const initialState: CurrencySlice = {
@@ -15,6 +16,7 @@ const initialState: CurrencySlice = {
 	currencyExchangeList: {},
 	baseCurrency: 'USD',
 	status: '',
+	updatedAt: new Date().toISOString(),
 }
 
 const currencySlice = createSlice({
@@ -27,8 +29,14 @@ const currencySlice = createSlice({
 				return { ...state, status: 'loading' }
 			})
 			.addCase(fetchCurrencyList.fulfilled, (state, action) => {
-				const { currency, data } = action.payload
-				return { ...state, baseCurrency: currency, currencyList: data, status: 'fulfiled' }
+				const { currency, data, updatedAt } = action.payload
+				return {
+					...state,
+					baseCurrency: currency,
+					currencyList: data,
+					status: 'fulfiled',
+					updatedAt,
+				}
 			})
 			.addCase(fetchCurrencyList.rejected, (state) => {
 				return {
