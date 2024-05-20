@@ -54,7 +54,7 @@ export const IntroContainer = styled.div`
 `
 
 export const IntroInfo = styled.div`
-	flex-basis: ${(props) => getSizes(props, 13, -18)};
+	flex-basis: ${(props) => getSizes(props, 13, 32)};
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;

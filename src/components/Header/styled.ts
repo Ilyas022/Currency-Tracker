@@ -37,6 +37,12 @@ export const HeaderContainer = styled.div`
 			getIndents(props, 1, 1)};
 	}
 
+	& > label {
+		@media ${device.sm} {
+			display: none;
+		}
+	}
+
 	& > a {
 		margin-right: ${(props) => getIndents(props, 10, -145)};
 

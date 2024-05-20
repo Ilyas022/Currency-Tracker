@@ -145,7 +145,7 @@ export const FooterLinkTitle = styled.h3`
 
 export const FooterRights = styled.p`
 	font-size: ${(props) => getFonts(props, 4)};
-	line-height: ${(props) => getFontWeights(props, 6)};
+	line-height: ${(props) => getlineHeights(props, 6)};
 	color: ${(props) => getColors(props).textDark};
 	text-align: center;
 

@@ -18,6 +18,7 @@ export const NavbarComp = styled.nav`
 
 	@media ${device.sm} {
 		gap: ${(props) => getGaps(props, 1)};
+		display: none;
 	}
 `
 
