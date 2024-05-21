@@ -5,6 +5,8 @@ import { SelectOption } from 'types/interfaces'
 import { Container, DropDownItem, DropDownMenu, SearchBar } from './styled'
 import { DivRefProp, DropDownProps } from './types'
 
+const constantHeight = 42
+
 class DropDown<T extends SelectOption> extends React.Component<DropDownProps<T>> {
 	itemsEl: React.RefObject<HTMLDivElement>
 
@@ -22,11 +24,11 @@ class DropDown<T extends SelectOption> extends React.Component<DropDownProps<T>>
 	componentDidMount(): void {
 		this.inputRef.current?.focus()
 		if (this.activeRef.current && this.itemsEl.current) {
-			this.itemsEl.current.scrollTop = this.activeRef.current.offsetTop - 42
+			this.itemsEl.current.scrollTop = this.activeRef.current.offsetTop - constantHeight
 		}
 	}
 
-	handleSelect = (option: T) => {
+	handleSelect = (option: T) => () => {
 		const { onSelect } = this.props
 		onSelect(option)
 	}
@@ -53,7 +55,7 @@ class DropDown<T extends SelectOption> extends React.Component<DropDownProps<T>>
 								{...props}
 								key={option.value}
 								// eslint-disable-next-line react/jsx-no-bind
-								onClick={this.handleSelect.bind(this, option)}
+								onClick={this.handleSelect(option)}
 								$isActive={isActive}
 							>
 								{option.label}
