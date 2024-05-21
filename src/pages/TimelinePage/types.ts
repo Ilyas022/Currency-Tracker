@@ -14,10 +14,15 @@ export interface TimelinePageProps {
 	fetchHistory: typeof fetchHistory
 }
 
+export interface Option {
+	label: string
+	value: string
+}
+
 export interface TimelinePageState {
 	isPopUpOpened: boolean
-	date: { label: string; value: string }
-	currency: { label: string; value: string }
+	date: Option
+	currency: Option
 	isLoaded: boolean
 	isError: boolean
 	isChartCustom: boolean

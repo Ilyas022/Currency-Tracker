@@ -1,8 +1,3 @@
-export interface Option {
-	label: string
-	value: string | number
-}
-
 export interface SelectState<T> {
 	isDropDownOpen: boolean
 	active: null | T

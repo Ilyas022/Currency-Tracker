@@ -1,11 +1,11 @@
 import React from 'react'
 
+import { SelectOption } from 'types/interfaces'
+
 import { Container, DropDownItem, DropDownMenu, SearchBar } from './styled'
 import { DivRefProp, DropDownProps } from './types'
 
-class DropDown<T extends { label: string; value: string | number }> extends React.Component<
-	DropDownProps<T>
-> {
+class DropDown<T extends SelectOption> extends React.Component<DropDownProps<T>> {
 	itemsEl: React.RefObject<HTMLDivElement>
 
 	activeRef: React.RefObject<HTMLDivElement>
