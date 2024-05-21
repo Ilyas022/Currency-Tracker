@@ -1,15 +1,9 @@
 import { useRef } from 'react'
 
 import { AccordionLink, Button, Item, Content, Container, Title } from './styled'
+import { AccordionItemProps } from './types'
 
-interface IAccordionItem {
-	title: string
-	links: { name: string; link: string }[]
-	isOpen: boolean
-	onClick: () => void
-}
-
-function AccordionItem({ title, links, isOpen, onClick }: IAccordionItem) {
+function AccordionItem({ title, links, isOpen, onClick }: AccordionItemProps) {
 	const contentHeight = useRef<HTMLParagraphElement>(null)
 
 	return (

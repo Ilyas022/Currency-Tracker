@@ -1,10 +1,12 @@
 import React from 'react'
 
+import { SelectOption } from 'types/interfaces'
+
 import Dropdown from './DropDown'
 import { DropDown, DropDownSelect, SelectItem } from './styled'
-import { Option, SelectProps, SelectState } from './types'
+import { SelectProps, SelectState } from './types'
 
-class Select<T extends Option> extends React.Component<SelectProps<T>, SelectState<T>> {
+class Select<T extends SelectOption> extends React.Component<SelectProps<T>, SelectState<T>> {
 	selectRef: React.RefObject<HTMLDivElement>
 
 	constructor(props: SelectProps<T>) {

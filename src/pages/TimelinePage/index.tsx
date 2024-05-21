@@ -21,7 +21,7 @@ import {
 	CustomChartBtn,
 	AddDataBtn,
 } from './styled'
-import { TimelinePageProps, TimelinePageState } from './types'
+import { Option, TimelinePageProps, TimelinePageState } from './types'
 
 class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageState> {
 	constructor(props: TimelinePageProps) {
@@ -82,11 +82,11 @@ class TimelinePage extends React.PureComponent<TimelinePageProps, TimelinePageSt
 		return createSuccessToast('Data is loaded!')
 	}
 
-	handleDateSelect = (date: { label: string; value: string }) => {
+	handleDateSelect = (date: Option) => {
 		this.setState({ date })
 	}
 
-	handleCurrencySelect = (currency: { label: string; value: string }) => {
+	handleCurrencySelect = (currency: Option) => {
 		this.setState({ currency })
 	}
 

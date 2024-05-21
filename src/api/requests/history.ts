@@ -1,3 +1,5 @@
+import { HistoryResponseResult } from 'types/interfaces'
+
 import { axiosInstanceHistory } from '../axios'
 
 export const getHistory = (currency: string, date: string) => {
@@ -5,15 +7,7 @@ export const getHistory = (currency: string, date: string) => {
 		transformResponse: (response) => {
 			const data = JSON.parse(response)
 
-			const result: {
-				[key: string]: {
-					time_open: string
-					price_open: number
-					price_high: number
-					price_low: number
-					price_close: number
-				}[]
-			} = {}
+			const result: HistoryResponseResult = {}
 			result[`${currency}-${date}`] = data
 			return result
 		},
