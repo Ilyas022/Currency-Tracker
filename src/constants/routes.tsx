@@ -2,6 +2,7 @@ import Contacts from 'components/Contacts'
 import CurrencyCardsList from 'components/CurrencyCardsList'
 import Map from 'components/Map'
 import TimelinePage from 'src/pages/TimelinePage'
+import { NotFoundText } from 'src/styles/global.styles'
 
 export const HOME_PAGE_ROUTE = `/`
 export const TIMELINE_PAGE_ROUTE = `/timeline`
@@ -38,6 +39,6 @@ export const routes = [
 	{
 		id: 4,
 		path: '*',
-		element: <p>not found page</p>,
+		element: <NotFoundText>not found page</NotFoundText>,
 	},
 ]

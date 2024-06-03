@@ -3,6 +3,11 @@ import styled, { createGlobalStyle } from 'styled-components'
 
 import { getColors, getFonts, getIndents } from 'utils/themeGetters'
 
+export const NotFoundText = styled.p`
+	font-size: ${(props) => getFonts(props, 4)};
+	text-align: center;
+`
+
 export const GlobalStyles = createGlobalStyle`
 	*{
 		padding: 0;
