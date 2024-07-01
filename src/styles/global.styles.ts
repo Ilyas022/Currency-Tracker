@@ -3,6 +3,11 @@ import styled, { createGlobalStyle } from 'styled-components'
 
 import { getColors, getFonts, getIndents } from 'utils/themeGetters'
 
+export const NotFoundText = styled.p`
+	font-size: ${(props) => getFonts(props, 4)};
+	text-align: center;
+`
+
 export const GlobalStyles = createGlobalStyle`
 	*{
 		padding: 0;
@@ -24,7 +29,7 @@ export const GlobalStyles = createGlobalStyle`
 		font-family: "Poppins", sans-serif;
 	}
 
-	html,body{
+	html,body,#root{
 		height: 100%;
 		line-height: 1;
 		-ms-text-size-adjust: 100%;
@@ -49,17 +54,6 @@ export const GlobalStyles = createGlobalStyle`
 	body {
 			background-color: ${({ theme }) => theme.colors.primary};
 			color: ${(props) => getColors(props).textPrimary};
-	}
-
-	#root {
-		min-height: 100%;
-		display: flex;
-		flex-direction: column;
-
-		> main {
-			flex: 1 1 auto;
-		}
-
 	}
 
 	main {

@@ -16,12 +16,6 @@ export class ErrorBoundary extends Component<IProps, IState> {
 	}
 
 	static getDerivedStateFromError() {
-		console.log('error catched')
-		return { hasError: true }
-	}
-
-	static componentDidCatch() {
-		console.log('error catched')
 		return { hasError: true }
 	}
 

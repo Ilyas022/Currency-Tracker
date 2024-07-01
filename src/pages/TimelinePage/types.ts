@@ -1,4 +1,4 @@
-import { fetchHistory } from 'store/slices/historySlice'
+import { fetchHistory } from 'store/thunks/historyThunks'
 
 export interface TimelinePageProps {
 	data: {
@@ -10,13 +10,19 @@ export interface TimelinePageProps {
 			price_close: number
 		}[]
 	}
+	status: string
 	fetchHistory: typeof fetchHistory
+}
+
+export interface Option {
+	label: string
+	value: string
 }
 
 export interface TimelinePageState {
 	isPopUpOpened: boolean
-	date: string
-	currency: string
+	date: Option
+	currency: Option
 	isLoaded: boolean
 	isError: boolean
 	isChartCustom: boolean

@@ -1,14 +1,17 @@
 import Logo from 'components/Logo'
 import { useScreenDetector } from 'src/hooks/useScreenDetector'
 
-import { footerLinks, mobileFooterLinks, mocks } from './config'
+import Accordion from './Accordion'
+import { footerLinks, mocks } from './config'
 import {
 	FooterComp,
 	FooterContainer,
 	FooterInfo,
+	FooterInfoText,
+	FooterInner,
 	FooterLinks,
 	FooterLogo,
-	FooterMobileLinks,
+	FooterLogoText,
 	FooterRights,
 } from './styled'
 
@@ -19,20 +22,16 @@ function Footer() {
 	return (
 		<FooterComp>
 			<FooterContainer>
-				<div>
+				<FooterInner>
 					<FooterInfo>
 						<FooterLogo>
 							<Logo />
-							<p>{title}</p>
+							<FooterLogoText>{title}</FooterLogoText>
 						</FooterLogo>
-						{isDesktop && <p>{description}</p>}
+						{isDesktop && <FooterInfoText>{description}</FooterInfoText>}
 					</FooterInfo>
-					{isMobile ? (
-						<FooterMobileLinks>{mobileFooterLinks}</FooterMobileLinks>
-					) : (
-						<FooterLinks>{footerLinks}</FooterLinks>
-					)}
-				</div>
+					{isMobile ? <Accordion /> : <FooterLinks>{footerLinks}</FooterLinks>}
+				</FooterInner>
 				<FooterRights>{rights}</FooterRights>
 			</FooterContainer>
 		</FooterComp>

@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 export const useScreenDetector = () => {
 	const [width, setWidth] = useState(window.innerWidth)
 
+	const laptopResolution = 768
+	const pcResolution = 1024
+
 	const handleWindowSizeChange = () => {
 		setWidth(window.innerWidth)
 	}
@@ -15,9 +18,9 @@ export const useScreenDetector = () => {
 		}
 	}, [])
 
-	const isMobile = width <= 768
-	const isTablet = width <= 1024
-	const isDesktop = width > 1024
+	const isMobile = width <= laptopResolution
+	const isTablet = width <= pcResolution
+	const isDesktop = width > pcResolution
 
 	return { isMobile, isTablet, isDesktop }
 }

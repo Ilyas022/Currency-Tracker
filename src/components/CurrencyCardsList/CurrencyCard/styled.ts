@@ -79,6 +79,8 @@ export const CurrencyIcon = styled.div`
 	}
 `
 
+export const CurrencyContainer = styled.div``
+
 export const CurrencyTitle = styled.p`
 	font-weight: ${(props) => getFontWeights(props, 1)};
 	font-size: ${(props) => getFonts(props, 5, 5)};

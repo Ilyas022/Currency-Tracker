@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { useActions } from 'src/hooks/useActions'
 import { useTypedSelector } from 'src/hooks/useTypedSelector'
-import { selectTheme } from 'src/store/selectors'
+import { selectTheme } from 'store/selectors/themeSelectors'
 
 import { ToggleInput, ToggleLabel, ToggleSpan } from './styled'
 
@@ -16,9 +16,9 @@ export function ThemeToggler() {
 	}
 
 	return (
-		<ToggleLabel className="toggle-switch">
-			<ToggleInput data-testid="toggler" type="checkbox" checked={isToggled} onChange={onToggle} />
-			<ToggleSpan className="switch" />
+		<ToggleLabel>
+			<ToggleInput type="checkbox" checked={isToggled} onChange={onToggle} />
+			<ToggleSpan />
 		</ToggleLabel>
 	)
 }

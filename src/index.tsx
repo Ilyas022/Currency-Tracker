@@ -9,7 +9,7 @@ import { dark, light } from 'constants/theme'
 import { useTypedSelector } from 'hooks/useTypedSelector'
 import { App } from 'src/App'
 import { persistor, store } from 'store'
-import { selectTheme } from 'store/selectors'
+import { selectTheme } from 'store/selectors/themeSelectors'
 
 import { GlobalStyles } from './styles/global.styles'
 

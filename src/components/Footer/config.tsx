@@ -1,8 +1,28 @@
+import {
+	IDEAS_PAGE_ROUTE,
+	MARKET_PAGE_ROUTE,
+	SERVICE_PAGE_ROUTE,
+	SNAPS_PAGE_ROUTE,
+	SPARKS_PAGE_ROUTE,
+	STREAMS_PAGE_ROUTE,
+} from 'constants/routes'
+
+import { FooterLink, FooterLinkContainer, FooterLinkItem, FooterLinkTitle } from './styled'
+
 export const mocks = {
 	footerInfo: {
-		General: ['Market', 'Service'],
-		Product: ['Sparks', 'Snaps'],
-		Community: ['Ideas', 'Streams'],
+		General: [
+			{ name: 'Market', link: MARKET_PAGE_ROUTE },
+			{ name: 'Service', link: SERVICE_PAGE_ROUTE },
+		],
+		Product: [
+			{ name: 'Sparks', link: SPARKS_PAGE_ROUTE },
+			{ name: 'Snaps', link: SNAPS_PAGE_ROUTE },
+		],
+		Community: [
+			{ name: 'Ideas', link: IDEAS_PAGE_ROUTE },
+			{ name: 'Streams', link: STREAMS_PAGE_ROUTE },
+		],
 	},
 	title: 'Modsen Currency Tracker',
 	description:
@@ -11,28 +31,14 @@ export const mocks = {
 }
 
 export const footerLinks = Object.entries(mocks.footerInfo).map(([category, items]) => (
-	<div key={category}>
-		<h3>{category}</h3>
-		<ul>
-			{items.map((item) => (
-				<li key={item}>{item}</li>
+	<FooterLinkItem key={category}>
+		<FooterLinkTitle>{category}</FooterLinkTitle>
+		<FooterLinkContainer>
+			{items.map(({ link, name }) => (
+				<FooterLink to={link} key={name}>
+					{name}
+				</FooterLink>
 			))}
-		</ul>
-	</div>
-))
-
-export const mobileFooterLinks = Object.entries(mocks.footerInfo).map(([category]) => (
-	<div key={category}>
-		<h3>{category}</h3>
-		<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-			<path
-				fill="none"
-				stroke="currentColor"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				strokeWidth="1.5"
-				d="m7 10l5 5l5-5"
-			/>
-		</svg>
-	</div>
+		</FooterLinkContainer>
+	</FooterLinkItem>
 ))

@@ -1,7 +1,7 @@
 import BigLogoIcon from 'components/Icons/BigLogoIcon'
 import { useScreenDetector } from 'hooks/useScreenDetector'
 
-import { IntroComp, IntroContainer, IntroInfo } from './styled'
+import { IntroComp, IntroContainer, IntroInfo, Text, Title, TitleItem } from './styled'
 
 function Introduction() {
 	const { isDesktop } = useScreenDetector()
@@ -10,11 +10,11 @@ function Introduction() {
 		<IntroComp>
 			<IntroContainer>
 				<IntroInfo>
-					<h1>
-						<span>Modsen Currency</span>
-						<span>Tracker</span>
-					</h1>
-					<p>Quotes for the dollar and other international currencies.</p>
+					<Title>
+						<TitleItem>Modsen Currency</TitleItem>
+						<TitleItem>Tracker</TitleItem>
+					</Title>
+					<Text>Quotes for the dollar and other international currencies.</Text>
 				</IntroInfo>
 				{isDesktop && <BigLogoIcon />}
 			</IntroContainer>
