@@ -20,7 +20,7 @@ function MenuBurger({ isOpened, handleOpen }: MenuBurgerProps) {
 	}, [lockScroll, unlockScroll, isOpened])
 
 	return (
-		<Menu $open={isOpened}>
+		<Menu data-testid="menu burger" $open={isOpened}>
 			<ThemeToggler />
 			{links.map(({ path, title }) => (
 				<Navlink onClick={handleOpen} key={path} to={path}>
