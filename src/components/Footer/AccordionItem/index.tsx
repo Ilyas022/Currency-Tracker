@@ -29,7 +29,7 @@ function AccordionItem({ title, links, isOpen, onClick }: AccordionItemProps) {
 			>
 				<Container>
 					{links.map(({ link, name }, idx) => (
-						<AccordionLink to={link} key={idx}>
+						<AccordionLink data-testid="footer accordion link" to={link} key={idx}>
 							{name}
 						</AccordionLink>
 					))}

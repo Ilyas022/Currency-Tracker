@@ -7,7 +7,7 @@ function BurgerButton({ isOpened, setOpened }: BurgerBtnProps) {
 	}
 
 	return (
-		<BurgerBtn>
+		<BurgerBtn data-testid="burger btn">
 			<BurgerInput id="menuBurger" onChange={handleClick} checked={isOpened} />
 			<BurgerLabel htmlFor="menuBurger" />
 		</BurgerBtn>

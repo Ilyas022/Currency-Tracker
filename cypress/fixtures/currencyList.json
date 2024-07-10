@@ -1,0 +1,41 @@
+
+{
+  "meta": {
+      "last_updated_at": "2024-07-09T23:59:59Z"
+  },
+  "data": {
+    "ARS": {
+        "code": "ARS",
+        "value": 917.102177191
+    },
+    "AUD": {
+        "code": "AUD",
+        "value": 1.4833602749
+    },
+    "BTC": {
+        "code": "BTC",
+        "value": 0.0000172228
+    },
+    "CAD": {
+        "code": "CAD",
+        "value": 1.3632802204
+    },
+    "CNY": {
+        "code": "CNY",
+        "value": 7.2710511485
+    },
+    "EUR": {
+        "code": "EUR",
+        "value": 0.924730093
+    },
+    "GBP": {
+        "code": "GBP",
+        "value": 0.7820600981
+    },
+    "JPY": {
+        "code": "JPY",
+        "value": 161.329670725
+    }
+  }
+}
+

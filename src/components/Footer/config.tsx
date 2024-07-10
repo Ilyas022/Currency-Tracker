@@ -35,7 +35,7 @@ export const footerLinks = Object.entries(mocks.footerInfo).map(([category, item
 		<FooterLinkTitle>{category}</FooterLinkTitle>
 		<FooterLinkContainer>
 			{items.map(({ link, name }) => (
-				<FooterLink to={link} key={name}>
+				<FooterLink data-testid="footer link" to={link} key={name}>
 					{name}
 				</FooterLink>
 			))}

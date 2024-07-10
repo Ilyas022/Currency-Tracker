@@ -82,7 +82,7 @@ class Select<T extends SelectOption> extends React.Component<SelectProps<T>, Sel
 		const { active, options, isDropDownOpen } = this.state
 		const { value, position = 'bottom', placeHolder } = this.props
 		return (
-			<SelectItem ref={this.selectRef}>
+			<SelectItem data-testid="currency card select" ref={this.selectRef}>
 				<DropDown>
 					<DropDownSelect onClick={this.handleDropDownToggle}>
 						{value?.label || placeHolder || 'Please select one option'}
