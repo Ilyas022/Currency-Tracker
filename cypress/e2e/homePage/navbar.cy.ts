@@ -1,4 +1,4 @@
-import { setupInterceptors } from '../support'
+import { setupInterceptors } from '../../support'
 
 describe('My First Test', () => {
 	beforeEach(() => {

@@ -35,7 +35,7 @@ function CurrencyPopUp({ currency, handleClose }: CurrencyPopUpProps) {
 						const isInt = item.value % 1 === 0
 
 						return (
-							<ExchangeItem key={item.code}>
+							<ExchangeItem data-testid="exchange item" key={item.code}>
 								<Currencies>
 									{item.code} <span>to</span> {selectedCurrency.code}
 								</Currencies>

@@ -25,7 +25,7 @@ function CurrencyCard({ base, code, label, value }: CurrencyCardProps) {
 
 	return (
 		<>
-			<CurrencyComp onClick={handleClick}>
+			<CurrencyComp data-testid="currency card" onClick={handleClick}>
 				<CurrencyIcon>{Icons[code]}</CurrencyIcon>
 				<CurrencyContainer>
 					<CurrencyTitle>{label}</CurrencyTitle>
