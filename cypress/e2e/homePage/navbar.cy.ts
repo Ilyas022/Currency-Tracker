@@ -1,6 +1,6 @@
 import { setupInterceptors } from '../../support'
 
-describe('My First Test', () => {
+describe('Navbar', () => {
 	beforeEach(() => {
 		setupInterceptors()
 		cy.visit('/')

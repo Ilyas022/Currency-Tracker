@@ -1,6 +1,6 @@
 import { setupInterceptors } from '../../support'
 
-describe('My First Test', () => {
+describe('CardList', () => {
 	beforeEach(() => {
 		setupInterceptors()
 		cy.visit('/')
