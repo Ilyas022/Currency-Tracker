@@ -57,6 +57,7 @@ class DropDown<T extends SelectOption> extends React.Component<DropDownProps<T>>
 								// eslint-disable-next-line react/jsx-no-bind
 								onClick={this.handleSelect(option)}
 								$isActive={isActive}
+								data-testid="currency select item"
 							>
 								{option.label}
 							</DropDownItem>

@@ -5,7 +5,7 @@ function Navbar() {
 	return (
 		<NavbarComp>
 			{links.map(({ path, title }) => (
-				<Navlink key={path} to={path}>
+				<Navlink data-testid="navLink" key={path} to={path}>
 					{title}
 				</Navlink>
 			))}

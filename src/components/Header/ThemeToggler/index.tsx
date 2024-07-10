@@ -16,7 +16,7 @@ export function ThemeToggler() {
 	}
 
 	return (
-		<ToggleLabel>
+		<ToggleLabel data-testid="theme toggler">
 			<ToggleInput type="checkbox" checked={isToggled} onChange={onToggle} />
 			<ToggleSpan />
 		</ToggleLabel>

@@ -52,7 +52,7 @@ function Contacts() {
 					))}
 				</ContactsInfo>
 
-				<ContactsForm onSubmit={onSubmit}>
+				<ContactsForm data-testid="contacts form" onSubmit={onSubmit}>
 					<FormTitle>CONTACT US</FormTitle>
 
 					<FormItem>
